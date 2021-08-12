@@ -1,0 +1,45 @@
+{
+	"Component": {
+		"groups": [
+			"Private",
+			"Shared"
+		]
+	},
+	"Private": {
+		"methods": [
+			"COMPILER_MAIN",
+			"env_POST_KEY",
+			"env_ToolBar_Height",
+			"methodGetPath",
+			"mnu_RELEASE_MENU",
+			"option_SET",
+			"Palette_ADD_ELEMENT",
+			"Palette_ADD_WINDOW",
+			"Palette_MENU",
+			"Palette_RUN",
+			"PREFERENCES",
+			"ptr_table",
+			"tool_renameWindows",
+			"TOOL_WINDOWS",
+			"wClose",
+			"WINDOW_ACTION"
+		],
+		"forms": [
+			"COMMENTS",
+			"PALETTE",
+			"PREFERENCES",
+			"PROPERTIES"
+		]
+	},
+	"Shared": {
+		"methods": [
+			"4DPopWindow_init",
+			"4DPopWindow_macroOnClose",
+			"4DPopWindow_macroOnOpen",
+			"4DPopWindow_path",
+			"Tool_Default",
+			"Tool_Menu"
+		]
+	},
+	"trash": {}
+}

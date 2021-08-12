@@ -1,0 +1,270 @@
+{
+	"destination": "detailScreen",
+	"windowTitle": ":xliff:paletteTitle",
+	"memorizeGeometry": true,
+	"windowMinWidth": 270,
+	"windowMaxWidth": 300,
+	"windowMinHeight": 19,
+	"width": 270,
+	"height": 270,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onOutsideCall",
+		"onActivate",
+		"onDeactivate",
+		"onCloseBox",
+		"onUnload",
+		"onTimer",
+		"onResize"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"automatic_font": {
+					"type": "input",
+					"top": 0,
+					"left": 391,
+					"width": 150,
+					"height": 16,
+					"visibility": "hidden",
+					"stroke": "#FF6600",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/automatic_font.4dm",
+					"events": [
+						"onLoad"
+					]
+				},
+				"hight_opened": {
+					"type": "input",
+					"top": 27,
+					"left": 390,
+					"width": 151,
+					"height": 11,
+					"sizingX": "move",
+					"dataSourceTypeHint": "number",
+					"stroke": "#FF6600",
+					"fontFamily": "Monaco",
+					"fontSize": 9,
+					"focusable": false,
+					"fill": "#FFFF00",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
+				},
+				"inited": {
+					"type": "checkbox",
+					"top": 47,
+					"left": 390,
+					"width": 151,
+					"height": 26,
+					"sizingX": "move",
+					"stroke": "#FF6600",
+					"focusable": false,
+					"memorizeValue": true
+				}
+			}
+		},
+		{
+			"objects": {
+				"Ligne": {
+					"type": "line",
+					"top": 24,
+					"left": 0,
+					"width": 270,
+					"sizingX": "grow",
+					"stroke": "#AAAAAA"
+				},
+				"main.list": {
+					"type": "list",
+					"top": 25,
+					"left": 0,
+					"width": 270,
+					"height": 245,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSource": "<>Lst_windows",
+					"enterable": false,
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"stroke": "#000000",
+					"fill": "transparent",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"borderStyle": "none",
+					"method": "ObjectMethods/main.list.4dm",
+					"events": [
+						"onClick",
+						"onSelectionChange",
+						"onMouseLeave",
+						"onMouseMove"
+					]
+				},
+				"reduce": {
+					"type": "button",
+					"top": 0,
+					"left": 249,
+					"width": 20,
+					"height": 21,
+					"sizingX": "move",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/mini.png",
+					"style": "custom",
+					"method": "ObjectMethods/reduce.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"window": {
+					"type": "button",
+					"top": 0,
+					"left": 220,
+					"width": 30,
+					"height": 21,
+					"sizingX": "move",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/window.png",
+					"popupPlacement": "linked",
+					"style": "custom",
+					"method": "ObjectMethods/window.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"sel.prev": {
+					"type": "button",
+					"top": 0,
+					"left": 28,
+					"width": 20,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/back.png",
+					"style": "custom",
+					"method": "ObjectMethods/sel.prev.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"sel.next": {
+					"type": "button",
+					"top": 0,
+					"left": 47,
+					"width": 20,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/forward.png",
+					"style": "custom",
+					"method": "ObjectMethods/sel.next.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"sel.close": {
+					"type": "button",
+					"top": 0,
+					"left": 104,
+					"width": 20,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/close.png",
+					"style": "custom",
+					"method": "ObjectMethods/sel.close.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"sel.comment": {
+					"type": "button",
+					"top": 0,
+					"left": 66,
+					"width": 20,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/comment.png",
+					"style": "custom",
+					"method": "ObjectMethods/sel.comment.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"sel.properties": {
+					"type": "button",
+					"top": 0,
+					"left": 85,
+					"width": 20,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/check.png",
+					"style": "custom",
+					"method": "ObjectMethods/sel.properties.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"action": {
+					"type": "button",
+					"top": 0,
+					"left": 0,
+					"width": 29,
+					"height": 21,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 10,
+					"focusable": false,
+					"icon": "/RESOURCES/Images/skins/lightGrey/cd.png",
+					"popupPlacement": "linked",
+					"style": "custom",
+					"method": "ObjectMethods/action.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "Vue 1",
+		"defaultView": "Vue 1",
+		"views": {
+			"Vue 1": {},
+			"Vue 2": {},
+			"Vue 3": {},
+			"Vue 4": {},
+			"Vue 5": {},
+			"Vue 6": {},
+			"Vue 7": {},
+			"Vue 8": {},
+			"TOOLS": {}
+		}
+	}
+}

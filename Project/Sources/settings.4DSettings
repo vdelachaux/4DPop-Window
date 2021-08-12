@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="23">
+	<com.4d>
+		<database>
+			<cache size_fixed="32" size_maximum="100" size_reserved="128"/>
+			<cpu_priority/>
+			<misc standard_xpath="false"/>                </database>
+		<compiler>
+			<options compilation_path="1" fat_binary="true" target="all"/>
+			<typage default_for_button="2"/>
+			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>                      </compiler>
+		<interface>
+			<developper allow_read_only_structure="false" display_toolbar="true"/>
+			<user print_progress="false"/>                </interface>
+		<general execute_host_database_event="true">
+			<mover always_display_dialog="2"/>
+		</general>
+		<sql>
+			<publication port_number="1919"/>
+		</sql>
+		<server>
+			<network>
+				<options publication_name="Windows_Tool"/>
+			</network>
+		</server>
+		<web>
+			<standalone_server>
+				<options>
+					<web_processes timeout_for_inactives="5"/>
+					<text_conversion standard_set="ISO-8859-1"/>
+					<filters allow_4dsync_urls="true"/>
+					<cache use_4d_web_cache="false"/>
+				</options>
+				<configuration automatic_session_management="true" session_mode="2">
+					<hosts>
+						<host home_page="index.html" html_root="./DossierWeb/" id="0" name="Default"/>
+					</hosts>
+				</configuration>
+				<log>
+					<backup daily="" hourly="" monthly="" size="0" weekly=""/>
+				</log>
+				<misc/>
+			</standalone_server>
+			<remote>
+				<options>
+					<web_processes timeout_for_inactives="5"/>
+					<filters allow_4dsync_urls="true"/>
+					<cache use_4d_web_cache="false"/>
+				</options>
+				<configuration automatic_session_management="true" session_mode="2"/>
+				<misc/>
+			</remote>
+		</web>              </com.4d>  </preferences>

@@ -1,0 +1,158 @@
+{
+	"destination": "detailScreen",
+	"width": 400,
+	"height": 195,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onTimer"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"automatic_font": {
+					"type": "input",
+					"top": 175,
+					"left": 244,
+					"width": 150,
+					"height": 16,
+					"visibility": "hidden",
+					"stroke": "#FF6600",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/automatic_font.4dm",
+					"events": [
+						"onLoad"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 400,
+					"height": 195,
+					"stroke": "transparent"
+				},
+				"p.invisible": {
+					"type": "checkbox",
+					"top": 10,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_invisible",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				},
+				"p.shared": {
+					"type": "checkbox",
+					"top": 36,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_sharedByComponentsAndHostDatabase",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				},
+				"p.server": {
+					"type": "checkbox",
+					"top": 62,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_executeOnServer",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				},
+				"p.html": {
+					"type": "checkbox",
+					"top": 88,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_availableThrough4dHtml",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				},
+				"p.soap": {
+					"type": "checkbox",
+					"top": 115,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_offeredAsAWebService",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false,
+					"method": "ObjectMethods/p.soap.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"p.wsdl": {
+					"type": "checkbox",
+					"top": 142,
+					"left": 29,
+					"width": 367,
+					"height": 15,
+					"text": ":xliff:Proc_info_publishedInWsdl",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				},
+				"p.sql": {
+					"type": "checkbox",
+					"top": 169,
+					"left": 9,
+					"width": 387,
+					"height": 15,
+					"text": ":xliff:Proc_info_availableThroughSql",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"focusable": false
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "Vue 1",
+		"defaultView": "Vue 1",
+		"views": {
+			"Vue 1": {},
+			"Vue 2": {},
+			"Vue 3": {},
+			"Vue 4": {},
+			"Vue 5": {},
+			"Vue 6": {},
+			"Vue 7": {},
+			"Vue 8": {},
+			"Vue 9": {
+				"objects": [
+					"automatic_font"
+				]
+			}
+		}
+	}
+}
