@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="23">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="24">
 	<com.4d>
 		<database>
 			<cache size_fixed="32" size_maximum="100" size_reserved="128"/>
 			<cpu_priority/>
-			<misc standard_xpath="false"/>                </database>
+			<misc prefer_null_than_blank_values="false" standard_xpath="true"/>                </database>
 		<compiler>
 			<options compilation_path="1" fat_binary="true" target="all"/>
 			<typage default_for_button="2"/>
@@ -19,7 +19,7 @@
 		</sql>
 		<server>
 			<network>
-				<options publication_name="Windows_Tool"/>
+				<options publication_name="Windows_Tool" use_legacy_network_layer="false"/>
 			</network>
 		</server>
 		<web>
