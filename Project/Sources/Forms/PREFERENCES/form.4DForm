@@ -1,0 +1,177 @@
+{
+	"destination": "detailScreen",
+	"windowTitle": ":xliff:preferences",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onUnload",
+		"onTimer"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"automatic_font": {
+					"type": "input",
+					"top": 5,
+					"left": 351,
+					"width": 150,
+					"height": 16,
+					"visibility": "hidden",
+					"stroke": "#FF6600",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/automatic_font.4dm",
+					"events": [
+						"onLoad"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Zone de groupe1": {
+					"type": "groupBox",
+					"top": 41,
+					"left": 20,
+					"width": 481,
+					"height": 89,
+					"text": ":xliff:tools"
+				},
+				"Zone de groupe": {
+					"type": "groupBox",
+					"top": 145,
+					"left": 20,
+					"width": 481,
+					"height": 189,
+					"text": ":xliff:4dpopPaletteButtonsOptions"
+				},
+				"button.menu": {
+					"type": "checkbox",
+					"top": 178,
+					"left": 80,
+					"width": 357,
+					"height": 17,
+					"text": ":xliff:submenu",
+					"focusable": false
+				},
+				"Texte1": {
+					"type": "text",
+					"top": 199,
+					"left": 101,
+					"width": 384,
+					"height": 13,
+					"fontFamily": "Lucida Grande",
+					"fontSize": 11,
+					"text": ":xliff:submenuComment"
+				},
+				"Texte": {
+					"type": "text",
+					"top": 231,
+					"left": 31,
+					"width": 248,
+					"height": 16,
+					"text": ":xliff:defaultAction"
+				},
+				"default.Next": {
+					"type": "radio",
+					"top": 260,
+					"left": 101,
+					"width": 323,
+					"height": 18,
+					"text": ":xliff:invertFrontWindow",
+					"focusable": false,
+					"radioGroup": "Group4"
+				},
+				"default.Stack": {
+					"type": "radio",
+					"top": 289,
+					"left": 101,
+					"width": 323,
+					"height": 18,
+					"text": ":xliff:stackwindows",
+					"focusable": false,
+					"radioGroup": "Group4"
+				},
+				"b.OK": {
+					"type": "button",
+					"top": 354,
+					"left": 430,
+					"width": 71,
+					"height": 22,
+					"action": "accept",
+					"text": ":xliff:ok",
+					"focusable": false,
+					"defaultButton": true
+				},
+				"option.prefix": {
+					"type": "checkbox",
+					"top": 94,
+					"left": 80,
+					"width": 387,
+					"height": 17,
+					"text": ":xliff:prefix",
+					"focusable": false
+				},
+				"option.palette": {
+					"type": "checkbox",
+					"top": 64,
+					"left": 80,
+					"width": 387,
+					"height": 17,
+					"text": ":xliff:palette",
+					"focusable": false
+				},
+				"b.escape": {
+					"type": "button",
+					"top": 354,
+					"left": 310,
+					"width": 100,
+					"height": 22,
+					"action": "cancel",
+					"text": ":xliff:escape",
+					"focusable": false
+				}
+			}
+		}
+	],
+	"editor": {
+		"groups": {
+			"Group4": [
+				"default.Next",
+				"default.Stack"
+			]
+		},
+		"activeView": "Vue 1",
+		"defaultView": "Vue 1",
+		"views": {
+			"Vue 1": {},
+			"Vue 2": {},
+			"Vue 3": {},
+			"Vue 4": {},
+			"Vue 5": {},
+			"Vue 6": {},
+			"Vue 7": {},
+			"Vue 8": {},
+			"Vue 9": {}
+		}
+	}
+}
