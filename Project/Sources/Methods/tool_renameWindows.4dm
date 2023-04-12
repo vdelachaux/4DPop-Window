@@ -10,7 +10,7 @@
 C_TEXT:C284($1)
 
 C_BOOLEAN:C305($Boo_)
-C_LONGINT:C283($Lon_; $Lon_origin; $Lon_parameters; $Lon_process; $Lon_x; $Win_hdl)
+C_LONGINT:C283($Lon_; $origin; $Lon_parameters; $Lon_process; $Lon_x; $Win_hdl)
 C_TEXT:C284($Txt_; $Txt_databaseName; $Txt_entryPoint; $Txt_prefix; $Txt_title)
 
 If (False:C215)
@@ -42,16 +42,16 @@ Case of
 		
 		// #31-10-2014 - old
 		//$Txt_databaseName:=Structure file(*)
-		//For ($Lon_i;Length($Txt_databaseName);1;-1)
-		//If ($Txt_databaseName[[$Lon_i]]=Folder separator)
-		//$Txt_databaseName:=Delete string($Txt_databaseName;1;$Lon_i)
-		//$Lon_i:=0
+		//For ($i;Length($Txt_databaseName);1;-1)
+		//If ($Txt_databaseName[[$i]]=Folder separator)
+		//$Txt_databaseName:=Delete string($Txt_databaseName;1;$i)
+		//$i:=0
 		//End if
 		//End for
-		//For ($Lon_i;Length($Txt_databaseName);1;-1)
-		//If ($Txt_databaseName[[$Lon_i]]=".")
-		//$Txt_databaseName:=Substring($Txt_databaseName;1;$Lon_i-1)
-		//$Lon_i:=0
+		//For ($i;Length($Txt_databaseName);1;-1)
+		//If ($Txt_databaseName[[$i]]=".")
+		//$Txt_databaseName:=Substring($Txt_databaseName;1;$i-1)
+		//$i:=0
 		//End if
 		//End for
 		
@@ -75,12 +75,12 @@ Case of
 				//not for modal | floating | external
 				If (Window kind:C445($Win_hdl)=Regular window:K27:1)
 					
-					PROCESS PROPERTIES:C336(Window process:C446($Win_hdl); $Txt_; $Lon_; $Lon_; $Boo_; $Lon_; $Lon_origin)
+					PROCESS PROPERTIES:C336(Window process:C446($Win_hdl); $Txt_; $Lon_; $Lon_; $Boo_; $Lon_; $origin)
 					
 					Case of 
 							
 							//-----------------------------------
-						: ($Lon_origin=Design process:K36:9)
+						: ($origin=Design process:K36:9)
 							
 							$Txt_title:=Get window title:C450($Win_hdl)
 							

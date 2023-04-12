@@ -1,0 +1,11 @@
+{
+  "name": ":xliff:ToolName",
+  "popup": true,
+  "picture": "4DPop.png",
+  "helptip": ":xliff:ToolTip",
+  "default": "default",
+  "handler": "window",
+  "tool": {
+    "method": "menu"
+  }
+}

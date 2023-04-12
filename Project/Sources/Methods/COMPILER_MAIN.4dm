@@ -1,23 +1,6 @@
 //%attributes = {"invisible":true}
-C_LONGINT:C283($0)
-C_LONGINT:C283($0)
-C_LONGINT:C283($0)
-C_LONGINT:C283($1)
-C_LONGINT:C283($1)
-C_LONGINT:C283($1)
-C_POINTER:C301(${2})
-
-C_TEXT:C284($Txt_language)
-
-If (False:C215)
-	C_LONGINT:C283(COMPILER_MAIN; $0)
-	C_LONGINT:C283(COMPILER_MAIN; $0)
-	C_LONGINT:C283(COMPILER_MAIN; $0)
-	C_LONGINT:C283(COMPILER_MAIN; $1)
-	C_LONGINT:C283(COMPILER_MAIN; $1)
-	C_LONGINT:C283(COMPILER_MAIN; $1)
-	C_POINTER:C301(COMPILER_MAIN; ${2})
-End if 
+var component : cs:C1710._component
+component:=component || cs:C1710._component.new()
 
 C_BOOLEAN:C305(<>Boo_inited)
 
@@ -33,76 +16,57 @@ If (Not:C34(<>Boo_inited))
 	
 	<>Boo_inited:=True:C214
 	
-	//SET DATABASE LOCALIZATION(4DPop_applicationLanguage ;*)
-	
 	<>Lst_wHidden:=New list:C375
-	
-	PREFERENCES("options.get"; -><>Lon_options)
-	
-	SET ASSERT ENABLED:C1131(Structure file:C489=Structure file:C489(*); *)
-	
-	ARRAY TEXT:C222($tTxt_Components; 0x0000)
-	COMPONENT LIST:C1001($tTxt_Components)
-	If (Find in array:C230($tTxt_Components; "4DPop")>0)
-		
-		EXECUTE METHOD:C1007("4DPop_applicationLanguage"; $Txt_language)
-		SET DATABASE LOCALIZATION:C1104($Txt_language; *)
-		
-	End if 
-End if 
-
-If (False:C215)  //shared
-	
-	C_POINTER:C301(4DPopWindow_init)
-	
-	C_TEXT:C284(4DPopWindow_macroOnOpen)
-	
-	C_TEXT:C284(4DPopWindow_macroOnClose)
-	
-	C_POINTER:C301(Tool_Menu)
-	
-	C_POINTER:C301(Tool_Default)
-	
-	C_TEXT:C284(4DPopWindow_path)
-	C_TEXT:C284(4DPopWindow_path)
 	
 End if 
 
 If (False:C215)
 	
-	C_POINTER:C301(ptr_table)
-	C_TEXT:C284(ptr_table)
+	C_TEXT:C284(databaseMethods; $1)
+	C_LONGINT:C283(databaseMethods; $2)
 	
-	C_TEXT:C284(env_POST_KEY)
+End if 
+
+If (False:C215)  //shared
 	
-	C_LONGINT:C283(env_ToolBar_Height)
+	C_POINTER:C301(menu; $1)
 	
-	C_TEXT:C284(mnu_RELEASE_MENU)
+	C_OBJECT:C1216(window; $0)
 	
-	C_TEXT:C284(PREFERENCES)
-	C_POINTER:C301(PREFERENCES)
+	C_TEXT:C284(macroOnOpen; $1)
 	
-	C_LONGINT:C283(TOOL_WINDOWS)
+	C_TEXT:C284(macroOnClose; $1)
 	
-	C_TEXT:C284(methodGetPath)
-	C_TEXT:C284(methodGetPath)
-	C_LONGINT:C283(methodGetPath)
+End if 
+
+If (False:C215)
 	
-	C_LONGINT:C283(option_SET)
-	C_LONGINT:C283(option_SET)
+	C_TEXT:C284(_o_4DPopWindow_path; $0)
+	C_TEXT:C284(_o_4DPopWindow_path; $1)
+	C_POINTER:C301(_o_4DPopWindow_path; $2)
 	
-	C_TEXT:C284(tool_renameWindows)
+	C_POINTER:C301(tablePointer; $0)
+	C_TEXT:C284(tablePointer; $1)
 	
-	C_TEXT:C284(Palette_ADD_ELEMENT)
-	C_LONGINT:C283(Palette_ADD_ELEMENT)
+	C_TEXT:C284(mnu_RELEASE_MENU; $1)
 	
-	C_LONGINT:C283(Palette_ADD_WINDOW)
+	C_LONGINT:C283(TOOL_WINDOWS; $1)
 	
-	C_TEXT:C284(Palette_MENU)
+	C_TEXT:C284(methodGetPath; $0)
+	C_TEXT:C284(methodGetPath; $1)
+	C_LONGINT:C283(methodGetPath; $2)
 	
-	C_TEXT:C284(Palette_RUN)
+	C_TEXT:C284(tool_renameWindows; $1)
 	
-	C_TEXT:C284(WINDOW_ACTION)
-	C_LONGINT:C283(WINDOW_ACTION)
+	C_TEXT:C284(Palette_ADD_ELEMENT; $1)
+	C_LONGINT:C283(Palette_ADD_ELEMENT; $2)
 	
+	C_LONGINT:C283(Palette_ADD_WINDOW; $1)
+	
+	C_TEXT:C284(Palette_MENU; $1)
+	
+	C_TEXT:C284(Palette_RUN; $1)
+	
+	C_TEXT:C284(WINDOW_ACTION; $1)
+	C_LONGINT:C283(WINDOW_ACTION; $2)
 End if 

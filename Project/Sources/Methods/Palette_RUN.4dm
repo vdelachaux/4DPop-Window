@@ -9,7 +9,7 @@
 // Declarations
 C_TEXT:C284($1)
 
-C_LONGINT:C283($Lon_bottom; $Lon_i; $Lon_left; $Lon_parameters; $Lon_right; $Lon_top)
+C_LONGINT:C283($bottom; $i; $left; $Lon_parameters; $right; $top)
 
 If (False:C215)
 	C_TEXT:C284(Palette_RUN; $1)
@@ -46,9 +46,9 @@ Case of
 		ARRAY LONGINT:C221($tLon_wReferences; 0x0000)
 		WINDOW LIST:C442($tLon_wReferences)
 		
-		For ($Lon_i; 1; Size of array:C274($tLon_wReferences); 1)
+		For ($i; 1; Size of array:C274($tLon_wReferences); 1)
 			
-			Palette_ADD_WINDOW($tLon_wReferences{$Lon_i})
+			Palette_ADD_WINDOW($tLon_wReferences{$i})
 			
 		End for   //}
 		

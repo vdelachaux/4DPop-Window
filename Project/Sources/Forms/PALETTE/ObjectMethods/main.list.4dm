@@ -4,35 +4,35 @@
 // ----------------------------------------------------
 // Declarations
 C_BOOLEAN:C305($Boo_expanded)
-C_LONGINT:C283($Lon_; $Lon_bottom; $Lon_buffer; $Lon_button; $Lon_firstLine; $Lon_formEvent; $Lon_i; $Lon_left)
-C_LONGINT:C283($Lon_line; $Lon_lineHeight; $Lon_mouseX; $Lon_mouseY; $Lon_right; $Lon_top; $Lon_wHandle; $Lst_opened)
+C_LONGINT:C283($Lon_; $bottom; $Lon_buffer; $Lon_button; $Lon_firstLine; $eventCode; $i; $left)
+C_LONGINT:C283($Lon_line; $Lon_lineHeight; $Lon_mouseX; $Lon_mouseY; $right; $top; $Lon_wHandle; $Lst_opened)
 C_PICTURE:C286($Pic_picto)
 C_TEXT:C284($Txt_additional; $Txt_buffer; $Txt_command; $Txt_comment; $Txt_path; $Txt_title)
 
 // ----------------------------------------------------
 // Initialisations
-$Lon_formEvent:=Form event code:C388
+$eventCode:=Form event code:C388
 $Lon_wHandle:=Selected list items:C379(<>Lst_windows; *)
 
 // ----------------------------------------------------
 Case of 
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Mouse Move:K2:35)
+	: ($eventCode=On Mouse Move:K2:35)
 		
 		GET MOUSE:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
 		
-		OBJECT GET COORDINATES:C663(<>Lst_windows; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
-		$Lon_mouseY:=$Lon_mouseY-$Lon_top
+		OBJECT GET COORDINATES:C663(<>Lst_windows; $left; $top; $right; $bottom)
+		$Lon_mouseY:=$Lon_mouseY-$top
 		
 		OBJECT GET SCROLL POSITION:C1114(<>Lst_windows; $Lon_firstLine)
 		GET LIST PROPERTIES:C632(<>Lst_windows; $Lon_; $Lon_; $Lon_lineHeight)
 		
 		$Lon_line:=$Lon_firstLine+($Lon_mouseY\$Lon_lineHeight)
 		
-		For ($Lon_i; 1; Count list items:C380(<>Lst_windows); 1)
+		For ($i; 1; Count list items:C380(<>Lst_windows); 1)
 			
-			GET LIST ITEM:C378(<>Lst_windows; $Lon_i; $Lon_buffer; $Txt_buffer)
+			GET LIST ITEM:C378(<>Lst_windows; $i; $Lon_buffer; $Txt_buffer)
 			SET LIST ITEM PARAMETER:C986(<>Lst_windows; $Lon_buffer; Additional text:K28:7; "")
 			
 		End for 
@@ -60,17 +60,17 @@ Case of
 		OBJECT SET HELP TIP:C1181(<>Lst_windows; $Txt_comment)
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Mouse Leave:K2:34)
+	: ($eventCode=On Mouse Leave:K2:34)
 		
-		For ($Lon_i; 1; Count list items:C380(<>Lst_windows); 1)
+		For ($i; 1; Count list items:C380(<>Lst_windows); 1)
 			
-			GET LIST ITEM:C378(<>Lst_windows; $Lon_i; $Lon_buffer; $Txt_buffer)
+			GET LIST ITEM:C378(<>Lst_windows; $i; $Lon_buffer; $Txt_buffer)
 			SET LIST ITEM PARAMETER:C986(<>Lst_windows; $Lon_buffer; Additional text:K28:7; "")
 			
 		End for 
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Selection Change:K2:29)
+	: ($eventCode=On Selection Change:K2:29)
 		
 		Case of 
 				
@@ -94,7 +94,7 @@ Case of
 		End case 
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Clicked:K2:4)
+	: ($eventCode=On Clicked:K2:4)
 		
 		If (Contextual click:C713)
 			
@@ -104,11 +104,11 @@ Case of
 			
 			GET MOUSE:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
 			
-			OBJECT GET COORDINATES:C663(<>Lst_windows; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
+			OBJECT GET COORDINATES:C663(<>Lst_windows; $left; $top; $right; $bottom)
 			
-			If ($Lon_mouseX>($Lon_right-80))
+			If ($Lon_mouseX>($right-80))
 				
-				$Lon_mouseY:=$Lon_mouseY-$Lon_top
+				$Lon_mouseY:=$Lon_mouseY-$top
 				
 				OBJECT GET SCROLL POSITION:C1114(<>Lst_windows; $Lon_firstLine)
 				GET LIST PROPERTIES:C632(<>Lst_windows; $Lon_; $Lon_; $Lon_lineHeight)
@@ -124,9 +124,9 @@ Case of
 						$Txt_command:=Choose:C955($Boo_expanded; "hide"; "show")
 						
 						//Hide all windows attached…
-						For ($Lon_i; 1; Count list items:C380($Lst_opened; *); 1)
+						For ($i; 1; Count list items:C380($Lst_opened; *); 1)
 							
-							GET LIST ITEM:C378($Lst_opened; $Lon_i; $Lon_buffer; $Txt_buffer)
+							GET LIST ITEM:C378($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
 							WINDOW_ACTION($Txt_command; $Lon_buffer)
 							
 						End for 
@@ -141,9 +141,9 @@ Case of
 						//Si ($Txt_command="hide")
 						
 						//Hide all windows attached…
-						For ($Lon_i; 1; Count list items:C380($Lst_opened; *); 1)
+						For ($i; 1; Count list items:C380($Lst_opened; *); 1)
 							
-							GET LIST ITEM:C378($Lst_opened; $Lon_i; $Lon_buffer; $Txt_buffer)
+							GET LIST ITEM:C378($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
 							WINDOW_ACTION($Txt_command; $Lon_buffer)
 							
 						End for 
@@ -154,17 +154,17 @@ Case of
 						//Sinon 
 						//
 						//  //Hide all windows attached…
-						//Boucle ($Lon_i;1;Nombre elements($Lst_opened;*);1)
+						//Boucle ($i;1;Nombre elements($Lst_opened;*);1)
 						//
-						//INFORMATION ELEMENT($Lst_opened;$Lon_i;$Lon_buffer;$Txt_buffer)
-						//COORDONNEES FENETRE($Lon_left;$Lon_top;$Lon_right;$Lon_bottom;$Lon_buffer)
-						//CHANGER COORDONNEES FENETRE($Lon_left;$Lon_top;$Lon_right;$Lon_bottom;$Lon_buffer)
+						//INFORMATION ELEMENT($Lst_opened;$i;$Lon_buffer;$Txt_buffer)
+						//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
+						//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
 						//
 						//Fin de boucle 
 						//
 						//  //…then finally mask the main window if it exists.
-						//COORDONNEES FENETRE($Lon_left;$Lon_top;$Lon_right;$Lon_bottom;$Lon_wHandle)
-						//CHANGER COORDONNEES FENETRE($Lon_left;$Lon_top;$Lon_right;$Lon_bottom;$Lon_wHandle)
+						//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
+						//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
 						//
 						//fin de si
 					End if 

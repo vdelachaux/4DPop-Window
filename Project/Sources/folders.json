@@ -1,24 +1,51 @@
 {
-	"Component": {
+	"(Component)": {},
+	"(Shared)": {},
+	"# 🚧 DEV": {
+		"methods": [
+			"00_test",
+			"menuNew"
+		]
+	},
+	"⚙️ MACROS": {
+		"methods": [
+			"macroOnClose",
+			"macroOnOpen"
+		]
+	},
+	"📦 COMPONENT": {
 		"groups": [
-			"Private",
-			"Shared"
+			"Private"
+		],
+		"methods": [
+			"COMPILER_MAIN",
+			"databaseMethods",
+			"noError"
+		],
+		"forms": [
+			"PREFERENCES"
+		],
+		"classes": [
+			"_component"
+		]
+	},
+	"4️⃣ 4DPop": {
+		"methods": [
+			"default",
+			"menu",
+			"window"
 		]
 	},
 	"Private": {
 		"methods": [
-			"COMPILER_MAIN",
-			"env_POST_KEY",
-			"env_ToolBar_Height",
+			"_o_4DPopWindow_path",
 			"methodGetPath",
 			"mnu_RELEASE_MENU",
-			"option_SET",
 			"Palette_ADD_ELEMENT",
 			"Palette_ADD_WINDOW",
 			"Palette_MENU",
 			"Palette_RUN",
-			"PREFERENCES",
-			"ptr_table",
+			"tablePointer",
 			"tool_renameWindows",
 			"TOOL_WINDOWS",
 			"wClose",
@@ -27,19 +54,13 @@
 		"forms": [
 			"COMMENTS",
 			"PALETTE",
-			"PREFERENCES",
 			"PROPERTIES"
 		]
 	},
-	"Shared": {
-		"methods": [
-			"4DPopWindow_init",
-			"4DPopWindow_macroOnClose",
-			"4DPopWindow_macroOnOpen",
-			"4DPopWindow_path",
-			"Tool_Default",
-			"Tool_Menu"
+	"trash": {
+		"groups": [
+			"(Component)",
+			"(Shared)"
 		]
-	},
-	"trash": {}
+	}
 }

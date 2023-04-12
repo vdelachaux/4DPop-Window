@@ -9,7 +9,7 @@
 // Declarations
 C_LONGINT:C283($1)
 
-C_LONGINT:C283($Lon_i; $Lon_wHandle; $Lon_x)
+C_LONGINT:C283($i; $Lon_wHandle; $Lon_x)
 C_TEXT:C284($kTxt_databaseMethodLabel; $kTxt_formMethod; $kTxt_formMethodLabel; $kTxt_method; $kTxt_methodLabel; $kTxt_objectMethod; $kTxt_objectMethodLabel; $kTxt_trigger)
 C_TEXT:C284($kTxt_triggerLabel; $Txt_path; $Txt_title)
 
@@ -34,9 +34,9 @@ $kTxt_databaseMethodLabel:=Get localized string:C991("MenuLabelsDatabaseMethods"
 
 ARRAY TEXT:C222($tTxt_databaseMethods; 11)
 
-For ($Lon_i; 1; Size of array:C274($tTxt_databaseMethods); 1)
+For ($i; 1; Size of array:C274($tTxt_databaseMethods); 1)
 	
-	$tTxt_databaseMethods{$Lon_i}:=Get localized string:C991("DatabaseProcs_"+String:C10($Lon_i))
+	$tTxt_databaseMethods{$i}:=Get localized string:C991("DatabaseProcs_"+String:C10($i))
 	
 End for 
 

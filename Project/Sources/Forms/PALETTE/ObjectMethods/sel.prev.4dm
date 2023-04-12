@@ -1,4 +1,4 @@
-C_LONGINT:C283($Lon_bottom; $Lon_end; $Lon_left; $Lon_right; $Lon_top; $Lon_x)
+C_LONGINT:C283($bottom; $Lon_end; $left; $right; $top; $Lon_x)
 C_LONGINT:C283($Win_hdl)
 C_TEXT:C284($Txt_)
 
@@ -23,7 +23,7 @@ Repeat
 	
 Until ($Win_hdl>0)
 
-GET WINDOW RECT:C443($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $Win_hdl)
-SET WINDOW RECT:C444($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $Win_hdl)
+GET WINDOW RECT:C443($left; $top; $right; $bottom; $Win_hdl)
+SET WINDOW RECT:C444($left; $top; $right; $bottom; $Win_hdl)
 
 SELECT LIST ITEMS BY REFERENCE:C630(<>Lst_windows; $Win_hdl)

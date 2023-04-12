@@ -6,18 +6,21 @@
 // Description
 // Macro triggered on opening or creating a method.
 // ----------------------------------------------------
-// Declarations
-C_TEXT:C284($1)
+#DECLARE($methodPath : Text)
 
 If (False:C215)
-	C_TEXT:C284(4DPopWindow_macroOnOpen; $1)
+	C_TEXT:C284(macroOnOpen; $1)
 End if 
 
-// ----------------------------------------------------
-// Initialisations
-COMPILER_MAIN
+var $options : Integer
 
-If (<>Lon_options ?? 2)
+COMPILER_MAIN
+var component : cs:C1710._component
+component:=component || cs:C1710._component.new()
+
+$options:=component.preferences.get("options")
+
+If ($options ?? 2)
 	
 	If (<>Win_palette=0)
 		
@@ -38,7 +41,7 @@ If (<>Lon_options ?? 2)
 	
 	// ----------------------------------------------------
 	//If (Count parameters>=1)
-	//Palette_ADD_ELEMENT ($1)
+	//Palette_ADD_ELEMENT ($methodPath)
 	//End if
 	//If (Count list items(<>Lst_windows;*)>0)
 	//SHOW WINDOW(<>Win_palette)

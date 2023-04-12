@@ -1,10 +1,6 @@
-.Default {
-	font-family: Lucida Grande;
-	font-size: 13px;
+checkbox,
+radio,
+button,
+[type="dropdown"] {
+	focusable: false;
 }
-
-.System {
-	font-family: System Font;
-	font-size: 10px;
-}
-

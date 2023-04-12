@@ -1,10 +1,6 @@
-.Default {
-	font-family: Segoe UI;
-	font-size: 12px;
+checkbox,
+radio,
+button,
+[type="dropdown"] {
+	focusable: true;
 }
-
-.System {
-	font-family: Segoe UI;
-	font-size: 11px;
-}
-

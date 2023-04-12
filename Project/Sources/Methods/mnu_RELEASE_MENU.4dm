@@ -8,7 +8,7 @@
 //----------------------------------------------------
 C_TEXT:C284($1)
 
-C_LONGINT:C283($Lon_i)
+C_LONGINT:C283($i)
 
 ARRAY TEXT:C222($tMnu_references; 0)
 ARRAY TEXT:C222($Txt_labels; 0)
@@ -21,11 +21,11 @@ If (Length:C16($1)>0)
 	
 	GET MENU ITEMS:C977($1; $Txt_labels; $tMnu_references)
 	
-	For ($Lon_i; 1; Size of array:C274($tMnu_references); 1)
+	For ($i; 1; Size of array:C274($tMnu_references); 1)
 		
-		If (Length:C16($tMnu_references{$Lon_i})>0)
+		If (Length:C16($tMnu_references{$i})>0)
 			
-			mnu_RELEASE_MENU($tMnu_references{$Lon_i})  //<-- Recursive
+			mnu_RELEASE_MENU($tMnu_references{$i})  //<-- Recursive
 			
 		End if 
 	End for 

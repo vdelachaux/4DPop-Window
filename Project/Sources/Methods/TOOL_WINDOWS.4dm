@@ -5,87 +5,80 @@
 // Created le 9/06/00 by Vincent de Lachaux
 // ----------------------------------------------------
 // Modified by vdl (31/05/07)
-// v11 Component
+// V11 Component
 // ----------------------------------------------------
-C_LONGINT:C283($1)
-
-C_BOOLEAN:C305($Boo_; $Boo_explorer)
-C_LONGINT:C283($kLon_hOffset; $kLon_vOffset; $Lon_; $Lon_bottom; $Lon_horizontalOffset; $Lon_i)
-C_LONGINT:C283($Lon_left; $Lon_number; $Lon_origin; $Lon_parameters; $Lon_right; $Lon_screenHight)
-C_LONGINT:C283($Lon_screenWidth; $Lon_top; $Lon_verticalOffset; $Win_hdl)
-C_TEXT:C284($kTxt_explorer; $Txt_)
-
-ARRAY LONGINT:C221($tWin_hdl; 0)
+#DECLARE($winRef : Integer)
 
 If (False:C215)
 	C_LONGINT:C283(TOOL_WINDOWS; $1)
 End if 
 
-$Lon_parameters:=Count parameters:C259
-$Lon_screenWidth:=Screen width:C187-10
-$Lon_screenHight:=Screen height:C188-10
-$kTxt_explorer:=Get indexed string:C510(1030; 1)
-$kLon_hOffset:=10
-$kLon_vOffset:=20
+var $explorer; $t : Text
+var $b; $withExplorer : Boolean
+var $bottom; $hOffset; $horizontalOffset; $i; $l; $left : Integer
+var $number; $origin; $right; $screenHight; $screenWidth; $top : Integer
+var $verticalOffset; $vOffset : Integer
 
-If ($Lon_parameters>=1)
-	
-	$Win_hdl:=$1
-	
-End if 
+ARRAY LONGINT:C221($windowRefs; 0)
 
-$Lon_verticalOffset:=26+Menu bar height:C440+60  //Hauteur barre outils
+$screenWidth:=Screen width:C187-10
+$screenHight:=Screen height:C188-10
+$explorer:=Get indexed string:C510(1030; 1)
+$hOffset:=10
+$vOffset:=20
 
-If ($Win_hdl=0)
+$verticalOffset:=26+Menu bar height:C440+60  // Hauteur barre outils
+
+If ($winRef=0)
 	
-	//Stack windows
-	WINDOW LIST:C442($tWin_hdl)
-	$Lon_number:=Size of array:C274($tWin_hdl)
+	// Stack windows
+	WINDOW LIST:C442($windowRefs)
+	$number:=Size of array:C274($windowRefs)
 	
-	For ($Lon_i; 1; $Lon_number; 1)
+	For ($i; 1; $number; 1)
 		
-		If (Get window title:C450($tWin_hdl{$Lon_i})=$kTxt_explorer)
+		If (Get window title:C450($windowRefs{$i})=$explorer)
 			
-			GET WINDOW RECT:C443($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $tWin_hdl{$Lon_i})
-			$Boo_explorer:=True:C214
-			$Lon_i:=MAXLONG:K35:2-1
+			GET WINDOW RECT:C443($left; $top; $right; $bottom; $windowRefs{$i})
+			$withExplorer:=True:C214
+			break
 			
 		End if 
 	End for 
 	
-	$Lon_horizontalOffset:=$kLon_hOffset+(($Lon_right-$Lon_left)*Num:C11($Boo_explorer))
+	$horizontalOffset:=$hOffset+(($right-$left)*Num:C11($withExplorer))
 	
-	For ($Lon_i; $Lon_number; 1; -1)
+	For ($i; $number; 1; -1)
 		
-		PROCESS PROPERTIES:C336(Window process:C446($tWin_hdl{$Lon_i}); $Txt_; $Lon_; $Lon_; $Boo_; $Lon_; $Lon_origin)
+		PROCESS PROPERTIES:C336(Window process:C446($windowRefs{$i}); $t; $l; $l; $b; $l; $origin)
 		
-		If ($Lon_origin<0)
+		If ($origin<0)
 			
-			If (Get window title:C450($tWin_hdl{$Lon_i})#$kTxt_explorer)
+			If (Get window title:C450($windowRefs{$i})#$explorer)
 				
-				GET WINDOW RECT:C443($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $tWin_hdl{$Lon_i})
-				$Lon_right:=$Lon_horizontalOffset+($Lon_right-$Lon_left)
+				GET WINDOW RECT:C443($left; $top; $right; $bottom; $windowRefs{$i})
+				$right:=$horizontalOffset+($right-$left)
 				
-				If ($Lon_right>$Lon_screenWidth)
+				If ($right>$screenWidth)
 					
-					$Lon_right:=$Lon_screenWidth
-					
-				End if 
-				
-				$Lon_bottom:=$Lon_verticalOffset+($Lon_bottom-$Lon_top)
-				
-				If ($Lon_bottom>$Lon_screenHight)
-					
-					$Lon_bottom:=$Lon_screenHight
+					$right:=$screenWidth
 					
 				End if 
 				
-				$Lon_left:=$Lon_horizontalOffset
-				$Lon_top:=$Lon_verticalOffset
-				SET WINDOW RECT:C444($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $tWin_hdl{$Lon_i})
-				SHOW WINDOW:C435($tWin_hdl{$Lon_i})
-				$Lon_horizontalOffset:=$Lon_horizontalOffset+$kLon_hOffset
-				$Lon_verticalOffset:=$Lon_verticalOffset+$kLon_vOffset
+				$bottom:=$verticalOffset+($bottom-$top)
+				
+				If ($bottom>$screenHight)
+					
+					$bottom:=$screenHight
+					
+				End if 
+				
+				$left:=$horizontalOffset
+				$top:=$verticalOffset
+				SET WINDOW RECT:C444($left; $top; $right; $bottom; $windowRefs{$i})
+				SHOW WINDOW:C435($windowRefs{$i})
+				$horizontalOffset:=$horizontalOffset+$hOffset
+				$verticalOffset:=$verticalOffset+$vOffset
 				
 			End if 
 		End if 
@@ -93,36 +86,36 @@ If ($Win_hdl=0)
 	
 Else 
 	
-	GET WINDOW RECT:C443($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $Win_hdl)
+	GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
 	
-	//Move and resize if out of screen
-	If ($Lon_right>$Lon_screenWidth)\
-		 | ($Lon_bottom>$Lon_screenHight)
+	// Move and resize if out of screen
+	If ($right>$screenWidth)\
+		 | ($bottom>$screenHight)
 		
-		$Lon_horizontalOffset:=$kLon_hOffset
-		$Lon_right:=$Lon_horizontalOffset+($Lon_right-$Lon_left)
+		$horizontalOffset:=$hOffset
+		$right:=$horizontalOffset+($right-$left)
 		
-		If ($Lon_right>$Lon_screenWidth)
+		If ($right>$screenWidth)
 			
-			$Lon_right:=$Lon_screenWidth
-			
-		End if 
-		
-		$Lon_bottom:=$Lon_verticalOffset+($Lon_bottom-$Lon_top)
-		
-		If ($Lon_bottom>$Lon_screenHight)
-			
-			$Lon_bottom:=$Lon_screenHight
+			$right:=$screenWidth
 			
 		End if 
 		
-		$Lon_left:=$Lon_horizontalOffset
-		$Lon_top:=$Lon_verticalOffset
+		$bottom:=$verticalOffset+($bottom-$top)
+		
+		If ($bottom>$screenHight)
+			
+			$bottom:=$screenHight
+			
+		End if 
+		
+		$left:=$horizontalOffset
+		$top:=$verticalOffset
 		
 	End if 
 	
-	//Set as frontmost
-	SET WINDOW RECT:C444($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $Win_hdl)
-	SHOW WINDOW:C435($Win_hdl)
+	// Set as frontmost
+	SET WINDOW RECT:C444($left; $top; $right; $bottom; $winRef)
+	SHOW WINDOW:C435($winRef)
 	
 End if 

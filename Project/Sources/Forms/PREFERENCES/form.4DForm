@@ -11,40 +11,12 @@
 	"markerFooter": 240,
 	"events": [
 		"onLoad",
-		"onValidate",
-		"onUnload",
-		"onTimer"
+		"onValidate"
 	],
 	"method": "method.4dm",
-	"pageFormat": {
-		"paperName": "A4",
-		"paperWidth": "595pt",
-		"paperHeight": "842pt"
-	},
 	"pages": [
 		{
-			"objects": {
-				"automatic_font": {
-					"type": "input",
-					"top": 5,
-					"left": 351,
-					"width": 150,
-					"height": 16,
-					"visibility": "hidden",
-					"stroke": "#FF6600",
-					"focusable": false,
-					"fill": "transparent",
-					"borderStyle": "dotted",
-					"enterable": false,
-					"hideFocusRing": true,
-					"dragging": "none",
-					"dropping": "none",
-					"method": "ObjectMethods/automatic_font.4dm",
-					"events": [
-						"onLoad"
-					]
-				}
-			}
+			"objects": {}
 		},
 		{
 			"objects": {
@@ -64,14 +36,15 @@
 					"height": 189,
 					"text": ":xliff:4dpopPaletteButtonsOptions"
 				},
-				"button.menu": {
+				"menu": {
 					"type": "checkbox",
 					"top": 178,
 					"left": 80,
 					"width": 357,
 					"height": 17,
 					"text": ":xliff:submenu",
-					"focusable": false
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.menu"
 				},
 				"Texte1": {
 					"type": "text",
@@ -79,9 +52,8 @@
 					"left": 101,
 					"width": 384,
 					"height": 13,
-					"fontFamily": "Lucida Grande",
-					"fontSize": 11,
-					"text": ":xliff:submenuComment"
+					"text": ":xliff:submenuComment",
+					"class": "comment"
 				},
 				"Texte": {
 					"type": "text",
@@ -91,75 +63,66 @@
 					"height": 16,
 					"text": ":xliff:defaultAction"
 				},
-				"default.Next": {
+				"next": {
 					"type": "radio",
 					"top": 260,
 					"left": 101,
 					"width": 323,
 					"height": 18,
 					"text": ":xliff:invertFrontWindow",
-					"focusable": false,
-					"radioGroup": "Group4"
+					"radioGroup": "Group4",
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.next"
 				},
-				"default.Stack": {
+				"stack": {
 					"type": "radio",
 					"top": 289,
 					"left": 101,
 					"width": 323,
 					"height": 18,
 					"text": ":xliff:stackwindows",
-					"focusable": false,
-					"radioGroup": "Group4"
+					"radioGroup": "Group4",
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.stack"
 				},
-				"b.OK": {
+				"ok": {
 					"type": "button",
 					"top": 354,
 					"left": 430,
 					"width": 71,
-					"height": 22,
-					"action": "accept",
-					"text": ":xliff:ok",
-					"focusable": false,
-					"defaultButton": true
+					"height": 22
 				},
-				"option.prefix": {
+				"prefix": {
 					"type": "checkbox",
 					"top": 94,
 					"left": 80,
 					"width": 387,
 					"height": 17,
 					"text": ":xliff:prefix",
-					"focusable": false
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.prefix"
 				},
-				"option.palette": {
+				"palette": {
 					"type": "checkbox",
 					"top": 64,
 					"left": 80,
 					"width": 387,
 					"height": 17,
 					"text": ":xliff:palette",
-					"focusable": false
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.palette"
 				},
-				"b.escape": {
+				"cancel": {
 					"type": "button",
 					"top": 354,
 					"left": 310,
 					"width": 100,
-					"height": 22,
-					"action": "cancel",
-					"text": ":xliff:escape",
-					"focusable": false
+					"height": 22
 				}
 			}
 		}
 	],
 	"editor": {
-		"groups": {
-			"Group4": [
-				"default.Next",
-				"default.Stack"
-			]
-		},
 		"activeView": "Vue 1",
 		"defaultView": "Vue 1",
 		"views": {
@@ -173,5 +136,10 @@
 			"Vue 8": {},
 			"Vue 9": {}
 		}
-	}
+	},
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"geometryStamp": 15
 }

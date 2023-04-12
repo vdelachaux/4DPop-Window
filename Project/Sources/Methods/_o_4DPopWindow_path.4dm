@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"shared":true}
+//%attributes = {"invisible":true}
 // ----------------------------------------------------
 // Project method : 4DPopWindow_path
 // Database: 4DPop Window
@@ -11,13 +11,15 @@
 // Declarations
 C_TEXT:C284($0)
 C_TEXT:C284($1)
+C_POINTER:C301($2)
 
 C_LONGINT:C283($Lon_methodeType; $Lon_parameters; $Lon_x)
 C_TEXT:C284($Txt_form; $Txt_method; $Txt_methodPath; $Txt_object; $Txt_table; $Txt_windowTitle)
 
 If (False:C215)
-	C_TEXT:C284(4DPopWindow_path; $0)
-	C_TEXT:C284(4DPopWindow_path; $1)
+	C_TEXT:C284(_o_4DPopWindow_path; $0)
+	C_TEXT:C284(_o_4DPopWindow_path; $1)
+	C_POINTER:C301(_o_4DPopWindow_path; $2)
 End if 
 
 // ----------------------------------------------------
@@ -219,12 +221,12 @@ Case of
 		//…………………………………………………………………………………
 	: ($Lon_methodeType=Path table form:K72:5)
 		
-		$Txt_methodPath:=Choose:C955(Length:C16($Txt_object)>0; METHOD Get path:C1164($Lon_methodeType; ptr_table($Txt_table)->; $Txt_form; $Txt_object; *); METHOD Get path:C1164($Lon_methodeType; ptr_table($Txt_table)->; $Txt_form; *))
+		$Txt_methodPath:=Choose:C955(Length:C16($Txt_object)>0; METHOD Get path:C1164($Lon_methodeType; tablePointer($Txt_table)->; $Txt_form; $Txt_object; *); METHOD Get path:C1164($Lon_methodeType; tablePointer($Txt_table)->; $Txt_form; *))
 		
 		//…………………………………………………………………………………
 	: ($Lon_methodeType=Path trigger:K72:4)
 		
-		$Txt_methodPath:=METHOD Get path:C1164($Lon_methodeType; ptr_table($Txt_table)->; *)
+		$Txt_methodPath:=METHOD Get path:C1164($Lon_methodeType; tablePointer($Txt_table)->; *)
 		
 		//________________________________________
 End case 

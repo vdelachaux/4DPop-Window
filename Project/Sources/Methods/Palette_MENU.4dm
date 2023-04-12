@@ -11,7 +11,7 @@
 C_TEXT:C284($1)
 
 C_BOOLEAN:C305($Boo_always; $Boo_expanded; $Boo_hide; $Boo_selected)
-C_LONGINT:C283($Lon_bottom; $Lon_height; $Lon_i; $Lon_left; $Lon_opened; $Lon_parameters; $Lon_right; $Lon_top)
+C_LONGINT:C283($bottom; $height; $i; $left; $Lon_opened; $Lon_parameters; $right; $top)
 C_LONGINT:C283($Lon_wbottom; $Lon_wHandle; $Lon_width; $Lon_wleft; $Lon_wright; $Lon_wtop)
 C_TEXT:C284($Mnu_main; $Txt_action; $Txt_buffer)
 
@@ -29,9 +29,9 @@ If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
 	GET WINDOW RECT:C443($Lon_wleft; $Lon_wtop; $Lon_wright; $Lon_wbottom; <>Win_palette)
 	$Lon_width:=$Lon_wright-$Lon_wleft
-	$Lon_height:=$Lon_wbottom-$Lon_wtop
+	$height:=$Lon_wbottom-$Lon_wtop
 	
-	$Lon_wHandle:=Choose:C955($Lon_height=19; Frontmost window:C447; Selected list items:C379(<>Lst_windows; *))
+	$Lon_wHandle:=Choose:C955($height=19; Frontmost window:C447; Selected list items:C379(<>Lst_windows; *))
 	
 	$Boo_selected:=($Lon_wHandle>0)
 	
@@ -181,9 +181,9 @@ If (Length:C16($Txt_action)=0)
 		
 		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("StringsPutFrontmostWindowInScreen"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "inscreen")
-		GET WINDOW RECT:C443($Lon_left; $Lon_top; $Lon_right; $Lon_bottom; $Lon_wHandle)
+		GET WINDOW RECT:C443($left; $top; $right; $bottom; $Lon_wHandle)
 		
-		If ($Lon_right<=Screen width:C187) & ($Lon_bottom<=Screen height:C188)
+		If ($right<=Screen width:C187) & ($bottom<=Screen height:C188)
 			
 			DISABLE MENU ITEM:C150($Mnu_main; -1)
 			
@@ -211,14 +211,14 @@ Case of
 		//______________________________________________________
 	: ($Txt_action="stack")
 		
-		TOOL_WINDOWS
+		component.stack()
 		
 		//______________________________________________________
 	: ($Txt_action="show_all")
 		
-		For ($Lon_i; 1; Count list items:C380(<>Lst_windows; *); 1)
+		For ($i; 1; Count list items:C380(<>Lst_windows; *); 1)
 			
-			GET LIST ITEM:C378(<>Lst_windows; $Lon_i; $Lon_wHandle; $Txt_buffer; $Lon_opened; $Boo_expanded)
+			GET LIST ITEM:C378(<>Lst_windows; $i; $Lon_wHandle; $Txt_buffer; $Lon_opened; $Boo_expanded)
 			
 			WINDOW_ACTION("show"; $Lon_wHandle)
 			

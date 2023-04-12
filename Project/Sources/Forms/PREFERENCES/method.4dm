@@ -2,50 +2,36 @@
 // Form method : Preferences
 // Created 08/06/12 by Vincent de Lachaux
 // ----------------------------------------------------
-// Declarations
-C_LONGINT:C283($Lon_formEvent)
-C_TEXT:C284($Txt_defaultAction)
+var $options : Integer
+var $e; $o : Object
 
-// ----------------------------------------------------
-// Initialisations
-$Lon_formEvent:=Form event code:C388
+$e:=FORM Event:C1606
 
-// ----------------------------------------------------
 Case of 
-		//______________________________________________________
-	: ($Lon_formEvent=On Load:K2:1)
-		
-		(OBJECT Get pointer:C1124(Object named:K67:5; "button.menu"))->:=Num:C11(Not:C34(<>Lon_options ?? 1))
-		(OBJECT Get pointer:C1124(Object named:K67:5; "option.palette"))->:=Num:C11(<>Lon_options ?? 2)
-		(OBJECT Get pointer:C1124(Object named:K67:5; "option.prefix"))->:=Num:C11(<>Lon_options ?? 3)
-		
-		PREFERENCES("default.get"; ->$Txt_defaultAction)
-		(OBJECT Get pointer:C1124(Object named:K67:5; "default."+$Txt_defaultAction))->:=1
-		
-		SET TIMER:C645(-1)
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Unload:K2:2)
+	: ($e.code=On Load:K2:1)
+		
+		var component : cs:C1710._component
+		component:=component || cs:C1710._component.new()
+		$o:=component.preferences.get()
+		
+		Form:C1466.menu:=Not:C34($o.options ?? 1)
+		Form:C1466.palette:=$o.options ?? 2
+		Form:C1466.prefix:=$o.options ?? 3
+		
+		Form:C1466.stack:=$o.default="stack"
+		Form:C1466.next:=Not:C34(Form:C1466.stack)
 		
 		//______________________________________________________
-	: ($Lon_formEvent=On Validate:K2:3)
+	: ($e.code=On Validate:K2:3)
 		
-		option_SET(1; (OBJECT Get pointer:C1124(Object named:K67:5; "button.menu"))->)
-		option_SET(2; (OBJECT Get pointer:C1124(Object named:K67:5; "option.palette"))->)
-		option_SET(3; (OBJECT Get pointer:C1124(Object named:K67:5; "option.prefix"))->)
-		PREFERENCES("options.set"; -><>Lon_options)
+		$options:=Not:C34(Form:C1466.menu) ? 0 ?+ 1 : 0
+		$options:=Form:C1466.palette ? $options ?+ 2 : $options
+		$options:=Form:C1466.prefix ? $options ?+ 3 : $options
+		component.preferences.set("options"; $options)
 		
-		$Txt_defaultAction:=Choose:C955((OBJECT Get pointer:C1124(Object named:K67:5; "default.Next"))->=1; "Next"; "Stack")
-		PREFERENCES("default.set"; ->$Txt_defaultAction)
-		
-		//______________________________________________________
-	: ($Lon_formEvent=On Timer:K2:25)
-		SET TIMER:C645(0)
-		
-		//______________________________________________________
-	Else 
-		
-		ASSERT:C1129(False:C215; "Form event activated unnecessarily")
+		component.preferences.set("default"; Form:C1466.next ? "next" : "stack")
 		
 		//______________________________________________________
 End case 
