@@ -1,6 +1,6 @@
 {
 	"application": {
-		"icon": "#Images/user.png"
+		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_693.png"
 	},
 	"method": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
@@ -26,7 +26,7 @@
 		"name": ".common_Trigger"
 	},
 	"find": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_457.png"
+		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_873.png"
 	},
 	"other": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_459.png"

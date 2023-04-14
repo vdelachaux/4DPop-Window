@@ -39,7 +39,15 @@ This file is distributed under the same license as the product package.-->
         <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="find">
           <source>Find: </source>
           <target state="new">Find: </target>
-        </trans-unit></group>
+        </trans-unit><trans-unit id="1Ulqk744jwTS_Lq212sapg" resname="_explorer">
+          <source>{project} - Explorer</source>
+          <target state="new">{project} - Explorer</target>
+        </trans-unit>
+        <trans-unit id="7kWKYNJhvoy_MxBP2aAMTw" resname="explorer">
+          <source>Explorer</source>
+          <target state="new">Explorer</target>
+        </trans-unit>
+      </group>
       <group resname="MenuLabels">
         <trans-unit id="qA_UGfFvJL4sf9ptF1+1Mw" resname="MenuLabelsFormMethod">
           <source>Form Method</source>
@@ -94,16 +102,16 @@ This file is distributed under the same license as the product package.-->
           <target>ウィンドウ</target>
         </trans-unit>
         <trans-unit id="drkujiwsCccrDaYKJU2IGQ" resname="StringsStacksWindows">
-          <source>Stacks</source>
-          <target>スタック</target>
+          <source>Stack the windows</source>
+          <target>ウィンドウを重ねる</target>
         </trans-unit>
         <trans-unit id="ZkaYhaboLG7j1iekn2vmDw" resname="StringsPutFrontmostWindowInScreen">
           <source>Recover</source>
           <target>画面内に戻す</target>
         </trans-unit>
         <trans-unit id="uCJx2eQOSKKECFwnOLXoGQ" resname="StringsNextWindow">
-          <source>Next</source>
-          <target>次</target>
+          <source>Next window</source>
+          <target>次の窓</target>
         </trans-unit>
         <trans-unit id="ba0BuqfXbYzdzEZN+nBcsA" resname="StringsApplication">
           <source>Application</source>
@@ -113,10 +121,7 @@ This file is distributed under the same license as the product package.-->
           <source>Default action</source>
           <target>デフォルトアクション</target>
         </trans-unit>
-        <trans-unit id="_jh0lO9e1Eqc1fBBA93Y0A" resname="openedMethodEditors">
-          <source>Methods</source>
-          <target state="new">Methods</target>
-        </trans-unit></group>
+        </group>
       <group resname="Tool">
         <trans-unit id="17" resname="ToolName">
           <source>Windows</source>
@@ -127,52 +132,7 @@ This file is distributed under the same license as the product package.-->
           <target>並び替えたウィンドウメニュー</target>
         </trans-unit>
       </group>
-      <group id="405" resname="Database procs">
-        <trans-unit id="O9sUCUwh91S9fFuXp3JilA" resname="DatabaseProcs_1">
-          <source>On Startup</source>
-          <target>On Startup</target>
-        </trans-unit>
-        <trans-unit id="DcQnc0tKamX07QyMrs8+yQ" resname="DatabaseProcs_2">
-          <source>On Server Startup</source>
-          <target>On Server Startup</target>
-        </trans-unit>
-        <trans-unit id="GQEV3x7WO4hgX9umNN6SkA" resname="DatabaseProcs_3">
-          <source>On Exit</source>
-          <target>On Exit</target>
-        </trans-unit>
-        <trans-unit id="Rc2T9l2oAf+5YKyuilq0Gg" resname="DatabaseProcs_4">
-          <source>On Server Shutdown</source>
-          <target>On Server Shutdown</target>
-        </trans-unit>
-        <trans-unit id="hPK6rG9hRK2VMz5zl8+R7A" resname="DatabaseProcs_5">
-          <source>On Server Open Connection</source>
-          <target>On Server Open Connection</target>
-        </trans-unit>
-        <trans-unit id="O_f6uzOq170b+qqVthx97A" resname="DatabaseProcs_6">
-          <source>On Web Connection</source>
-          <target>On Web Connection</target>
-        </trans-unit>
-        <trans-unit id="LQynw8tjN6GpIAM4QjWy6Q" resname="DatabaseProcs_7">
-          <source>On Server Close Connection</source>
-          <target>On Server Close Connection</target>
-        </trans-unit>
-        <trans-unit id="pS0LCe0nhrMXoSiYnUd6YA" resname="DatabaseProcs_8">
-          <source>On Web Authentication</source>
-          <target>On Web Authentication</target>
-        </trans-unit>
-        <trans-unit id="11uLeE7Zz9o+wlEpjByfxg" resname="DatabaseProcs_9">
-          <source>On Backup Startup</source>
-          <target>On Backup Startup</target>
-        </trans-unit>
-        <trans-unit id="lamFTa+KV63ZhPGfDchSIg" resname="DatabaseProcs_10">
-          <source>On Backup Shutdown</source>
-          <target>On Backup Shutdown</target>
-        </trans-unit>
-        <trans-unit id="7dfGifDzgQtPuNm_3uQNKA" resname="DatabaseProcs_11">
-          <source>On Drop</source>
-          <target>On Drop</target>
-        </trans-unit>
-      </group>
+      
       <group resname="Preferences">
         <trans-unit id="33" resname="Options_1">
           <source>"Windows" menu in the main menu</source>
@@ -191,80 +151,6 @@ This file is distributed under the same license as the product package.-->
         <trans-unit id="1lFQq43KH9LWF1V_zgoA9A" resname="ToolTip">
           <source>An ordered windows menu</source>
           <target state="new">An ordered windows menu</target>
-        </trans-unit>
-      </group><group id="405" resname="Database Methods">
-        <trans-unit id="ahCNQzoDEwoFAxNsX2jRSA" resname="onBackupShutdown">
-          <source>On Backup Shutdown</source>
-          <target state="new">On Backup Shutdown</target>
-        </trans-unit>
-        <trans-unit id="Id7Ore40cWg4j_awPT3KiA" resname="onBackupStartup">
-          <source>On Backup Startup</source>
-          <target state="new">On Backup Startup</target>
-        </trans-unit>
-        <trans-unit id="En98ykEJwUOLPVQQqqRfzg" resname="onDrop">
-          <source>On Drop</source>
-          <target state="new">On Drop</target>
-        </trans-unit>
-        <trans-unit id="_1Sibd4jErtraISTU1G67A" resname="onExit">
-          <source>On Exit</source>
-          <target state="new">On Exit</target>
-        </trans-unit>
-        <trans-unit id="hG62R4zJdgrBeTm5fleZJg" resname="onServerCloseConnection">
-          <source>On Server Close Connection</source>
-          <target state="new">On Server Close Connection</target>
-        </trans-unit>
-        <trans-unit id="+KSbKi_L_3i3f2_Q5CmDzw" resname="onServerOpenConnexion">
-          <source>On Server Open Connection</source>
-          <target state="new">On Server Open Connection</target>
-        </trans-unit>
-        <trans-unit id="ItNFG7_EBfi4oaMgrxFkCQ" resname="onServerShutdown">
-          <source>On Server Shutdown</source>
-          <target state="new">On Server Shutdown</target>
-        </trans-unit>
-        <trans-unit id="TT16aQNlTMtUxLmmHW1PCw" resname="onServerStartup">
-          <source>On Server Startup</source>
-          <target state="new">On Server Startup</target>
-        </trans-unit>
-        <trans-unit id="PZCNORRkGAvuMIuECU3TWg" resname="onSqlAuthentication">
-          <source>On SQL Authentication</source>
-          <target state="new">On SQL Authentication</target>
-        </trans-unit>
-        <trans-unit id="8qCOO1ndjA24cOGEZRvucA" resname="onStartup">
-          <source>On Startup</source>
-          <target state="new">On Startup</target>
-        </trans-unit>
-        <trans-unit id="cg1q+DmEYdrpizhwA4e4aQ" resname="onSystemEvent">
-          <source>On System Event</source>
-          <target state="new">On System Event</target>
-        </trans-unit>
-        <trans-unit id="aL854KrCMj9tggHsJoEmsw" resname="onWebAuthentication">
-          <source>On Web Authentication</source>
-          <target state="new">On Web Authentication</target>
-        </trans-unit>
-        <trans-unit id="ySSKMaLn2Q0XuKv5+x0gVQ" resname="onWebConnection">
-          <source>On Web Connection</source>
-          <target state="new">On Web Connection</target>
-        </trans-unit>
-        
-        <trans-unit id="khiMSrTMD4vcfoMpZRjuMg" resname="onWebSessionClose">
-          <source>On Web Legacy Close Session</source>
-          <target state="new">On Web Legacy Close Session</target>
-        </trans-unit>
-        <trans-unit id="fzt3xnjUvPVEyt9Y6dOl2g" resname="onRESTAuthentication">
-          <source>On REST Authentication</source>
-          <target state="new">On REST Authentication</target>
-        </trans-unit>
-        <trans-unit id="7xRX2stT_pHT4NKYmymN8A" resname="onMobileAppAuthentication">
-          <source>On Mobile App Authentication</source>
-          <target state="new">On Mobile App Authentication</target>
-        </trans-unit>
-        <trans-unit id="tUElyYumfSNyX9IUDzi2Sg" resname="onHostDatabaseEvent">
-          <source>On Host Database Event</source>
-          <target state="new">On Host Database Event</target>
-        </trans-unit>
-        <trans-unit id="wb98eTIORI3P27DXbKZX4A" resname="onMobileAppAction">
-          <source>On Mobile App Action</source>
-          <target state="new">On Mobile App Action</target>
         </trans-unit>
       </group>
       <group resname="dialog preferences">
@@ -393,6 +279,8 @@ This file is distributed under the same license as the product package.-->
       </prop-group>
     </header>
   </file>
+
+
 
 
 

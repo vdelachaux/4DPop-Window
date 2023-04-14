@@ -14,7 +14,7 @@ Case of
 		//________________________
 	: ($default="stack")
 		
-		component.stack()
+		component.stackWindows()
 		
 		//________________________
 	: ($default="inscreen")

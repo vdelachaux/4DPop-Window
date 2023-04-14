@@ -211,7 +211,7 @@ Case of
 		//______________________________________________________
 	: ($Txt_action="stack")
 		
-		component.stack()
+		component.stackWindows()
 		
 		//______________________________________________________
 	: ($Txt_action="show_all")

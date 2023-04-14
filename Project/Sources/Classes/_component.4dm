@@ -3,19 +3,36 @@ property database : cs:C1710.pop.database
 property env : cs:C1710.pop.env
 property motor : cs:C1710.pop.motor
 
-Class constructor
+Class constructor()
+	
+	var $key; $name : Text
+	var $i; $mode; $origin; $process; $state; $time : Integer
+	var $uid : Integer
+	var $o; $screen : Object
+	var $c : Collection
 	
 	// Mark:Delegates 📦
+	If (False:C215)
+		
+		// FIXME: Turn around 🐞
+		// This.database:=cs.pop.database.new()
+		// This.preferences:=cs.pop.Preferences.new("PopWindows")
+		// This.env:=cs.pop.env.new(True)
+		// This.motor:=cs.pop.motor.new()
+		
+	Else 
+		
+		This:C1470.database:=pop.database.new()
+		This:C1470.preferences:=pop.Preferences.new("PopWindows")
+		This:C1470.env:=pop.env.new(True:C214)
+		This:C1470.motor:=pop.motor.new()
+		
+	End if 
 	
-	//FIXME: Turn around
-	//This.database:=cs.pop.database.new()
-	//This.preferences:=cs.pop.Preferences.new("PopWindows")
-	//This.env:=cs.pop.env.new(True)
-	//This.motor:=cs.pop.motor.new()
-	This:C1470.database:=pop.database.new()
-	This:C1470.preferences:=pop.Preferences.new("PopWindows")
-	This:C1470.env:=pop.env.new(True:C214)
-	This:C1470.motor:=pop.motor.new()
+	This:C1470.minleft:=0
+	This:C1470.minTop:=0
+	This:C1470.maxRight:=0
+	This:C1470.maxBottom:=0
 	
 	// MARK: Default values
 	This:C1470.preferences.default(New object:C1471(\
@@ -24,14 +41,23 @@ Class constructor
 		"palette"; Null:C1517; \
 		"paletteMini"; False:C215))
 	
+	For each ($screen; This:C1470.env.screens)
+		
+		This:C1470.minleft:=$screen.coordinates.left<This:C1470.minleft ? $screen.coordinates.left : This:C1470.minleft
+		This:C1470.minTop:=$screen.coordinates.top<This:C1470.minTop ? $screen.coordinates.top : This:C1470.minTop
+		This:C1470.maxRight:=$screen.coordinates.right>This:C1470.maxRight ? $screen.coordinates.right : This:C1470.maxRight
+		This:C1470.maxBottom:=$screen.coordinates.bottom>This:C1470.maxBottom ? $screen.coordinates.bottom : This:C1470.maxBottom
+		
+	End for each 
+	
+	// Main screen
 	This:C1470.screenWidth:=This:C1470.env.mainScreen.dimensions.width-10
 	This:C1470.screenHeight:=This:C1470.env.mainScreen.dimensions.height-10
-	This:C1470.explorer:=Replace string:C233(Get localized string:C991("Explorer"); "{project}"; This:C1470.database.name)
+	
+	This:C1470.explorer:=Replace string:C233(Get localized string:C991("_explorer"); "{project}"; This:C1470.database.name)
+	
 	This:C1470.hOffset:=10
 	This:C1470.vOffset:=20
-	
-	var $name : Text
-	var $mode; $origin; $process; $state; $time; $uid : Integer
 	
 	For ($process; 1; Count tasks:C335; 1)
 		
@@ -47,11 +73,6 @@ Class constructor
 	
 	This:C1470.data:=JSON Parse:C1218(File:C1566("/RESOURCES/desc.json").getText())
 	
-	var $key : Text
-	var $i : Integer
-	var $o : Object
-	var $c : Collection
-	
 	For each ($key; This:C1470.data)
 		
 		$o:=This:C1470.data[$key]
@@ -60,7 +81,7 @@ Class constructor
 			
 			For ($i; 0; $o.methods.length-1; 1)
 				
-				$o.methods[$i]:=String:C10(Formula from string:C1601(":C1578(\""+Delete string:C232($o.methods[$i]; 1; 1)+"\")").call())
+				$o.methods[$i]:=This:C1470.localized(Delete string:C232($o.methods[$i]; 1; 1))
 				
 			End for 
 			
@@ -70,7 +91,7 @@ Class constructor
 				
 				$o.name:=Delete string:C232($o.name; 1; 1)
 				$c:=Split string:C1554($o.name; ";")
-				$o.name:=String:C10(Formula from string:C1601(":C1578(\""+($c.length=2 ? ($c[0]+","+$c[1]) : $o.name)+"\")").call())
+				$o.name:=This:C1470.localized(($c.length=2 ? ($c[0]+","+$c[1]) : $o.name))
 				
 			Else 
 				
@@ -96,67 +117,57 @@ Function get prependWindowNames() : Boolean
 	return This:C1470.preferences.get("options") ?? 3
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-Function stack()
+Function stackWindows()
 	
-	var $t : Text
-	var $b : Boolean
-	var $bottom; $horizontalOffset; $i; $l; $left : Integer
-	var $number; $origin; $right; $top : Integer
-	var $verticalOffset; $winExplorer : Integer
+	var $left; $middleH; $middleV; $top; $waLeft; $waTop : Integer
+	var $explorer; $o; $window; $workArea : Object
+	var $windows : Collection
 	
-	ARRAY LONGINT:C221($windowRefs; 0)
-	WINDOW LIST:C442($windowRefs)
+	$windows:=This:C1470.windowList()
+	$explorer:=$windows.query("explorer = true").pop()
 	
-	$number:=Size of array:C274($windowRefs)
+	$workArea:=This:C1470.env.mainScreen.workArea
+	$waLeft:=($explorer=Null:C1517 ? $workArea.left : $explorer.coordinates.right)+This:C1470.hOffset
+	$waTop:=This:C1470.env.mainScreen.workArea.top+This:C1470.env.menuBarHeight+This:C1470.env.toolBarHeight+This:C1470.vOffset
+	$middleH:=($workArea.right-$workArea.left)\2
+	$middleV:=($workArea.bottom-$workArea.top)\2
 	
-	// Is the browser open?
-	For ($i; 1; $number; 1)
+	$left:=$waLeft
+	$top:=$waTop
+	
+	For each ($window; $windows)
 		
-		If (Get window title:C450($windowRefs{$i})=This:C1470.explorer)
+		If ($window.explorer)\
+			 | ($window.origin>0)
 			
-			$winExplorer:=$windowRefs{$i}
-			GET WINDOW RECT:C443($left; $top; $right; $bottom; $windowRefs{$i})
-			
-			break
+			continue
 			
 		End if 
-	End for 
-	
-	$horizontalOffset:=This:C1470.hOffset+(($right-$left)*Num:C11($winExplorer#0))
-	
-	For ($i; $number; 1; -1)
 		
-		PROCESS PROPERTIES:C336(Window process:C446($windowRefs{$i}); $t; $l; $l; $b; $l; $origin)
+		$window.coordinates.left:=$left
+		$window.coordinates.top:=$top
+		$window.coordinates.right:=$left+$window.dimensions.width
+		$window.coordinates.bottom:=$top+$window.dimensions.height
 		
-		If ($origin<0)\
-			 && ($windowRefs{$i}#$winExplorer)
-			
-			GET WINDOW RECT:C443($left; $top; $right; $bottom; $windowRefs{$i})
-			$right:=$horizontalOffset+($right-$left)
-			
-			If ($right>This:C1470.screenWidth)
-				
-				$right:=This:C1470.screenWidth
-				
-			End if 
-			
-			$bottom:=$verticalOffset+($bottom-$top)
-			
-			If ($bottom>This:C1470.screenHeight)
-				
-				$bottom:=This:C1470.screenHeight
-				
-			End if 
-			
-			$left:=$horizontalOffset
-			$top:=$verticalOffset
-			SET WINDOW RECT:C444($left; $top; $right; $bottom; $windowRefs{$i})
-			SHOW WINDOW:C435($windowRefs{$i})
-			$horizontalOffset:=$horizontalOffset+This:C1470.hOffset
-			$verticalOffset:=$verticalOffset+This:C1470.vOffset
-			
-		End if 
-	End for 
+		$window.coordinates.right:=$window.coordinates.right>=This:C1470.en.mainScreen.workArea.right\
+			 ? This:C1470.en.mainScreen.workArea.right-This:C1470.hOffset\
+			 : $window.coordinates.right
+		
+		$window.coordinates.bottom:=$window.coordinates.bottom>=This:C1470.env.mainScreen.workArea.bottom\
+			 ? This:C1470.env.mainScreen.workArea.bottom-This:C1470.vOffset\
+			 : $window.coordinates.bottom
+		
+		$o:=$window.coordinates
+		SET WINDOW RECT:C444($o.left; $o.top; $o.right; $o.bottom; $window.ref)
+		SHOW WINDOW:C435($window.ref)
+		
+		$left+=This:C1470.hOffset
+		$top+=This:C1470.vOffset
+		
+		$left:=$left>$middleH ? $waLeft : $left
+		$top:=$top>$middleH ? $waTop : $top
+		
+	End for each 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function next($winRef : Integer)
@@ -166,54 +177,115 @@ Function next($winRef : Integer)
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function bringToFront($winRef : Integer)
 	
-	var $bottom; $left; $right; $top : Integer
+	var $o : Object
+	
+	$o:=This:C1470.windowDefinition($winRef)
+	
+	If ($o.offScreen | Shift down:C543)
+		
+		$o.coordinates.left:=This:C1470.env.mainScreen.workArea.left+This:C1470.hOffset
+		$o.coordinates.top:=This:C1470.env.mainScreen.workArea.top+This:C1470.env.menuBarHeight+This:C1470.env.toolBarHeight+This:C1470.vOffset
+		$o.coordinates.right:=$o.coordinates.left+$o.dimensions.width
+		$o.coordinates.bottom:=$o.coordinates.top+$o.dimensions.height
+		
+		$o.coordinates.right:=$o.coordinates.right>=This:C1470.en.mainScreen.workArea.right\
+			 ? This:C1470.en.mainScreen.workArea.right-This:C1470.hOffset\
+			 : $o.coordinates.right
+		
+		$o.coordinates.bottom:=$o.coordinates.bottom>=This:C1470.env.mainScreen.workArea.bottom\
+			 ? This:C1470.env.mainScreen.workArea.bottom-This:C1470.vOffset\
+			 : $o.coordinates.bottom
+		
+	End if 
+	
+	$o:=$o.coordinates
+	SET WINDOW RECT:C444($o.left; $o.top; $o.right; $o.bottom; $winRef)
+	
+	If (Macintosh option down:C545 | Windows Alt down:C563)
+		
+		// Close the window
+		POST KEY:C465(Character code:C91("w"); 0 ?+ Command key bit:K16:2; This:C1470.designProcess)
+		
+	End if 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+Function windowList() : Collection
+	
+	var $i : Integer
+	var $c : Collection
+	
+	ARRAY LONGINT:C221($refs; 0)
+	
+	$c:=New collection:C1472
+	
+	WINDOW LIST:C442($refs)
+	
+	For ($i; 1; Size of array:C274($refs); 1)
+		
+		$c.push(This:C1470.windowDefinition($refs{$i}))
+		
+	End for 
+	
+	return $c
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+Function windowDefinition($winRef : Integer) : Object
+	
+	var $name : Text
+	var $visible : Boolean
+	var $bottom; $indx; $left; $origin; $right; $state : Integer
+	var $top; $UID : Integer
+	var $time : Time
+	var $o : Object
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
 	
-	//// Move and resize if out of screen
-	//If ($right>This.screenWidth)\
-				 | ($bottom>This.screenHeight)
+	$o:=New object:C1471
+	$o.ref:=$winRef
+	$o.process:=Window process:C446($o.ref)
+	$o.title:=Get window title:C450($o.ref)
 	
-	//$right:=This.hOffset+($right-$left)
+	$indx:=Position:C15(" - "; $o.title)
+	$o.title:=$indx>0 ? Delete string:C232($o.title; 1; $indx+2) : $o.title
 	
-	//If ($right>This.screenWidth)
+	$o.coordinates:=New object:C1471
+	$o.coordinates.left:=$left
+	$o.coordinates.top:=$top
+	$o.coordinates.right:=$right
+	$o.coordinates.bottom:=$bottom
 	
-	//$right:=This.screenWidth
+	$o.offScreen:=($left<This:C1470.minleft)\
+		 || ($top<This:C1470.minTop)\
+		 || ($right>This:C1470.maxRight)\
+		 || ($bottom>This:C1470.maxBottom)
 	
-	//End if 
+	$o.dimensions:=New object:C1471
+	$o.dimensions.width:=$right-$left
+	$o.dimensions.height:=$bottom-$top
 	
-	//$bottom:=This.vOffset+($bottom-$top)
+	PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
+	$o.name:=$name
+	$o.state:=$state
+	$o.visible:=$visible
+	$o.origin:=$origin
 	
-	//If ($bottom>This.screenHeight)
+	$o.explorer:=$o.title=Get localized string:C991("explorer")
 	
-	//$bottom:=This.screenHeight
-	
-	//End if 
-	
-	//$left:=This.hOffset
-	//$top:=This.vOffset
-	
-	//End if 
-	
-	// Set as frontmost
-	SET WINDOW RECT:C444($left; $top; $right; $bottom; $winRef)
+	return $o
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function menu()
 	
-	var $formName; $key; $name : Text
-	var $isOffScreen; $visible : Boolean
-	var $bottom; $frontmostWindow; $i; $indx; $left; $origin : Integer
-	var $right; $state; $time; $top; $UID; $windowNumber : Integer
-	var $windowRef : Integer
-	var $forms; $o; $window : Object
+	var $formName : Text
+	var $isOffScreen : Boolean
+	var $bottom; $frontmostWindow; $i; $indx; $left; $right : Integer
+	var $top; $windowNumber : Integer
+	var $forms; $o; $window; $windowReferences : Object
 	var $c; $windows : Collection
 	var $menu; $menuApplication; $menuClasses; $menudatabaseMethods; $menuFind; $menuForms; $menuMethods; $menuOthers; $menuTrigger : cs:C1710.menu
 	
-	ARRAY LONGINT:C221($windowReferences; 0)
-	
-	WINDOW LIST:C442($windowReferences)
-	$windowNumber:=Size of array:C274($windowReferences)
+	$windows:=This:C1470.windowList()
+	$windowNumber:=$windows.length
 	
 	If ($windowNumber=0)
 		
@@ -221,42 +293,18 @@ Function menu()
 		
 	End if 
 	
-	$windows:=New collection:C1472
-	
-	For ($i; 1; $windowNumber; 1)
-		
-		$o:=New object:C1471
-		$o.ref:=$windowReferences{$i}
-		$o.process:=Window process:C446($o.ref)
-		$o.title:=Get window title:C450($o.ref)
-		
-		PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
-		$o.name:=$name
-		$o.state:=$state
-		$o.visible:=$visible
-		$o.origin:=$origin
-		
-		$windows.push($o)
-		
-	End for 
-	
 	$frontmostWindow:=Frontmost window:C447
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $frontmostWindow)
 	
-	If ($right<=(This:C1470.screenWidth))\
-		 && ($bottom<=(This:C1470.screenHeight))
-		
-		$isOffScreen:=True:C214
-		
-	End if 
+	$isOffScreen:=($left<This:C1470.minleft)\
+		 || ($top<This:C1470.minTop)\
+		 || ($right>This:C1470.maxRight)\
+		 || ($bottom>This:C1470.maxBottom)
 	
 	$forms:=New object:C1471
 	
 	For each ($window; $windows.orderBy("origin asc,title asc"))
-		
-		$indx:=Position:C15(" - "; $window.title)
-		$window.title:=$indx>0 ? Delete string:C232($window.title; 1; $indx+2) : $window.title
 		
 		If ($window.origin>0)
 			
@@ -403,7 +451,7 @@ Function menu()
 	// MARK:Application
 	If ($menuApplication#Null:C1517)
 		
-		$menu.append(Get localized string:C991("StringsApplication"); $menuApplication).icon("#Images/user.png").line()
+		$menu.append(Get localized string:C991("StringsApplication"); $menuApplication).icon(This:C1470.data.application.icon).line()
 		
 	End if 
 	
@@ -469,17 +517,18 @@ Function menu()
 		
 	End if 
 	
-	If ($windowNumber>0) && ($isOffScreen)
+	If ($windowNumber>0) & ($isOffScreen)
 		
 		$menu.line()\
-			.append("StringsPutFrontmostWindowInScreen"; "inscreen").icon("#Images/inscreen.png")
+			.append(Get localized string:C991("StringsPutFrontmostWindowInScreen"); "inscreen").icon("#Images/inscreen.png")
 		
 	End if 
 	
 	If ($windowNumber>=2)
 		
 		$menu.line()\
-			.append("StringsNextWindow"; "next").icon("#Images/next.png")
+			.append(Get localized string:C991("StringsNextWindow"); "next").icon("#Images/next.png")\
+			.append(Get localized string:C991("StringsStacksWindows"); "stack").icon("#Images/stack.png")
 		
 	End if 
 	
@@ -505,23 +554,15 @@ Function menu()
 			//______________________________________________________
 		: ($menu.choice="stack")
 			
-			This:C1470.stack()
+			This:C1470.stackWindows()
 			
 			//______________________________________________________
 		Else 
 			
 			This:C1470.bringToFront(Num:C11($menu.choice))
 			
-			If (Macintosh option down:C545 | Windows Alt down:C563)
-				
-				// Close the window
-				POST KEY:C465(Character code:C91("w"); 0 ?+ Command key bit:K16:2; This:C1470.designProcess)
-				
-			End if 
-			
 			//______________________________________________________
 	End case 
-	
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function localized($name : Text) : Text
