@@ -68,7 +68,7 @@ Case of
 		
 		While (Not:C34(Process aborted:C672))
 			
-			If ((<>Lon_options ?? 3))
+			If (component.prependWindowNames)
 				
 				$Win_hdl:=Frontmost window:C447
 				

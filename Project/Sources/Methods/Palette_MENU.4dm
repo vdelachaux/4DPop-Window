@@ -206,7 +206,7 @@ Case of
 		//______________________________________________________
 	: ($Txt_action="dock")
 		
-		WINDOW_ACTION($Txt_action; $Lon_wHandle)
+		//_o_WINDOW_ACTION($Txt_action; $Lon_wHandle)
 		
 		//______________________________________________________
 	: ($Txt_action="stack")
@@ -220,7 +220,7 @@ Case of
 			
 			GET LIST ITEM:C378(<>Lst_windows; $i; $Lon_wHandle; $Txt_buffer; $Lon_opened; $Boo_expanded)
 			
-			WINDOW_ACTION("show"; $Lon_wHandle)
+			//_o_WINDOW_ACTION("show"; $Lon_wHandle)
 			
 			If (Is a list:C621($Lon_opened))
 				
@@ -235,7 +235,7 @@ Case of
 		//______________________________________________________
 	Else 
 		
-		WINDOW_ACTION($Txt_action; $Lon_wHandle)
+		//_o_WINDOW_ACTION($Txt_action; $Lon_wHandle)
 		
 		//______________________________________________________
 End case 

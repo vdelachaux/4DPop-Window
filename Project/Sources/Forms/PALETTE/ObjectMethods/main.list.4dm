@@ -119,55 +119,56 @@ Case of
 				
 				If (Is a list:C621($Lst_opened))
 					
-					If (<>Lon_options ?? 4)
+					//If (<>Lon_options ?? 4)  //?????
+					
+					//$Txt_command:=Choose($Boo_expanded; "hide"; "show")
+					
+					////Hide all windows attached…
+					//For ($i; 1; Count list items($Lst_opened; *); 1)
+					
+					//GET LIST ITEM($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
+					//WINDOW_ACTION($Txt_command; $Lon_buffer)
+					
+					//End for
+					
+					////…then finally mask the main window if it exists.
+					//WINDOW_ACTION($Txt_command; $Lon_wHandle)
+					
+					//Else
+					
+					$Txt_command:=Choose:C955($Boo_expanded; "dock"; "undock")
+					
+					//Si ($Txt_command="hide")
+					
+					//Hide all windows attached…
+					For ($i; 1; Count list items:C380($Lst_opened; *); 1)
 						
-						$Txt_command:=Choose:C955($Boo_expanded; "hide"; "show")
+						GET LIST ITEM:C378($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
+						//_o_WINDOW_ACTION($Txt_command; $Lon_buffer)
 						
-						//Hide all windows attached…
-						For ($i; 1; Count list items:C380($Lst_opened; *); 1)
-							
-							GET LIST ITEM:C378($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
-							WINDOW_ACTION($Txt_command; $Lon_buffer)
-							
-						End for 
-						
-						//…then finally mask the main window if it exists.
-						WINDOW_ACTION($Txt_command; $Lon_wHandle)
-						
-					Else 
-						
-						$Txt_command:=Choose:C955($Boo_expanded; "dock"; "undock")
-						
-						//Si ($Txt_command="hide")
-						
-						//Hide all windows attached…
-						For ($i; 1; Count list items:C380($Lst_opened; *); 1)
-							
-							GET LIST ITEM:C378($Lst_opened; $i; $Lon_buffer; $Txt_buffer)
-							WINDOW_ACTION($Txt_command; $Lon_buffer)
-							
-						End for 
-						
-						//…then finally mask the main window if it exists.
-						WINDOW_ACTION($Txt_command; $Lon_wHandle)
-						
-						//Sinon 
-						//
-						//  //Hide all windows attached…
-						//Boucle ($i;1;Nombre elements($Lst_opened;*);1)
-						//
-						//INFORMATION ELEMENT($Lst_opened;$i;$Lon_buffer;$Txt_buffer)
-						//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
-						//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
-						//
-						//Fin de boucle 
-						//
-						//  //…then finally mask the main window if it exists.
-						//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
-						//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
-						//
-						//fin de si
-					End if 
+					End for 
+					
+					//…then finally mask the main window if it exists.
+					//_o_WINDOW_ACTION($Txt_command; $Lon_wHandle)
+					
+					//Sinon
+					//
+					//  //Hide all windows attached…
+					//Boucle ($i;1;Nombre elements($Lst_opened;*);1)
+					//
+					//INFORMATION ELEMENT($Lst_opened;$i;$Lon_buffer;$Txt_buffer)
+					//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
+					//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_buffer)
+					//
+					//Fin de boucle
+					//
+					//  //…then finally mask the main window if it exists.
+					//COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
+					//CHANGER COORDONNEES FENETRE($left;$top;$right;$bottom;$Lon_wHandle)
+					//
+					//fin de si
+					
+					//End if
 					
 					$Boo_expanded:=Not:C34($Boo_expanded)
 					SET LIST ITEM:C385(<>Lst_windows; $Lon_wHandle; $Txt_title; $Lon_wHandle; $Lst_opened; $Boo_expanded)

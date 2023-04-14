@@ -19,13 +19,15 @@ End if
 // Initialisations
 $Lon_parameters:=Count parameters:C259
 
+COMPILER_MAIN
+
 // ----------------------------------------------------
 Case of 
 		
 		//______________________________________________________
 	: ($Lon_parameters=0)
 		
-		If (<>Lon_options ?? 2)
+		If (component.showPalette)
 			
 			BRING TO FRONT:C326(New process:C317(Current method name:C684; 0; "$4DPopWindows_palette"; "run"; *))
 			

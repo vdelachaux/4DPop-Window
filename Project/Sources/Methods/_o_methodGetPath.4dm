@@ -7,9 +7,9 @@
 #DECLARE($name : Text; $type : Integer) : Text
 
 If (False:C215)
-	C_TEXT:C284(methodGetPath; $1)
-	C_LONGINT:C283(methodGetPath; $2)
-	C_TEXT:C284(methodGetPath; $0)
+	C_TEXT:C284(_o_methodGetPath; $1)
+	C_LONGINT:C283(_o_methodGetPath; $2)
+	C_TEXT:C284(_o_methodGetPath; $0)
 End if 
 
 var $path : Text

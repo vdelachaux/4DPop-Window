@@ -1,1 +1,1 @@
-databaseMethods(Current method name:C684)
+DATABASE METHOD("On Startup")

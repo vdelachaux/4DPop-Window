@@ -1,0 +1,67 @@
+{
+	"application": {
+		"type": 0,
+		"icon": "#Images/user.png"
+	},
+	"method": {
+		"type": 1,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"name": ".common_method"
+	},
+	"form": {
+		"type": 4,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_601.png",
+		"name": ".36,3"
+	},
+	"formMethod": {
+		"type": 40,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"name": ".common_formMethod"
+	},
+	"objectMethod": {
+		"type": 400,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"name": ".common_objectMethod"
+	},
+	"class": {
+		"type": 32,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_628.png"
+	},
+	"trigger": {
+		"type": 8,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_600.png",
+		"name": ".common_Trigger"
+	},
+	"find": {
+		"type": -2,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_457.png"
+	},
+	"other": {
+		"type": -1,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_459.png"
+	},
+	"databaseMethod": {
+		"type": 2,
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_622.png",
+		"methods" : [
+			".DatabaseMethodName_OnStartup",
+			".DatabaseMethodName_OnServerStartup",
+			".DatabaseMethodName_OnExit",
+			".DatabaseMethodName_OnServerShutdown",
+			".DatabaseMethodName_OnServerOpenConnection",
+			".DatabaseMethodName_OnWebConnection",
+			".DatabaseMethodName_OnServerCloseConnection",
+			".DatabaseMethodName_OnWebAuthentication",
+			".DatabaseMethodName_OnBackupStartup",
+			".DatabaseMethodName_OnBackupShutdown",
+			".DatabaseMethodName_OnDrop",
+			".DatabaseMethodName_OnSQLAuthentication",
+			".DatabaseMethodName_OnWebSessionClose",
+			".DatabaseMethodName_OnSystemEvents",
+			".DatabaseMethodName_OnHostDatabaseEvent",
+			".DatabaseMethodName_OnRESTAuthentication",
+			".DatabaseMethodName_OnMobileAppAuthentication",
+			".DatabaseMethodName_OnMobileAppAction"
+		]
+	}
+}

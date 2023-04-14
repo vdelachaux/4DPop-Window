@@ -35,18 +35,15 @@ This file is distributed under the same license as the product package.-->
           <source>Method:</source>
           <target>Method:</target>
         </trans-unit>
-        <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="Researches">
+        <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="find">
           <source>Find: </source>
           <target>Find: </target>
         </trans-unit>
-        <trans-unit id="NeDwXwbvw80zisTURDdfBw" resname="Class">
+        <trans-unit id="NeDwXwbvw80zisTURDdfBw" resname="class">
           <source>Class:</source>
           <target>Class:</target>
         </trans-unit>
-        <trans-unit id="WYu0veH72QmUWJnmU/hAeQ" resname="Explorer">
-          <source>{project} - Explorer</source>
-          <target>{project} - Explorer</target>
-        </trans-unit>
+        
       </group>
       <group resname="MenuLabels">
         <trans-unit id="qA_UGfFvJL4sf9ptF1+1Mw" resname="MenuLabelsFormMethod">
@@ -92,6 +89,10 @@ This file is distributed under the same license as the product package.-->
         <trans-unit id="5md4xiW5a7stPKPvoMU+uw" resname="Menulabelsresearches">
           <source>Finds</source>
           <target>Finds</target>
+        </trans-unit>
+        <trans-unit id="MrwmarBdCNKJc5SLauKR0w" resname="MenuLabelClasses">
+          <source>Classes</source>
+          <target>Classes</target>
         </trans-unit>
       </group>
       <group resname="Strings">
@@ -379,6 +380,7 @@ This file is distributed under the same license as the product package.-->
       </group>
     </body>
   </file>
+
 
 
 

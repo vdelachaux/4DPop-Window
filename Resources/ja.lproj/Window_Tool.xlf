@@ -31,15 +31,12 @@ This file is distributed under the same license as the product package.-->
           <source>Method</source>
           <target>メソッド</target>
         </trans-unit>
-        <trans-unit id="NeDwXwbvw80zisTURDdfBw" resname="Class">
+        <trans-unit id="NeDwXwbvw80zisTURDdfBw" resname="class">
           <source>Class:</source>
           <target state="new">Class:</target>
         </trans-unit>
-        <trans-unit id="WYu0veH72QmUWJnmU/hAeQ" resname="Explorer">
-          <source>{project} - Explorer</source>
-          <target state="new">{project} - Explorer</target>
-        </trans-unit>
-        <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="Researches">
+        
+        <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="find">
           <source>Find: </source>
           <target state="new">Find: </target>
         </trans-unit></group>
@@ -86,7 +83,11 @@ This file is distributed under the same license as the product package.-->
         </trans-unit><trans-unit id="cV53WzEEXCQPLiLw2_4LAg" resname="MenulabelsshowAllWindows">
           <source>Show all windows</source>
           <target state="new">Show all windows</target>
-        </trans-unit></group>
+        </trans-unit><trans-unit id="MrwmarBdCNKJc5SLauKR0w" resname="MenuLabelClasses">
+          <source>Classes</source>
+          <target state="new">Classes</target>
+        </trans-unit>
+      </group>
       <group resname="Strings">
         <trans-unit id="UXXen5ubCS6_7d1jdRaKog" resname="StringsWindows">
           <source>Windows</source>
@@ -392,6 +393,7 @@ This file is distributed under the same license as the product package.-->
       </prop-group>
     </header>
   </file>
+
 
 
 

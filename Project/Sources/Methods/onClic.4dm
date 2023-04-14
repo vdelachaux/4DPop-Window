@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"shared":true}
+//%attributes = {"invisible":true}
 // ----------------------------------------------------
 // Method : Tool_Default
 // Created 05/06/07 by Vincent de Lachaux

@@ -1,10 +1,15 @@
 {
 	"(Component)": {},
+	"(Private)": {},
 	"(Shared)": {},
 	"# 🚧 DEV": {
-		"methods": [
-			"00_test",
-			"menuNew"
+		"tables": [
+			"Table_1"
+		]
+	},
+	"♻️ LIBRAIRIES": {
+		"classes": [
+			"menu"
 		]
 	},
 	"⚙️ MACROS": {
@@ -15,15 +20,19 @@
 	},
 	"📦 COMPONENT": {
 		"groups": [
-			"Private"
+			"PALETTE"
 		],
 		"methods": [
 			"COMPILER_MAIN",
-			"databaseMethods",
-			"noError"
+			"DATABASE METHOD",
+			"noError",
+			"Palette_RUN",
+			"tool_renameWindows"
 		],
 		"forms": [
-			"PREFERENCES"
+			"COMMENTS",
+			"PREFERENCES",
+			"PROPERTIES"
 		],
 		"classes": [
 			"_component"
@@ -31,35 +40,26 @@
 	},
 	"4️⃣ 4DPop": {
 		"methods": [
-			"default",
+			"4DPopWindow",
+			"COMPILER_4DPop",
 			"menu",
-			"window"
+			"onClic"
 		]
 	},
-	"Private": {
+	"PALETTE": {
 		"methods": [
-			"_o_4DPopWindow_path",
-			"methodGetPath",
-			"mnu_RELEASE_MENU",
 			"Palette_ADD_ELEMENT",
 			"Palette_ADD_WINDOW",
-			"Palette_MENU",
-			"Palette_RUN",
-			"tablePointer",
-			"tool_renameWindows",
-			"TOOL_WINDOWS",
-			"wClose",
-			"WINDOW_ACTION"
+			"Palette_MENU"
 		],
 		"forms": [
-			"COMMENTS",
-			"PALETTE",
-			"PROPERTIES"
+			"PALETTE"
 		]
 	},
 	"trash": {
 		"groups": [
 			"(Component)",
+			"(Private)",
 			"(Shared)"
 		]
 	}

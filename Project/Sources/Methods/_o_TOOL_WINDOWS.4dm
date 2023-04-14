@@ -10,7 +10,7 @@
 #DECLARE($winRef : Integer)
 
 If (False:C215)
-	C_LONGINT:C283(TOOL_WINDOWS; $1)
+	C_LONGINT:C283(_o_TOOL_WINDOWS; $1)
 End if 
 
 var $explorer; $t : Text

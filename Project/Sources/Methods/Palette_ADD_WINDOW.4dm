@@ -59,34 +59,34 @@ If (List item position:C629(<>Lst_windows; $Lon_wHandle)=0)
 		: (Position:C15($kTxt_method; $Txt_title)=1)
 			
 			$Txt_title:=Replace string:C233($Txt_title; $kTxt_method; ""; 1)
-			$Txt_path:=methodGetPath($Txt_title; Path project method:K72:1)
+			$Txt_path:=_o_methodGetPath($Txt_title; Path project method:K72:1)
 			Palette_ADD_ELEMENT($Txt_path; $Lon_wHandle)
 			
 			//______________________________________________________
 		: (Position:C15($kTxt_trigger; $Txt_title)=1)
 			
 			$Txt_title:=Replace string:C233($Txt_title; $kTxt_trigger; ""; 1)
-			$Txt_path:=methodGetPath($Txt_title; Path trigger:K72:4)
+			$Txt_path:=_o_methodGetPath($Txt_title; Path trigger:K72:4)
 			Palette_ADD_ELEMENT($Txt_path; $Lon_wHandle)
 			
 			//______________________________________________________
 		: (Position:C15($kTxt_formMethod; $Txt_title)=1)
 			
 			$Txt_title:=Replace string:C233($Txt_title; $kTxt_formMethod; ""; 1)
-			$Txt_path:=methodGetPath($Txt_title; Choose:C955(Position:C15("["; $Txt_title)>0; Path table form:K72:5; Path project form:K72:3))
+			$Txt_path:=_o_methodGetPath($Txt_title; Choose:C955(Position:C15("["; $Txt_title)>0; Path table form:K72:5; Path project form:K72:3))
 			Palette_ADD_ELEMENT($Txt_path; $Lon_wHandle)
 			
 			//______________________________________________________
 		: (Position:C15($kTxt_objectMethod; $Txt_title)=1)
 			
 			$Txt_title:=Replace string:C233($Txt_title; $kTxt_objectMethod; ""; 1)
-			$Txt_path:=methodGetPath($Txt_title; Path all objects:K72:16)
+			$Txt_path:=_o_methodGetPath($Txt_title; Path all objects:K72:16)
 			Palette_ADD_ELEMENT($Txt_path; $Lon_wHandle)
 			
 			//_____________________________________________________
 		: (Find in array:C230($tTxt_databaseMethods; $Txt_title)>0)
 			
-			$Txt_path:=methodGetPath($Txt_title; Path database method:K72:2)
+			$Txt_path:=_o_methodGetPath($Txt_title; Path database method:K72:2)
 			Palette_ADD_ELEMENT($Txt_path; $Lon_wHandle)
 			
 			//______________________________________________________

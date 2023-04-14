@@ -132,6 +132,14 @@
 					"fontFamily": "Lucida Grande",
 					"fontSize": 11,
 					"focusable": false
+				},
+				"Static Picture2": {
+					"type": "picture",
+					"top": 167,
+					"left": 770,
+					"width": 16,
+					"height": 16,
+					"picture": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_601.png"
 				}
 			}
 		}
@@ -154,5 +162,10 @@
 				]
 			}
 		}
+	},
+	"geometryStamp": 3,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
 	}
 }
