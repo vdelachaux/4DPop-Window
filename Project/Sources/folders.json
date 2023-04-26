@@ -40,7 +40,7 @@
 	},
 	"4️⃣ 4DPop": {
 		"methods": [
-			"4DPopWindow",
+			"_4DPopWindow",
 			"COMPILER_4DPop",
 			"menu",
 			"onClic"

@@ -2,7 +2,7 @@
   "name": ":xliff:ToolName",
   "picture": "4DPop.png",
   "helptip": ":xliff:ToolTip",
-  "handler": "4DPopWindow",
+  "handler": "_4DPopWindow",
   "default": "onClic",
   "popup": true,
   "tools": {
