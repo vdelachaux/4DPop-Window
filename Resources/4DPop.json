@@ -1,11 +1,11 @@
 {
   "name": ":xliff:ToolName",
-  "picture": "4DPop.png",
+  "media": "4DPop.png",
   "helptip": ":xliff:ToolTip",
   "handler": "_4DPopWindow",
-  "default": "onClic",
+  "default": "doDefault",
   "popup": true,
   "tools": {
-    "method": "menu"
+    "method": "doMenu"
   }
 }

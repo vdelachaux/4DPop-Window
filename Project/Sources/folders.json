@@ -42,8 +42,8 @@
 		"methods": [
 			"_4DPopWindow",
 			"COMPILER_4DPop",
-			"menu",
-			"onClic"
+			"doDefault",
+			"doMenu"
 		]
 	},
 	"PALETTE": {
