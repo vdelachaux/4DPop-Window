@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<appMaker>
+    <info.plist CFBundleGetInfoString="{name}" CFBundleLongVersionString="0.0" CFBundleShortVersionString="0" NSHumanReadableCopyright="© 4D SAS 2009-{CurrentYear}"/>
+    <options close="true" delete_mac_content="true" increment_version="true" notarize="true"/>
+    <methods/>
+    <copy>
+        <array>
+            <item>4DPop Window.htm</item>
+            <item>Info.plist</item>
+            <item>Resources/InfoPlist.strings</item>
+            <item>Macros v2/</item>            
+        </array>
+    </copy>
+    <delete>
+        <array>
+            <item>./Resources/php.ini</item>
+        </array>
+    </delete>
+    <reveal path=""/>
+    <remove/>
+</appMaker>
