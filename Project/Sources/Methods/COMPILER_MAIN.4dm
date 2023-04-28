@@ -2,13 +2,17 @@
 var component : cs:C1710._component
 component:=component || cs:C1710._component.new()
 
-C_LONGINT:C283(<>Win_palette)
-C_LONGINT:C283(<>Lst_windows)
-C_LONGINT:C283(<>Lst_wHidden)
-
-C_TEXT:C284(<>Txt_digest)
-
-<>Lst_wHidden:=<>Lst_wHidden || New list:C375
+If (False:C215)
+	
+	C_LONGINT:C283(<>Win_palette)
+	C_LONGINT:C283(<>Lst_windows)
+	C_LONGINT:C283(<>Lst_wHidden)
+	
+	C_TEXT:C284(<>Txt_digest)
+	
+	<>Lst_wHidden:=<>Lst_wHidden || New list:C375
+	
+End if 
 
 If (False:C215)
 	
