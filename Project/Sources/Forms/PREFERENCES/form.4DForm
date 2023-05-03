@@ -3,8 +3,6 @@
 	"windowTitle": ":xliff:preferences",
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
-	"rightMargin": 20,
-	"bottomMargin": 20,
 	"markerHeader": 15,
 	"markerBody": 200,
 	"markerBreak": 220,
@@ -22,7 +20,7 @@
 			"objects": {
 				"Zone de groupe1": {
 					"type": "groupBox",
-					"top": 41,
+					"top": 199,
 					"left": 20,
 					"width": 481,
 					"height": 89,
@@ -30,15 +28,15 @@
 				},
 				"Zone de groupe": {
 					"type": "groupBox",
-					"top": 145,
+					"top": 20,
 					"left": 20,
 					"width": 481,
-					"height": 189,
+					"height": 140,
 					"text": ":xliff:4dpopPaletteButtonsOptions"
 				},
 				"menu": {
 					"type": "checkbox",
-					"top": 178,
+					"top": 477,
 					"left": 80,
 					"width": 357,
 					"height": 17,
@@ -48,7 +46,7 @@
 				},
 				"Texte1": {
 					"type": "text",
-					"top": 199,
+					"top": 498,
 					"left": 101,
 					"width": 384,
 					"height": 13,
@@ -57,7 +55,7 @@
 				},
 				"Texte": {
 					"type": "text",
-					"top": 231,
+					"top": 50,
 					"left": 31,
 					"width": 248,
 					"height": 16,
@@ -65,36 +63,36 @@
 				},
 				"next": {
 					"type": "radio",
-					"top": 260,
+					"top": 104,
 					"left": 101,
 					"width": 323,
 					"height": 18,
 					"text": ":xliff:invertFrontWindow",
-					"radioGroup": "Group4",
+					"radioGroup": "defaultAction",
 					"dataSourceTypeHint": "boolean",
 					"dataSource": "Form:C1466.next"
 				},
 				"stack": {
 					"type": "radio",
-					"top": 289,
+					"top": 131,
 					"left": 101,
 					"width": 323,
 					"height": 18,
 					"text": ":xliff:stackwindows",
-					"radioGroup": "Group4",
+					"radioGroup": "defaultAction",
 					"dataSourceTypeHint": "boolean",
 					"dataSource": "Form:C1466.stack"
 				},
 				"ok": {
 					"type": "button",
-					"top": 354,
+					"top": 308,
 					"left": 430,
 					"width": 71,
 					"height": 22
 				},
 				"prefix": {
 					"type": "checkbox",
-					"top": 94,
+					"top": 252,
 					"left": 80,
 					"width": 387,
 					"height": 17,
@@ -104,7 +102,7 @@
 				},
 				"palette": {
 					"type": "checkbox",
-					"top": 64,
+					"top": 222,
 					"left": 80,
 					"width": 387,
 					"height": 17,
@@ -114,15 +112,33 @@
 				},
 				"cancel": {
 					"type": "button",
-					"top": 354,
+					"top": 308,
 					"left": 310,
 					"width": 100,
 					"height": 22
+				},
+				"showMenu": {
+					"type": "radio",
+					"top": 78,
+					"left": 101,
+					"width": 323,
+					"height": 18,
+					"text": ":xliff:showMenu",
+					"radioGroup": "defaultAction",
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.showMenu"
 				}
 			}
 		}
 	],
 	"editor": {
+		"groups": {
+			"Group1": [
+				"Zone de groupe1",
+				"prefix",
+				"palette"
+			]
+		},
 		"activeView": "Vue 1",
 		"defaultView": "Vue 1",
 		"views": {
@@ -141,5 +157,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 15
+	"geometryStamp": 60,
+	"width": 520,
+	"height": 350
 }

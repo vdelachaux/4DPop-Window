@@ -214,7 +214,16 @@ This file is distributed under the same license as the product package.-->
           <source>4DPop Palette (button's options)</source>
           <target state="new">4DPop Palette (button's options)</target>
         </trans-unit>
-      </group><group resname="Method Properties">
+        <trans-unit id="9VUK01wkvDf9MM6iQps_Tg" resname="showMenu">
+          <source>Show menu</source>
+          <target state="new">Show menu</target>
+        </trans-unit>
+        <trans-unit id="WJ_dz8MDFiSufGXkNfICuA" resname="settings">
+          <source>Settings</source>
+          <target state="new">Settings</target>
+        </trans-unit>
+      </group>
+      <group resname="Method Properties">
         <trans-unit id="lA_NSHZZcFNmyKzAVaLqNA" resname="Proc_info_offeredAsAWebService">
           <source>Offered as a Web Service</source>
           <target state="new">Offered as a Web Service</target>
@@ -279,6 +288,8 @@ This file is distributed under the same license as the product package.-->
       </prop-group>
     </header>
   </file>
+
+
 
 
 

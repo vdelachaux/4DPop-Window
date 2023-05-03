@@ -10,6 +10,11 @@ $default:=component.preferences.get("default")
 Case of 
 		
 		//________________________
+	: ($default="menu")
+		
+		component.menu()
+		
+		//________________________
 	: ($default="stack")
 		
 		component.stackWindows()

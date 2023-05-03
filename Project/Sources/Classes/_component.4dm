@@ -35,11 +35,11 @@ Class constructor()
 	This:C1470.maxBottom:=0
 	
 	// MARK: Default values
-	This:C1470.preferences.default(New object:C1471(\
-		"default"; "Next"; \
-		"options"; 0; \
-		"palette"; Null:C1517; \
-		"paletteMini"; False:C215))
+	This:C1470.preferences.default({\
+		default: "Next"; \
+		options: 0; \
+		palette: Null:C1517; \
+		paletteMini: False:C215})
 	
 	For each ($screen; This:C1470.env.screens)
 		
@@ -85,20 +85,22 @@ Class constructor()
 				
 			End for 
 			
-		Else 
+			continue
 			
-			If ($o.name=".@")
-				
-				$o.name:=Delete string:C232($o.name; 1; 1)
-				$c:=Split string:C1554($o.name; ";")
-				$o.name:=This:C1470.localized(($c.length=2 ? ($c[0]+","+$c[1]) : $o.name))
-				
-			Else 
-				
-				$o.name:=Get localized string:C991($key)
-				
-			End if 
 		End if 
+		
+		If ($o.name=".@")
+			
+			$o.name:=Delete string:C232($o.name; 1; 1)
+			$c:=Split string:C1554($o.name; ";")
+			$o.name:=This:C1470.localized(($c.length=2 ? ($c[0]+","+$c[1]) : $o.name))
+			
+			continue
+			
+		End if 
+		
+		$o.name:=Get localized string:C991($key)
+		
 	End for each 
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== 
@@ -240,7 +242,7 @@ Function windowDefinition($winRef : Integer) : Object
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
 	
-	$o:=New object:C1471
+	$o:={}
 	$o.ref:=$winRef
 	$o.process:=Window process:C446($o.ref)
 	$o.title:=Get window title:C450($o.ref)
@@ -248,20 +250,20 @@ Function windowDefinition($winRef : Integer) : Object
 	$indx:=Position:C15(" - "; $o.title)
 	$o.title:=$indx>0 ? Delete string:C232($o.title; 1; $indx+2) : $o.title
 	
-	$o.coordinates:=New object:C1471
-	$o.coordinates.left:=$left
-	$o.coordinates.top:=$top
-	$o.coordinates.right:=$right
-	$o.coordinates.bottom:=$bottom
+	$o.coordinates:={\
+		left: $left; \
+		top: $top; \
+		right: $right; \
+		bottom: $bottom}
 	
 	$o.offScreen:=($left<This:C1470.minleft)\
 		 || ($top<This:C1470.minTop)\
 		 || ($right>This:C1470.maxRight)\
 		 || ($bottom>This:C1470.maxBottom)
 	
-	$o.dimensions:=New object:C1471
-	$o.dimensions.width:=$right-$left
-	$o.dimensions.height:=$bottom-$top
+	$o.dimensions:={\
+		width: $right-$left; \
+		height: $bottom-$top}
 	
 	PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
 	$o.name:=$name
@@ -280,7 +282,7 @@ Function menu()
 	var $isOffScreen : Boolean
 	var $bottom; $frontmostWindow; $i; $indx; $left; $right : Integer
 	var $top; $windowNumber : Integer
-	var $forms; $o; $window; $windowReferences : Object
+	var $data; $forms; $o; $window; $windowReferences : Object
 	var $c; $windows : Collection
 	var $menu; $menuApplication; $menuClasses; $menudatabaseMethods; $menuFind; $menuForms; $menuMethods; $menuOthers; $menuTrigger : cs:C1710.menu
 	
@@ -302,13 +304,15 @@ Function menu()
 		 || ($right>This:C1470.maxRight)\
 		 || ($bottom>This:C1470.maxBottom)
 	
-	$forms:=New object:C1471
+	$data:=This:C1470.data
+	
+	$forms:={}
 	
 	For each ($window; $windows.orderBy("origin asc,title asc"))
 		
 		If ($window.origin>0)
 			
-			$window.icon:=This:C1470.data.application.icon
+			$window.icon:=$data.application.icon
 			$window.family:="Application"
 			
 			$menuApplication:=$menuApplication || cs:C1710.menu.new()
@@ -322,9 +326,9 @@ Function menu()
 			Case of 
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.trigger.name; $window.title)=1)
+				: (Position:C15($data.trigger.name; $window.title)=1)
 					
-					$o:=This:C1470.data.trigger
+					$o:=$data.trigger
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -335,9 +339,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.method.name; $window.title)=1)
+				: (Position:C15($data.method.name; $window.title)=1)
 					
-					$o:=This:C1470.data.method
+					$o:=$data.method
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -348,9 +352,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.class.name; $window.title)=1)
+				: (Position:C15($data.class.name; $window.title)=1)
 					
-					$o:=This:C1470.data.class
+					$o:=$data.class
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -361,9 +365,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.form.name; $window.title)=1)
+				: (Position:C15($data.form.name; $window.title)=1)
 					
-					$o:=This:C1470.data.form
+					$o:=$data.form
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -374,9 +378,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.formMethod.name; $window.title)=1)
+				: (Position:C15($data.formMethod.name; $window.title)=1)
 					
-					$o:=This:C1470.data.formMethod
+					$o:=$data.formMethod
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -387,9 +391,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.objectMethod.name; $window.title)=1)
+				: (Position:C15($data.objectMethod.name; $window.title)=1)
 					
-					$o:=This:C1470.data.objectMethod
+					$o:=$data.objectMethod
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$indx:=Position:C15("."; $window.title)
 					$formName:=Substring:C12($window.title; 1; $indx-1)
@@ -403,9 +407,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (Position:C15(This:C1470.data.find.name; $window.title)=1)
+				: (Position:C15($data.find.name; $window.title)=1)
 					
-					$o:=This:C1470.data.find
+					$o:=$data.find
 					$window.title:=Replace string:C233($window.title; $o.name; "")
 					$window.icon:=$o.icon
 					
@@ -416,9 +420,9 @@ Function menu()
 						.mark($window.ref=$frontmostWindow)
 					
 					//______________________________________________________
-				: (This:C1470.data.databaseMethod.methods.indexOf($window.title)#-1)
+				: ($data.databaseMethod.methods.indexOf($window.title)#-1)
 					
-					$o:=This:C1470.data.databaseMethod
+					$o:=$data.databaseMethod
 					$window.icon:=$o.icon
 					$window.family:="DatabaseMethod"
 					
@@ -431,7 +435,7 @@ Function menu()
 					//______________________________________________________
 				Else 
 					
-					$o:=This:C1470.data.other
+					$o:=$data.other
 					$window.icon:=$o.icon
 					
 					$window.title:=Replace string:C233($window.title; "{project} - "; "")
@@ -451,35 +455,35 @@ Function menu()
 	// MARK:Application
 	If ($menuApplication#Null:C1517)
 		
-		$menu.append(Get localized string:C991("StringsApplication"); $menuApplication).icon(This:C1470.data.application.icon).line()
+		$menu.append(Get localized string:C991("StringsApplication"); $menuApplication).icon($data.application.icon).line()
 		
 	End if 
 	
 	// MARK:Project methods
 	If ($menuMethods#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsProjectMethods"); $menuMethods).icon(This:C1470.data.method.icon).line()
+		$menu.append(Get localized string:C991("MenuLabelsProjectMethods"); $menuMethods).icon($data.method.icon).line()
 		
 	End if 
 	
 	// MARK:Classes
 	If ($menuClasses#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelClasses"); $menuClasses).icon(This:C1470.data.class.icon).line()
+		$menu.append(Get localized string:C991("MenuLabelClasses"); $menuClasses).icon($data.class.icon).line()
 		
 	End if 
 	
 	// MARK:Triggers
 	If ($menuTrigger#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsTriggers"); $menuTrigger).icon(This:C1470.data.trigger.icon).line()
+		$menu.append(Get localized string:C991("MenuLabelsTriggers"); $menuTrigger).icon($data.trigger.icon).line()
 		
 	End if 
 	
 	// MARK:Database methods
 	If ($menudatabaseMethods#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsDatabaseMethods"); $menudatabaseMethods).icon(This:C1470.data.databaseMethod.icon).line()
+		$menu.append(Get localized string:C991("MenuLabelsDatabaseMethods"); $menudatabaseMethods).icon($data.databaseMethod.icon).line()
 		
 	End if 
 	
@@ -499,21 +503,21 @@ Function menu()
 			
 		End for each 
 		
-		$menu.append(Get localized string:C991("MenuLabelsForms"); $menuForms).icon(This:C1470.data.form.icon).line()
+		$menu.append(Get localized string:C991("MenuLabelsForms"); $menuForms).icon($data.form.icon).line()
 		
 	End if 
 	
 	// MARK:Find…
 	If ($menuFind#Null:C1517)
 		
-		$menu.append(Get localized string:C991("Menulabelsresearches"); $menuFind).icon(This:C1470.data.find.icon).line()
+		$menu.append(Get localized string:C991("Menulabelsresearches"); $menuFind).icon($data.find.icon).line()
 		
 	End if 
 	
 	// MARK:Others
 	If ($menuOthers#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsOthers"); $menuOthers).icon(This:C1470.data.other.icon)
+		$menu.append(Get localized string:C991("MenuLabelsOthers"); $menuOthers).icon($data.other.icon)
 		
 	End if 
 	
@@ -532,14 +536,21 @@ Function menu()
 		
 	End if 
 	
-	$menu.popup()
+	$menu.line()\
+		.append(Get localized string:C991("settings"); "settings").icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png")
+	
+	If (Not:C34($menu.popup().selected))
+		
+		return 
+		
+	End if 
 	
 	Case of 
 			
 			//______________________________________________________
-		: (Not:C34($menu.selected))
+		: ($menu.choice="settings")
 			
-			// Nothing to do
+			This:C1470.doSettings()
 			
 			//______________________________________________________
 		: ($menu.choice="inscreen")
@@ -563,6 +574,15 @@ Function menu()
 			
 			//______________________________________________________
 	End case 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+Function doSettings()
+	
+	var $winRef : Integer
+	
+	$winRef:=Open form window:C675("PREFERENCES"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
+	DIALOG:C40("PREFERENCES")
+	CLOSE WINDOW:C154($winRef)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function localized($name : Text) : Text

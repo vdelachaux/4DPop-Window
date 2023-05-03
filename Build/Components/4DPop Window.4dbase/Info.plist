@@ -8,11 +8,11 @@
     <key>CFBundleShortVersionString</key>
     <string>20R2</string>
     <key>CFBundleLongVersionString</key>
-    <string>20R2 (300)</string>
+    <string>20R2 (301)</string>
     <key>NSHumanReadableCopyright</key>
     <string>© 4D SAS 2009-2023</string>
     <key>CFBundleVersion</key>
-    <string>301</string>
+    <string>302</string>
     <key>CSResourcesFileMapped</key>
     <string></string>
     <key>CFBundleName</key>

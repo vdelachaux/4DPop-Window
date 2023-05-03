@@ -202,6 +202,14 @@ This file is distributed under the same license as the product package.-->
           <source>4DPop Palette (button's options)</source>
           <target>Palette 4DPop (options du bouton)</target>
         </trans-unit>
+        <trans-unit id="9VUK01wkvDf9MM6iQps_Tg" resname="showMenu">
+          <source>Show menu</source>
+          <target>Afficher le menu</target>
+        </trans-unit>
+        <trans-unit id="WJ_dz8MDFiSufGXkNfICuA" resname="settings">
+          <source>Settings</source>
+          <target>Paramètres</target>
+        </trans-unit>
       </group>
       <group resname="Palette">
         <trans-unit id="SaiC_+Bra7ynJUb+Zhk_RQ" resname="Items_close">
@@ -266,6 +274,8 @@ This file is distributed under the same license as the product package.-->
       </group>
     </body>
   </file>
+
+
 
 
 

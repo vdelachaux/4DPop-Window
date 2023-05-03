@@ -40,21 +40,6 @@ Case of
 		
 		COMPILER_MAIN
 		
-		// #31-10-2014 - old
-		//$Txt_databaseName:=Structure file(*)
-		//For ($i;Length($Txt_databaseName);1;-1)
-		//If ($Txt_databaseName[[$i]]=Folder separator)
-		//$Txt_databaseName:=Delete string($Txt_databaseName;1;$i)
-		//$i:=0
-		//End if
-		//End for
-		//For ($i;Length($Txt_databaseName);1;-1)
-		//If ($Txt_databaseName[[$i]]=".")
-		//$Txt_databaseName:=Substring($Txt_databaseName;1;$i-1)
-		//$i:=0
-		//End if
-		//End for
-		
 		$Txt_databaseName:=Replace string:C233(Structure file:C489(*); Get 4D folder:C485(Database folder:K5:14; *); "")
 		$Lon_x:=Position:C15("."; $Txt_databaseName)
 		
