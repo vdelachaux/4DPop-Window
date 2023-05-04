@@ -16,13 +16,13 @@ Case of
 		component:=component || cs:C1710._component.new()
 		$o:=component.preferences.get()
 		
-		Form:C1466.menu:=Not:C34($o.options ?? 1)
-		Form:C1466.palette:=$o.options ?? 2
-		Form:C1466.prefix:=$o.options ?? 3
+		Form:C1466.menu:=$o=Null:C1517 ? True:C214 : Not:C34($o.options ?? 1)
+		Form:C1466.palette:=$o=Null:C1517 ? False:C215 : $o.options ?? 2
+		Form:C1466.prefix:=$o=Null:C1517 ? False:C215 : $o.options ?? 3
 		
-		Form:C1466.stack:=$o.default="stack"
-		Form:C1466.next:=$o.default="next"
-		Form:C1466.showMenu:=$o.default="menu"
+		Form:C1466.stack:=$o=Null:C1517 ? False:C215 : $o.default="stack"
+		Form:C1466.next:=$o=Null:C1517 ? False:C215 : $o.default="next"
+		Form:C1466.showMenu:=$o=Null:C1517 ? True:C214 : $o.default="menu"
 		
 		//______________________________________________________
 	: ($e.code=On Validate:K2:3)

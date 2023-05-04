@@ -36,7 +36,7 @@ Class constructor()
 	
 	// MARK: Default values
 	This:C1470.preferences.default({\
-		default: "Next"; \
+		default: "menu"; \
 		options: 0; \
 		palette: Null:C1517; \
 		paletteMini: False:C215})
