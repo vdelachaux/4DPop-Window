@@ -211,7 +211,7 @@ Function bringToFront($winRef : Integer)
 	End if 
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
-Function windowList() : Collection
+Function windowList($withFloating : Boolean) : Collection
 	
 	var $i : Integer
 	var $c : Collection
@@ -220,7 +220,15 @@ Function windowList() : Collection
 	
 	$c:=New collection:C1472
 	
-	WINDOW LIST:C442($refs)
+	If ($withFloating)
+		
+		WINDOW LIST:C442($refs; *)
+		
+	Else 
+		
+		WINDOW LIST:C442($refs)
+		
+	End if 
 	
 	For ($i; 1; Size of array:C274($refs); 1)
 		
@@ -242,10 +250,12 @@ Function windowDefinition($winRef : Integer) : Object
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
 	
-	$o:={}
-	$o.ref:=$winRef
-	$o.process:=Window process:C446($o.ref)
-	$o.title:=Get window title:C450($o.ref)
+	$o:={\
+		ref: $winRef; \
+		process: Window process:C446($winRef); \
+		title: Get window title:C450($winRef); \
+		kind: Window kind:C445($winRef)\
+		}
 	
 	$indx:=Position:C15(" - "; $o.title)
 	$o.title:=$indx>0 ? Delete string:C232($o.title; 1; $indx+2) : $o.title
@@ -254,7 +264,8 @@ Function windowDefinition($winRef : Integer) : Object
 		left: $left; \
 		top: $top; \
 		right: $right; \
-		bottom: $bottom}
+		bottom: $bottom\
+		}
 	
 	$o.offScreen:=($left<This:C1470.minleft)\
 		 || ($top<This:C1470.minTop)\
@@ -263,7 +274,8 @@ Function windowDefinition($winRef : Integer) : Object
 	
 	$o.dimensions:={\
 		width: $right-$left; \
-		height: $bottom-$top}
+		height: $bottom-$top\
+		}
 	
 	PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
 	$o.name:=$name

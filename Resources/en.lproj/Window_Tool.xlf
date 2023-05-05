@@ -20,8 +20,8 @@ This file is distributed under the same license as the product package.-->
           <target>Trigger: </target>
         </trans-unit>
         <trans-unit id="QOaXUQYqO+6WaGu5q9fHOQ" resname="Form">
-          <source>Form: </source>
-          <target>Form: </target>
+          <source>Form</source>
+          <target>Form</target>
         </trans-unit>
         <trans-unit id="+SlIgYl+LNxpJgdrohNgyg" resname="Method">
           <source>Method: </source>
@@ -136,8 +136,8 @@ This file is distributed under the same license as the product package.-->
           <target>Windows</target>
         </trans-unit>
         <trans-unit id="1lFQq43KH9LWF1V_zgoA9A" resname="ToolTip">
-          <source>An ordered windows menu</source>
-          <target>An ordered windows menu</target>
+          <source>A tidy window menu</source>
+          <target>A tidy window menu</target>
         </trans-unit>
       </group>
       

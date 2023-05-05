@@ -132,8 +132,6 @@ Function append($item; $param; $mark; $afterItem : Integer) : cs:C1710.menu
 	
 	$afterItem:=$afterItem<0 ? This:C1470.itemCount()+$afterItem-1 : $afterItem
 	
-	ASSERT:C1129((Value type:C1509($item)=Is text:K8:3) && ($item#"Form:@"))
-	
 	Case of 
 			
 			//______________________________________________________

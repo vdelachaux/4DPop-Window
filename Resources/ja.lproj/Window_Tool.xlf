@@ -16,8 +16,8 @@ This file is distributed under the same license as the product package.-->
           <target>トリガ: </target>
         </trans-unit>
         <trans-unit id="QOaXUQYqO+6WaGu5q9fHOQ" resname="Form">
-          <source>Form: </source>
-          <target>フォーム: </target>
+          <source>Form</source>
+          <target>フォーム</target>
         </trans-unit>
         <trans-unit id="+SlIgYl+LNxpJgdrohNgyg" resname="Method">
           <source>Method: </source>
@@ -149,8 +149,8 @@ This file is distributed under the same license as the product package.-->
           <target state="new">Windows</target>
         </trans-unit>
         <trans-unit id="1lFQq43KH9LWF1V_zgoA9A" resname="ToolTip">
-          <source>An ordered windows menu</source>
-          <target state="new">An ordered windows menu</target>
+          <source>A tidy window menu</source>
+          <target state="new">A tidy window menu</target>
         </trans-unit>
       </group>
       <group resname="dialog preferences">

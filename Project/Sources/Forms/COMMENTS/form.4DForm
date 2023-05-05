@@ -18,28 +18,7 @@
 	},
 	"pages": [
 		{
-			"objects": {
-				"automatic_font": {
-					"type": "input",
-					"top": 36,
-					"left": 9,
-					"width": 150,
-					"height": 16,
-					"visibility": "hidden",
-					"stroke": "#FF6600",
-					"focusable": false,
-					"fill": "transparent",
-					"borderStyle": "dotted",
-					"enterable": false,
-					"hideFocusRing": true,
-					"dragging": "none",
-					"dropping": "none",
-					"method": "ObjectMethods/automatic_font.4dm",
-					"events": [
-						"onLoad"
-					]
-				}
-			}
+			"objects": {}
 		},
 		{
 			"objects": {
@@ -158,11 +137,12 @@
 			"Vue 6": {},
 			"Vue 7": {},
 			"Vue 8": {},
-			"Vue 9": {
-				"objects": [
-					"automatic_font"
-				]
-			}
+			"Vue 9": {}
 		}
+	},
+	"geometryStamp": 1,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
 	}
 }
