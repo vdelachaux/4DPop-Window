@@ -1,6 +1,6 @@
 //%attributes = {"invisible":true}
 // ----------------------------------------------------
-// Project method : methodGetPath
+// Project method : _o_methodGetPath
 // ID[779435B5FCA34690B839127D7E3B016B]
 // Created 12/06/12 by Vincent de Lachaux
 // ----------------------------------------------------
