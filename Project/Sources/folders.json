@@ -41,7 +41,6 @@
 	"4️⃣ 4DPop": {
 		"methods": [
 			"_4DPopWindow",
-			"COMPILER_4DPop",
 			"doDefault",
 			"doMenu"
 		]
