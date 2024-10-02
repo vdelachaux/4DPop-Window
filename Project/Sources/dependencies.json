@@ -60,7 +60,9 @@
       "github": "vdelachaux/4DPop-sqlSchemas",
       "version": "latest"
     },
-    "4DPop Window": {},
-    "4DPop Clipboard": {}
+    "4DPop Window": {
+      "github": "vdelachaux/4DPop-Window",
+      "version": "latest"
+    }
   }
 }

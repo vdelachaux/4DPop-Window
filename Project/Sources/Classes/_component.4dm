@@ -12,22 +12,10 @@ Class constructor()
 	var $c : Collection
 	
 	// Mark:Delegates 📦
-	If (False:C215)
-		
-		// FIXME: Turn around 🐞
-		// This.database:=cs.pop.database.new()
-		// This.preferences:=cs.pop.Preferences.new("PopWindows")
-		// This.env:=cs.pop.env.new(True)
-		// This.motor:=cs.pop.motor.new()
-		
-	Else 
-		
-		This:C1470.database:=pop.database.new()
-		This:C1470.preferences:=pop.Preferences.new("PopWindows")
-		This:C1470.env:=pop.env.new(True:C214)
-		This:C1470.motor:=pop.motor.new()
-		
-	End if 
+	This:C1470.database:=cs:C1710.pop.database.new()
+	This:C1470.preferences:=cs:C1710.pop.Preferences.new("PopWindows")
+	This:C1470.env:=cs:C1710.pop.env.new(True:C214)
+	This:C1470.motor:=cs:C1710.pop.motor.new()
 	
 	This:C1470.minleft:=0
 	This:C1470.minTop:=0
@@ -54,14 +42,14 @@ Class constructor()
 	This:C1470.screenWidth:=This:C1470.env.mainScreen.dimensions.width-10
 	This:C1470.screenHeight:=This:C1470.env.mainScreen.dimensions.height-10
 	
-	This:C1470.explorer:=Replace string:C233(Get localized string:C991("_explorer"); "{project}"; This:C1470.database.name)
+	This:C1470.explorer:=Replace string:C233(Localized string:C991("_explorer"); "{project}"; This:C1470.database.name)
 	
 	This:C1470.hOffset:=10
 	This:C1470.vOffset:=20
 	
 	For ($process; 1; Count tasks:C335; 1)
 		
-		PROCESS PROPERTIES:C336($process; $name; $state; $time; $mode; $uid; $origin)
+		_O_PROCESS PROPERTIES:C336($process; $name; $state; $time; $mode; $uid; $origin)
 		
 		If ($origin=Design process:K36:9)
 			
@@ -99,7 +87,7 @@ Class constructor()
 			
 		End if 
 		
-		$o.name:=Get localized string:C991($key)
+		$o.name:=Localized string:C991($key)
 		
 	End for each 
 	
@@ -277,13 +265,13 @@ Function windowDefinition($winRef : Integer) : Object
 		height: $bottom-$top\
 		}
 	
-	PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
+	_O_PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
 	$o.name:=$name
 	$o.state:=$state
 	$o.visible:=$visible
 	$o.origin:=$origin
 	
-	$o.explorer:=$o.title=Get localized string:C991("explorer")
+	$o.explorer:=$o.title=Localized string:C991("explorer")
 	
 	return $o
 	
@@ -384,7 +372,7 @@ Function menu()
 					$window.icon:=$o.icon
 					
 					$forms[$window.title]:=$forms[$window.title] || cs:C1710.menu.new()
-					$forms[$window.title].append(Get localized string:C991("MenuLabelsForm"); $window.ref; 0)\
+					$forms[$window.title].append(Localized string:C991("MenuLabelsForm"); $window.ref; 0)\
 						.icon($o.icon)\
 						.setData("window"; $window)\
 						.mark($window.ref=$frontmostWindow)
@@ -397,7 +385,7 @@ Function menu()
 					$window.icon:=$o.icon
 					
 					$forms[$window.title]:=$forms[$window.title] || cs:C1710.menu.new()
-					$forms[$window.title].append(Get localized string:C991("MenuLabelsFormMethod"); $window.ref)\
+					$forms[$window.title].append(Localized string:C991("MenuLabelsFormMethod"); $window.ref)\
 						.icon($o.icon)\
 						.setData("window"; $window)\
 						.mark($window.ref=$frontmostWindow)
@@ -467,35 +455,35 @@ Function menu()
 	// MARK:Application
 	If ($menuApplication#Null:C1517)
 		
-		$menu.append(Get localized string:C991("StringsApplication"); $menuApplication).icon($data.application.icon).line()
+		$menu.append(Localized string:C991("StringsApplication"); $menuApplication).icon($data.application.icon).line()
 		
 	End if 
 	
 	// MARK:Project methods
 	If ($menuMethods#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsProjectMethods"); $menuMethods).icon($data.method.icon).line()
+		$menu.append(Localized string:C991("MenuLabelsProjectMethods"); $menuMethods).icon($data.method.icon).line()
 		
 	End if 
 	
 	// MARK:Classes
 	If ($menuClasses#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelClasses"); $menuClasses).icon($data.class.icon).line()
+		$menu.append(Localized string:C991("MenuLabelClasses"); $menuClasses).icon($data.class.icon).line()
 		
 	End if 
 	
 	// MARK:Triggers
 	If ($menuTrigger#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsTriggers"); $menuTrigger).icon($data.trigger.icon).line()
+		$menu.append(Localized string:C991("MenuLabelsTriggers"); $menuTrigger).icon($data.trigger.icon).line()
 		
 	End if 
 	
 	// MARK:Database methods
 	If ($menudatabaseMethods#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsDatabaseMethods"); $menudatabaseMethods).icon($data.databaseMethod.icon).line()
+		$menu.append(Localized string:C991("MenuLabelsDatabaseMethods"); $menudatabaseMethods).icon($data.databaseMethod.icon).line()
 		
 	End if 
 	
@@ -515,41 +503,41 @@ Function menu()
 			
 		End for each 
 		
-		$menu.append(Get localized string:C991("MenuLabelsForms"); $menuForms).icon($data.form.icon).line()
+		$menu.append(Localized string:C991("MenuLabelsForms"); $menuForms).icon($data.form.icon).line()
 		
 	End if 
 	
 	// MARK:Find…
 	If ($menuFind#Null:C1517)
 		
-		$menu.append(Get localized string:C991("Menulabelsresearches"); $menuFind).icon($data.find.icon).line()
+		$menu.append(Localized string:C991("Menulabelsresearches"); $menuFind).icon($data.find.icon).line()
 		
 	End if 
 	
 	// MARK:Others
 	If ($menuOthers#Null:C1517)
 		
-		$menu.append(Get localized string:C991("MenuLabelsOthers"); $menuOthers).icon($data.other.icon)
+		$menu.append(Localized string:C991("MenuLabelsOthers"); $menuOthers).icon($data.other.icon)
 		
 	End if 
 	
 	If ($windowNumber>0) & ($isOffScreen)
 		
 		$menu.line()\
-			.append(Get localized string:C991("StringsPutFrontmostWindowInScreen"); "inscreen").icon("#Images/inscreen.png")
+			.append(Localized string:C991("StringsPutFrontmostWindowInScreen"); "inscreen").icon("#Images/inscreen.png")
 		
 	End if 
 	
 	If ($windowNumber>=2)
 		
 		$menu.line()\
-			.append(Get localized string:C991("StringsNextWindow"); "next").icon("#Images/next.png")\
-			.append(Get localized string:C991("StringsStacksWindows"); "stack").icon("#Images/stack.png")
+			.append(Localized string:C991("StringsNextWindow"); "next").icon("#Images/next.png")\
+			.append(Localized string:C991("StringsStacksWindows"); "stack").icon("#Images/stack.png")
 		
 	End if 
 	
 	$menu.line()\
-		.append(Get localized string:C991("settings"); "settings").icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png")
+		.append(Localized string:C991("settings"); "settings").icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png")
 	
 	If (Not:C34($menu.popup().selected))
 		
