@@ -5,10 +5,6 @@
 // ----------------------------------------------------
 #DECLARE($methodPath : Text)
 
-If (False:C215)
-	C_TEXT:C284(macroOnClose; $1)
-End if 
-
 var $buffer; $t : Text
 var $b : Boolean
 var $i; $options; $parent; $reference; $sub : Integer

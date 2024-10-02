@@ -1,11 +1,6 @@
 //%attributes = {"invisible":true}
 #DECLARE($which : Text; $eventCode : Integer)
 
-If (False:C215)
-	C_TEXT:C284(DATABASE METHOD; $1)
-	C_LONGINT:C283(DATABASE METHOD; $2)
-End if 
-
 var component : cs:C1710._component
 
 Case of 

@@ -9,10 +9,6 @@
 // ----------------------------------------------------
 #DECLARE($winRef : Integer)
 
-If (False:C215)
-	C_LONGINT:C283(_o_TOOL_WINDOWS; $1)
-End if 
-
 var $explorer; $t : Text
 var $b; $withExplorer : Boolean
 var $bottom; $hOffset; $horizontalOffset; $i; $l; $left : Integer
@@ -50,7 +46,7 @@ If ($winRef=0)
 	
 	For ($i; $number; 1; -1)
 		
-		PROCESS PROPERTIES:C336(Window process:C446($windowRefs{$i}); $t; $l; $l; $b; $l; $origin)
+		_O_PROCESS PROPERTIES:C336(Window process:C446($windowRefs{$i}); $t; $l; $l; $b; $l; $origin)
 		
 		If ($origin<0)
 			

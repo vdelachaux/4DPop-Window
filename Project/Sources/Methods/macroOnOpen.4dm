@@ -8,10 +8,6 @@
 // ----------------------------------------------------
 #DECLARE($methodPath : Text)
 
-If (False:C215)
-	C_TEXT:C284(macroOnOpen; $1)
-End if 
-
 var $options : Integer
 
 COMPILER_MAIN

@@ -6,12 +6,6 @@
 // ----------------------------------------------------
 #DECLARE($name : Text; $type : Integer) : Text
 
-If (False:C215)
-	C_TEXT:C284(_o_methodGetPath; $1)
-	C_LONGINT:C283(_o_methodGetPath; $2)
-	C_TEXT:C284(_o_methodGetPath; $0)
-End if 
-
 var $path : Text
 var $indx : Integer
 var $c : Collection
@@ -67,24 +61,24 @@ Case of
 	: ($type=Path database method:K72:2)
 		
 		$c:=New collection:C1472
-		$c.push(Get localized string:C991("onBackupShutdown"))
-		$c.push(Get localized string:C991("onBackupStartup"))
-		$c.push(Get localized string:C991("onDrop"))
-		$c.push(Get localized string:C991("onExit"))
-		$c.push(Get localized string:C991("onHostDatabaseEvent"))
-		$c.push(Get localized string:C991("onMobileAppAction"))
-		$c.push(Get localized string:C991("onMobileAppAuthentication"))
-		$c.push(Get localized string:C991("onRESTAuthentication"))
-		$c.push(Get localized string:C991("onServerCloseConnection"))
-		$c.push(Get localized string:C991("onServerOpenConnexion"))
-		$c.push(Get localized string:C991("onServerShutdown"))
-		$c.push(Get localized string:C991("onServerStartup"))
-		$c.push(Get localized string:C991("onSqlAuthentication"))
-		$c.push(Get localized string:C991("onStartup"))
-		$c.push(Get localized string:C991("onSystemEvent"))
-		$c.push(Get localized string:C991("onWebAuthentication"))
-		$c.push(Get localized string:C991("onWebConnection"))
-		$c.push(Get localized string:C991("onWebSessionClose"))
+		$c.push(Localized string:C991("onBackupShutdown"))
+		$c.push(Localized string:C991("onBackupStartup"))
+		$c.push(Localized string:C991("onDrop"))
+		$c.push(Localized string:C991("onExit"))
+		$c.push(Localized string:C991("onHostDatabaseEvent"))
+		$c.push(Localized string:C991("onMobileAppAction"))
+		$c.push(Localized string:C991("onMobileAppAuthentication"))
+		$c.push(Localized string:C991("onRESTAuthentication"))
+		$c.push(Localized string:C991("onServerCloseConnection"))
+		$c.push(Localized string:C991("onServerOpenConnexion"))
+		$c.push(Localized string:C991("onServerShutdown"))
+		$c.push(Localized string:C991("onServerStartup"))
+		$c.push(Localized string:C991("onSqlAuthentication"))
+		$c.push(Localized string:C991("onStartup"))
+		$c.push(Localized string:C991("onSystemEvent"))
+		$c.push(Localized string:C991("onWebAuthentication"))
+		$c.push(Localized string:C991("onWebConnection"))
+		$c.push(Localized string:C991("onWebSessionClose"))
 		
 		$indx:=$c.indexOf($name)
 		
