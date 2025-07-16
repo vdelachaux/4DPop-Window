@@ -1,7 +1,4 @@
 {
-	"(Component)": {},
-	"(Private)": {},
-	"(Shared)": {},
 	"# 🚧 DEV": {
 		"tables": [
 			"Table_1"
@@ -55,11 +52,5 @@
 			"PALETTE"
 		]
 	},
-	"trash": {
-		"groups": [
-			"(Component)",
-			"(Private)",
-			"(Shared)"
-		]
-	}
+	"trash": {}
 }
