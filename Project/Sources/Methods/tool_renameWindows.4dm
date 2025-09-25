@@ -7,15 +7,10 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_)
-C_LONGINT:C283($Lon_; $origin; $Lon_parameters; $Lon_process; $Lon_x; $Win_hdl)
-C_TEXT:C284($Txt_; $Txt_databaseName; $Txt_entryPoint; $Txt_prefix; $Txt_title)
-
-If (False:C215)
-	C_TEXT:C284(tool_renameWindows; $1)
-End if 
+var $Txt_databaseName; $Txt_entryPoint; $Txt_prefix; $Txt_title : Text
+var $Lon_parameters; $Lon_process; $Lon_x; $Win_hdl : Integer
 
 // ----------------------------------------------------
 // Initialisations
@@ -60,12 +55,10 @@ Case of
 				//not for modal | floating | external
 				If (Window kind:C445($Win_hdl)=Regular window:K27:1)
 					
-					PROCESS PROPERTIES:C336(Window process:C446($Win_hdl); $Txt_; $Lon_; $Lon_; $Boo_; $Lon_; $origin)
-					
 					Case of 
 							
 							//-----------------------------------
-						: ($origin=Design process:K36:9)
+						: (Process info:C1843(Window process:C446($Win_hdl)).type=Design process:K36:9)
 							
 							$Txt_title:=Get window title:C450($Win_hdl)
 							

@@ -5,9 +5,8 @@ property motor : cs:C1710.pop.motor
 
 Class constructor()
 	
-	var $key; $name : Text
-	var $i; $mode; $origin; $process; $state; $time : Integer
-	var $uid : Integer
+	var $key : Text
+	var $i; $process : Integer
 	var $o; $screen : Object
 	var $c : Collection
 	
@@ -49,9 +48,7 @@ Class constructor()
 	
 	For ($process; 1; Count tasks:C335; 1)
 		
-		_O_PROCESS PROPERTIES:C336($process; $name; $state; $time; $mode; $uid; $origin)
-		
-		If ($origin=Design process:K36:9)
+		If (Process info:C1843($process).type=Design process:K36:9)
 			
 			This:C1470.designProcess:=$process
 			break
@@ -167,9 +164,7 @@ Function next($winRef : Integer)
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function bringToFront($winRef : Integer)
 	
-	var $o : Object
-	
-	$o:=This:C1470.windowDefinition($winRef)
+	var $o:=This:C1470.windowDefinition($winRef)
 	
 	If ($o.offScreen | Shift down:C543)
 		
@@ -229,11 +224,7 @@ Function windowList($withFloating : Boolean) : Collection
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function windowDefinition($winRef : Integer) : Object
 	
-	var $name : Text
-	var $visible : Boolean
-	var $bottom; $indx; $left; $origin; $right; $state : Integer
-	var $top; $UID : Integer
-	var $time : Time
+	var $bottom; $indx; $left; $right; $top : Integer
 	var $o : Object
 	
 	GET WINDOW RECT:C443($left; $top; $right; $bottom; $winRef)
@@ -265,11 +256,11 @@ Function windowDefinition($winRef : Integer) : Object
 		height: $bottom-$top\
 		}
 	
-	_O_PROCESS PROPERTIES:C336($o.process; $name; $state; $time; $visible; $UID; $origin)
-	$o.name:=$name
-	$o.state:=$state
-	$o.visible:=$visible
-	$o.origin:=$origin
+	var $infos:=Process info:C1843($o.process)
+	$o.name:=$infos.name
+	$o.state:=$infos.state
+	$o.visible:=$infos.visible
+	$o.origin:=$infos.type
 	
 	$o.explorer:=$o.title=Localized string:C991("explorer")
 	
@@ -280,9 +271,9 @@ Function menu()
 	
 	var $formName : Text
 	var $isOffScreen : Boolean
-	var $bottom; $frontmostWindow; $i; $indx; $left; $right : Integer
-	var $top; $windowNumber : Integer
-	var $data; $forms; $o; $window; $windowReferences : Object
+	var $bottom; $frontmostWindow; $indx; $left; $right; $top : Integer
+	var $windowNumber : Integer
+	var $data; $forms; $o; $window : Object
 	var $c; $windows : Collection
 	var $menu; $menuApplication; $menuClasses; $menudatabaseMethods; $menuFind; $menuForms; $menuMethods; $menuOthers; $menuTrigger : cs:C1710.menu
 	
@@ -578,9 +569,7 @@ Function menu()
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function doSettings()
 	
-	var $winRef : Integer
-	
-	$winRef:=Open form window:C675("PREFERENCES"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
+	var $winRef:=Open form window:C675("PREFERENCES"; Movable form dialog box:K39:8; Horizontally centered:K39:1; Vertically centered:K39:4; *)
 	DIALOG:C40("PREFERENCES")
 	CLOSE WINDOW:C154($winRef)
 	

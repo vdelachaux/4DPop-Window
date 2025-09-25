@@ -9,11 +9,10 @@
 // ----------------------------------------------------
 #DECLARE($winRef : Integer)
 
-var $explorer; $t : Text
-var $b; $withExplorer : Boolean
-var $bottom; $hOffset; $horizontalOffset; $i; $l; $left : Integer
-var $number; $origin; $right; $screenHight; $screenWidth; $top : Integer
-var $verticalOffset; $vOffset : Integer
+var $explorer : Text
+var $withExplorer : Boolean
+var $bottom; $hOffset; $horizontalOffset; $i; $left; $number : Integer
+var $right; $screenHight; $screenWidth; $top; $verticalOffset; $vOffset : Integer
 
 ARRAY LONGINT:C221($windowRefs; 0)
 
@@ -46,9 +45,7 @@ If ($winRef=0)
 	
 	For ($i; $number; 1; -1)
 		
-		_O_PROCESS PROPERTIES:C336(Window process:C446($windowRefs{$i}); $t; $l; $l; $b; $l; $origin)
-		
-		If ($origin<0)
+		If (Process info:C1843(Window process:C446($windowRefs{$i})).type<0)
 			
 			If (Get window title:C450($windowRefs{$i})#$explorer)
 				
