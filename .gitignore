@@ -1,4 +1,4 @@
-﻿# Ignore invisible files/folders except .gitignore
+# Ignore invisible files/folders except .gitignore
 .*
 !.gitignore
 !.gitattributes
@@ -76,3 +76,4 @@ DEV/
 #--------------------------------
 # Added by user
 #--------------------------------
+/Components
