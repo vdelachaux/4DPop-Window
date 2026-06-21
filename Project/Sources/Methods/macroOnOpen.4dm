@@ -11,8 +11,6 @@
 var $options : Integer
 
 COMPILER_MAIN
-var component : cs:C1710._component
-component:=component || cs:C1710._component.new()
 
 $options:=component.preferences.get("options")
 
@@ -35,17 +33,6 @@ If ($options ?? 2)
 		
 	End if 
 	
-	// ----------------------------------------------------
-	//If (Count parameters>=1)
-	//Palette_ADD_ELEMENT ($methodPath)
-	//End if
-	//If (Count list items(<>Lst_windows;*)>0)
-	//SHOW WINDOW(<>Win_palette)
-	
 	POST OUTSIDE CALL:C329(-1)
-	
-	//Else
-	//HIDE WINDOW(<>Win_palette)
-	//End if
 	
 End if 

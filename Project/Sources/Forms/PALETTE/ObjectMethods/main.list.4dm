@@ -3,11 +3,11 @@
 // Created 11/06/12 by Vincent de Lachaux
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($Boo_expanded)
-C_LONGINT:C283($Lon_; $bottom; $Lon_buffer; $Lon_button; $Lon_firstLine; $eventCode; $i; $left)
-C_LONGINT:C283($Lon_line; $Lon_lineHeight; $Lon_mouseX; $Lon_mouseY; $right; $top; $Lon_wHandle; $Lst_opened)
-C_PICTURE:C286($Pic_picto)
-C_TEXT:C284($Txt_additional; $Txt_buffer; $Txt_command; $Txt_comment; $Txt_path; $Txt_title)
+var $Boo_expanded : Boolean
+var $Lon_; $bottom; $Lon_buffer; $Lon_button; $Lon_firstLine; $eventCode; $i; $left : Integer
+var $Lon_line; $Lon_lineHeight; $Lon_mouseX; $Lon_mouseY; $right; $top; $Lon_wHandle; $Lst_opened : Integer
+var $Pic_picto : Picture
+var $Txt_additional; $Txt_buffer; $Txt_command; $Txt_comment; $Txt_path; $Txt_title : Text
 
 // ----------------------------------------------------
 // Initialisations
@@ -20,7 +20,7 @@ Case of
 		//______________________________________________________
 	: ($eventCode=On Mouse Move:K2:35)
 		
-		GET MOUSE:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
+		MOUSE POSITION:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
 		
 		OBJECT GET COORDINATES:C663(<>Lst_windows; $left; $top; $right; $bottom)
 		$Lon_mouseY:=$Lon_mouseY-$top
@@ -40,7 +40,7 @@ Case of
 		GET LIST ITEM:C378(<>Lst_windows; $Lon_line; $Lon_wHandle; $Txt_buffer; $Lst_opened; $Boo_expanded)
 		If (Is a list:C621($Lst_opened))
 			
-			$Txt_additional:=Choose:C955($Boo_expanded; Get localized string:C991("Items_hide"); Get localized string:C991("Items_show"))
+			$Txt_additional:=Choose:C955($Boo_expanded; Localized string:C991("Items_hide"); Localized string:C991("Items_show"))
 			
 		Else 
 			
@@ -102,7 +102,7 @@ Case of
 			
 		Else 
 			
-			GET MOUSE:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
+			MOUSE POSITION:C468($Lon_mouseX; $Lon_mouseY; $Lon_button)
 			
 			OBJECT GET COORDINATES:C663(<>Lst_windows; $left; $top; $right; $bottom)
 			
@@ -172,7 +172,7 @@ Case of
 					
 					$Boo_expanded:=Not:C34($Boo_expanded)
 					SET LIST ITEM:C385(<>Lst_windows; $Lon_wHandle; $Txt_title; $Lon_wHandle; $Lst_opened; $Boo_expanded)
-					SET LIST ITEM PARAMETER:C986(<>Lst_windows; $Lon_wHandle; Additional text:K28:7; Choose:C955($Boo_expanded; Get localized string:C991("Items_hide"); Get localized string:C991("Items_show")))
+					SET LIST ITEM PARAMETER:C986(<>Lst_windows; $Lon_wHandle; Additional text:K28:7; Choose:C955($Boo_expanded; Localized string:C991("Items_hide"); Localized string:C991("Items_show")))
 					GET LIST ITEM ICON:C951(<>Lst_windows; $Lon_wHandle; $Pic_picto)
 					SET LIST ITEM PROPERTIES:C386(<>Lst_windows; $Lon_wHandle; False:C215; Bold:K14:2; 0; 0x00666666)
 					SET LIST ITEM ICON:C950(<>Lst_windows; $Lon_wHandle; $Pic_picto)

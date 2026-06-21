@@ -75,33 +75,38 @@ Function setClosing($enabled : Boolean) : cs:C1710.workspace
 	return This:C1470
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns workspace names sorted by most recent update first
+Function _sortedNames($entries : Object) : Collection
+
+	$entries:=$entries || {}
+	var $rows:=[]
+
+	var $name : Text
+	For each ($name; OB Keys:C1719($entries))
+
+		var $ws : Object:=$entries[$name]
+		$rows.push({name: $name; updatedDate: $ws.updatedDate; updatedTime: $ws.updatedTime; date: String:C10($ws.date || "")})
+
+	End for each 
+
+	$rows:=$rows.orderBy("updatedDate desc,updatedTime desc,date desc,name asc")
+
+	var $names:=[]
+	var $row : Object
+	For each ($row; $rows)
+
+		$names.push($row.name)
+
+	End for each 
+
+	return $names
+
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns the list of saved workspace names
 Function list() : Collection
 	
 	var $state : Object:=This:C1470._state()
-	var $entries : Object:=$state.entries || {}
-	var $rows:=[]
-	
-	var $name : Text
-	For each ($name; OB Keys:C1719($entries))
-		
-		var $ws : Object:=$entries[$name]
-		$rows.push(New object:C1471("name"; $name; "updatedDate"; $ws.updatedDate; "updatedTime"; $ws.updatedTime; "date"; String:C10($ws.date || "")))
-		
-	End for each 
-	
-	$rows:=$rows.orderBy("updatedDate desc,updatedTime desc,date desc,name asc")
-	
-	var $names:=[]
-	
-	var $row : Object
-	For each ($row; $rows)
-		
-		$names.push($row.name)
-		
-	End for each 
-	
-	return $names
+	return This:C1470._sortedNames($state.entries)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns true if a workspace name already exists
@@ -296,7 +301,7 @@ Function delete($name : Text)
 	
 	This:C1470._saveState($state)
 	
-	If (($state.current="") && (Not:C34(This:C1470.autosave())))
+	If (($state.current="") && (Not:C34(Bool:C1537($state.autosave))))
 		
 		Try(component._autosaveSync())
 		
@@ -306,9 +311,12 @@ Function delete($name : Text)
 	// Builds and returns the workspace submenu
 Function menu() : cs:C1710.menu
 	
+	var $state : Object:=This:C1470._state()
+	var $entries : Object:=$state.entries || {}
 	var $menu:=cs:C1710.menu.new("no-localization")
-	var $current : Text:=This:C1470.current()
-	var $autosave : Boolean:=This:C1470.autosave()
+	var $current : Text:=String:C10($state.current || "")
+	var $autosave : Boolean:=Bool:C1537($state.autosave)
+	var $hasCurrent : Boolean:=(Length:C16($current)>0) && ($entries[$current]#Null:C1517)
 	
 	// New empty workspace
 	$menu.append(Localized string:C991("WsNew"); "ws:new").icon("#Images/ws-save.svg")
@@ -316,15 +324,14 @@ Function menu() : cs:C1710.menu
 	// Save current workspace
 	$menu.append(Localized string:C991("WsSave"); "ws:save").icon("#Images/ws-save.svg")
 	
-	If (Length:C16($current)>0)\
-		 && (This:C1470.exists($current))
+	If ($hasCurrent)
 		
 		var $updateLabel : Text:=Localized string:C991("WsUpdate")+" \""+$current+"\""
 		$menu.append($updateLabel; "ws:updateCurrent").icon("#Images/ws-update.svg").enable(Not:C34($autosave))
 		
 	End if 
 	
-	var $names:=This:C1470.list()
+	var $names : Collection:=This:C1470._sortedNames($entries)
 	
 	If ($names.length>0)
 		
@@ -362,11 +369,10 @@ Function menu() : cs:C1710.menu
 		
 	End if 
 	
-	If (Length:C16($current)>0)\
-		 && (This:C1470.exists($current))
+	If ($hasCurrent)
 		
 		$menu.line()
-		$menu.append(Localized string:C991("WsAutosave"); "ws:autosave").icon("#Images/ws-autosave.svg").mark(This:C1470.autosave())
+		$menu.append(Localized string:C991("WsAutosave"); "ws:autosave").icon("#Images/ws-autosave.svg").mark($autosave)
 		
 	End if 
 	

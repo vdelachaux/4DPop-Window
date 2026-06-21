@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="25">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="26">
 	<com.4d>
 		<database>
 			<cache size_fixed="32" size_maximum="100" size_reserved="128"/>
 			<cpu_priority/>
-			<misc prefer_null_than_blank_values="false" standard_xpath="true"/>                </database>
+			<misc prefer_null_than_blank_values="false" standard_xpath="true"/>
+		</database>
 		<compiler>
-			<options compilation_path="3" fat_binary="true" target="all"/>
-			<typage default_for_button="2"/>
-			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>                      </compiler>
+			<options compilation_path="4" fat_binary="true" syntax_file="true"/>
+			<typage/>
+			<method_suffix/>
+		</compiler>
 		<interface>
 			<developper allow_read_only_structure="false" display_toolbar="true"/>
-			<user print_progress="false"/>                </interface>
+			<user print_progress="false"/>
+		</interface>
 		<general execute_host_database_event="true">
 			<mover always_display_dialog="2"/>
 		</general>
@@ -49,4 +52,6 @@
 				<configuration automatic_session_management="true" session_mode="2"/>
 				<misc/>
 			</remote>
-		</web>              </com.4d>  </preferences>
+		</web>
+	</com.4d>
+</preferences>

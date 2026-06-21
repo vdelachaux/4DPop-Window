@@ -8,13 +8,7 @@
 // and note how it's easier to manage the palette ;-)
 // ----------------------------------------------------
 // Declarations
-var $1 : Text
-var $2 : Integer
-
-If (False:C215)
-	C_TEXT:C284(Palette_ADD_ELEMENT; $1)
-	C_LONGINT:C283(Palette_ADD_ELEMENT; $2)
-End if 
+#DECLARE($path : Text; $winHandle : Integer)
 
 var $Txt_buffer; $Txt_name; $Txt_object; $Txt_parent; $Txt_path; $Txt_title : Text
 var $Txt_wName : Text
@@ -28,11 +22,11 @@ ARRAY LONGINT:C221($tLon_windowReferences; 0)
 
 // ----------------------------------------------------
 // Initialisations
-$Txt_path:=$1
+$Txt_path:=$path
 
 If (Count parameters:C259>=2)
 	
-	$Win_hdl:=$2
+	$Win_hdl:=$winHandle
 	
 Else 
 	

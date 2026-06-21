@@ -12,8 +12,8 @@ Case of
 		//______________________________________________________
 	: ($e.code=On Load:K2:1)
 		
-		var component : cs:C1710._component
-		component:=component || cs:C1710._component.new()
+		COMPILER_MAIN
+		
 		$o:=component.preferences.get()
 		
 		Form:C1466.menu:=$o=Null:C1517 ? True:C214 : Not:C34($o.options ?? 1)

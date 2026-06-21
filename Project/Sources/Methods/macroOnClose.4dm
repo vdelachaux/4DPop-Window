@@ -16,8 +16,6 @@ If (Process aborted:C672)
 End if 
 
 COMPILER_MAIN
-var component : cs:C1710._component
-component:=component || cs:C1710._component.new()
 
 $options:=component.preferences.get("options")
 

@@ -7,7 +7,7 @@
 //
 // ----------------------------------------------------
 // Declarations
-var $1 : Text
+#DECLARE($entryPoint : Text)
 
 var $Txt_databaseName; $Txt_entryPoint; $Txt_prefix; $Txt_title : Text
 var $Lon_parameters; $Lon_process; $Lon_x; $Win_hdl : Integer
@@ -18,7 +18,7 @@ $Lon_parameters:=Count parameters:C259
 
 If ($Lon_parameters>=1)
 	
-	$Txt_entryPoint:=$1
+	$Txt_entryPoint:=$entryPoint
 	
 End if 
 

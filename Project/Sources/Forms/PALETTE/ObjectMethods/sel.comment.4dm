@@ -1,6 +1,6 @@
-C_LONGINT:C283($bottom; $height; $left; $right; $Lon_sBottom; $Lon_sLeft)
-C_LONGINT:C283($Lon_sRight; $Lon_sTop; $top; $Lon_type; $Lon_wbottom; $Lon_width)
-C_LONGINT:C283($Lon_wleft; $Lon_wright; $Lon_wtop; $Win_hdl)
+var $bottom; $height; $left; $right; $Lon_sBottom; $Lon_sLeft : Integer
+var $Lon_sRight; $Lon_sTop; $top; $Lon_type; $Lon_wbottom; $Lon_width : Integer
+var $Lon_wleft; $Lon_wright; $Lon_wtop; $Win_hdl : Integer
 
 GET WINDOW RECT:C443($Lon_wleft; $Lon_wtop; $Lon_wright; $Lon_wbottom; <>Win_palette)
 $Lon_width:=$Lon_wright-$Lon_wleft

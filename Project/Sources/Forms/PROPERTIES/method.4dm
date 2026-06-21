@@ -3,8 +3,8 @@
 // Created 11/06/12 by Vincent de Lachaux
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($eventCode; $Lon_wHandle)
-C_TEXT:C284($Txt_path)
+var $eventCode; $Lon_wHandle : Integer
+var $Txt_path : Text
 
 // ----------------------------------------------------
 // Initialisations

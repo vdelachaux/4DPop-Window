@@ -8,18 +8,14 @@
 // Contextual and action menu of the palette
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
+#DECLARE($entryPoint : Text)
 
-C_BOOLEAN:C305($Boo_always; $Boo_expanded; $Boo_hide; $Boo_selected)
-C_LONGINT:C283($bottom; $height; $i; $left; $Lon_opened; $Lon_parameters; $right; $top)
-C_LONGINT:C283($Lon_wbottom; $Lon_wHandle; $Lon_width; $Lon_wleft; $Lon_wright; $Lon_wtop)
-C_TEXT:C284($Mnu_main; $Txt_action; $Txt_buffer)
+var $Boo_always; $Boo_expanded; $Boo_hide; $Boo_selected : Boolean
+var $bottom; $height; $i; $left; $Lon_opened; $Lon_parameters; $right; $top : Integer
+var $Lon_wbottom; $Lon_wHandle; $Lon_width; $Lon_wleft; $Lon_wright; $Lon_wtop : Integer
+var $Mnu_main; $Txt_action; $Txt_buffer : Text
 
 ARRAY LONGINT:C221($tLon_wHandles; 0)
-
-If (False:C215)
-	C_TEXT:C284(Palette_MENU; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations
@@ -38,17 +34,17 @@ If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	Case of 
 			
 			//______________________________________________________
-		: ($1="context")
+		: ($entryPoint="context")
 			
 			//______________________________________________________
-		: ($1="action")
+		: ($entryPoint="action")
 			
 			$Boo_always:=True:C214
 			
 			//______________________________________________________
 		Else 
 			
-			$Txt_action:=$1
+			$Txt_action:=$entryPoint
 			
 			//______________________________________________________
 	End case 
@@ -66,7 +62,7 @@ If (Length:C16($Txt_action)=0)
 	
 	If ($Boo_selected | $Boo_always)
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("Items_foreground"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("Items_foreground"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "foreground")
 		
 		If (Not:C34($Boo_selected))
@@ -78,7 +74,7 @@ If (Length:C16($Txt_action)=0)
 	
 	If ($Boo_selected | $Boo_always)
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("Items_close"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("Items_close"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "close")
 		
 		If (Not:C34($Boo_selected))
@@ -92,7 +88,7 @@ If (Length:C16($Txt_action)=0)
 		
 		APPEND MENU ITEM:C411($Mnu_main; "-")
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("Items_minimize"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("Items_minimize"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "dock")
 		
 		If (Not:C34($Boo_selected))
@@ -128,7 +124,7 @@ If (Length:C16($Txt_action)=0)
 	
 	If ($Boo_selected | $Boo_always)
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("Items_hide"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("Items_hide"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "hide")
 		
 		If (Not:C34($Boo_selected) | $Boo_hide)
@@ -140,7 +136,7 @@ If (Length:C16($Txt_action)=0)
 	
 	If ($Boo_selected | $Boo_always)
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("Items_show"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("Items_show"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "show")
 		
 		If (Not:C34($Boo_selected & $Boo_hide))
@@ -156,7 +152,7 @@ If (Length:C16($Txt_action)=0)
 		
 	End if 
 	
-	APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("MenulabelsshowAllWindows"))
+	APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("MenulabelsshowAllWindows"))
 	SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "show_all")
 	
 	If (Count list items:C380(<>Lst_wHidden)=0)
@@ -179,7 +175,7 @@ If (Length:C16($Txt_action)=0)
 		
 		APPEND MENU ITEM:C411($Mnu_main; "-")
 		
-		APPEND MENU ITEM:C411($Mnu_main; Get localized string:C991("StringsPutFrontmostWindowInScreen"))
+		APPEND MENU ITEM:C411($Mnu_main; Localized string:C991("StringsPutFrontmostWindowInScreen"))
 		SET MENU ITEM PARAMETER:C1004($Mnu_main; -1; "inscreen")
 		GET WINDOW RECT:C443($left; $top; $right; $bottom; $Lon_wHandle)
 		

@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true}
 #DECLARE($which : Text; $eventCode : Integer)
 
-var component : cs:C1710._component
+COMPILER_MAIN
 
 Case of 
 		
@@ -21,8 +21,6 @@ Case of
 				
 			End if 
 		End if 
-		
-		component:=cs:C1710._component.new()
 		
 		//______________________________________________________
 	: ($which="On Exit")
@@ -62,8 +60,6 @@ The On Startup database method method of the host database has not yet been call
 /*
 The On Startup database method of the host database just finished running
 */
-				
-				component:=cs:C1710._component.new()
 				
 				If (component.preferences.get("option") ?? 3)  // Prepend title of windows with the name of the database
 					

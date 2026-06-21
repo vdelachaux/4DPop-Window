@@ -1,6 +1,6 @@
-C_LONGINT:C283($bottom; $Lon_end; $left; $right; $top; $Lon_x)
-C_LONGINT:C283($Win_hdl)
-C_TEXT:C284($Txt_)
+var $bottom; $Lon_end; $left; $right; $top; $Lon_x : Integer
+var $Win_hdl : Integer
+var $Txt_ : Text
 
 $Lon_x:=Selected list items:C379(<>Lst_windows)
 $Lon_end:=Count list items:C380(<>Lst_windows)
