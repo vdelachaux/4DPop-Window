@@ -13,15 +13,13 @@ If (False:C215)
 End if 
 
 If (False:C215)
-	_O_C_TEXT:C284(tool_renameWindows; $1)
+	C_TEXT:C284(tool_renameWindows; $1)
 	
-	_O_C_TEXT:C284(Palette_ADD_ELEMENT; $1)
-	_O_C_LONGINT:C283(Palette_ADD_ELEMENT; $2)
+	C_TEXT:C284(Palette_ADD_ELEMENT; $1)
+	C_LONGINT:C283(Palette_ADD_ELEMENT; $2)
 	
-	_O_C_LONGINT:C283(Palette_ADD_WINDOW; $1)
+	C_LONGINT:C283(Palette_ADD_WINDOW; $1)
 	
-	_O_C_TEXT:C284(Palette_MENU; $1)
-	
-	_O_C_TEXT:C284(Palette_RUN; $1)
+	C_TEXT:C284(Palette_MENU; $1)
 	
 End if 

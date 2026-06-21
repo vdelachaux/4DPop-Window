@@ -8,7 +8,7 @@
 	},
 	"form": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_601.png",
-		"name": ".36;3"
+		"name": "Form"
 	},
 	"formMethod": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
@@ -19,14 +19,16 @@
 		"name": ".common_objectMethod"
 	},
 	"class": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_628.png"
+		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_628.png",
+		"name":"class"
 	},
 	"trigger": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_600.png",
 		"name": ".common_Trigger"
 	},
 	"find": {
-		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_873.png"
+		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_873.png",
+		"name":"find"
 	},
 	"other": {
 		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_459.png"

@@ -39,7 +39,8 @@ This file is distributed under the same license as the product package.-->
         <trans-unit id="fpv9uKpIyQnyCqUhhWFOwQ" resname="find">
           <source>Find: </source>
           <target state="new">Find: </target>
-        </trans-unit><trans-unit id="1Ulqk744jwTS_Lq212sapg" resname="_explorer">
+        </trans-unit>
+        <trans-unit id="1Ulqk744jwTS_Lq212sapg" resname="_explorer">
           <source>{project} - Explorer</source>
           <target state="new">{project} - Explorer</target>
         </trans-unit>
@@ -88,10 +89,12 @@ This file is distributed under the same license as the product package.-->
         <trans-unit id="5md4xiW5a7stPKPvoMU+uw" resname="Menulabelsresearches">
           <source>Finds</source>
           <target state="new">Finds</target>
-        </trans-unit><trans-unit id="cV53WzEEXCQPLiLw2_4LAg" resname="MenulabelsshowAllWindows">
+        </trans-unit>
+        <trans-unit id="cV53WzEEXCQPLiLw2_4LAg" resname="MenulabelsshowAllWindows">
           <source>Show all windows</source>
           <target state="new">Show all windows</target>
-        </trans-unit><trans-unit id="MrwmarBdCNKJc5SLauKR0w" resname="MenuLabelClasses">
+        </trans-unit>
+        <trans-unit id="MrwmarBdCNKJc5SLauKR0w" resname="MenuLabelClasses">
           <source>Classes</source>
           <target state="new">Classes</target>
         </trans-unit>
@@ -121,7 +124,7 @@ This file is distributed under the same license as the product package.-->
           <source>Default action</source>
           <target>デフォルトアクション</target>
         </trans-unit>
-        </group>
+      </group>
       <group resname="Tool">
         <trans-unit id="17" resname="ToolName">
           <source>Windows</source>
@@ -252,7 +255,8 @@ This file is distributed under the same license as the product package.-->
           <source>Execute on Server</source>
           <target state="new">Execute on Server</target>
         </trans-unit>
-      </group><group resname="Palette">
+      </group>
+      <group resname="Palette">
         <trans-unit id="SaiC_+Bra7ynJUb+Zhk_RQ" resname="Items_close">
           <source>Close</source>
           <target state="new">Close</target>
@@ -281,7 +285,42 @@ This file is distributed under the same license as the product package.-->
           <source>4DPop Window</source>
           <target state="new">4DPop Window</target>
         </trans-unit>
-      </group></body>
+      </group>
+      <group resname="Workspaces">
+        <trans-unit id="WsA1bCdEfGhIjKlMnOpQrSt" resname="WsWorkspaces">
+          <source>Workspaces</source>
+          <target state="new">Workspaces</target>
+        </trans-unit>
+        <trans-unit id="WsB2cDeEfGhIjKlMnOpQrSt" resname="WsSave">
+          <source>Save current workspace…</source>
+          <target state="new">Save current workspace…</target>
+        </trans-unit>
+        <trans-unit id="WsC3dEfFgHiJkLmNoPqRsTu" resname="WsRestore">
+          <source>Restore</source>
+          <target state="new">Restore</target>
+        </trans-unit>
+        <trans-unit id="WsD4eEfGhIjKlMnOpQrStUv" resname="WsDelete">
+          <source>Delete</source>
+          <target state="new">Delete</target>
+        </trans-unit>
+        <trans-unit id="WsE5fGhHiJkLmNoPqRsTuVw" resname="WsNamePrompt">
+          <source>Workspace name:</source>
+          <target state="new">Workspace name:</target>
+        </trans-unit>
+        <trans-unit id="WsF6gHiIjKlMnOpQrStUvWx" resname="WsDefaultName">
+          <source>My workspace</source>
+          <target state="new">My workspace</target>
+        </trans-unit>
+        <trans-unit id="WsG7hIjJkLmNoPqRsTuVwXy" resname="WsUpdateCurrent">
+          <source>Update current workspace</source>
+          <target state="new">Update current workspace</target>
+        </trans-unit>
+        <trans-unit id="WsH8iJkKlMnOpQrStUvWxYz" resname="WsReplaceConfirm">
+          <source>This workspace already exists. Replace it?</source>
+          <target state="new">This workspace already exists. Replace it?</target>
+        </trans-unit>
+      </group>
+    </body>
     <header>
       <prop-group name="4DPop XLIFF Pro">
         <prop prop-type="version">3.0</prop>

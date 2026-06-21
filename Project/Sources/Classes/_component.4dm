@@ -3,6 +3,12 @@ property database : cs:C1710.pop.database
 property env : cs:C1710.pop.env
 property motor : cs:C1710.pop.motor
 
+property minleft; minTop; maxRight; maxBottom : Integer
+property screenWidth; screenHeight; hOffset; vOffset : Integer
+property explorer : Text
+property designProcess : Integer
+property data : Object
+
 Class constructor()
 	
 	var $key : Text
@@ -84,9 +90,11 @@ Class constructor()
 			
 		End if 
 		
-		$o.name:=Localized string:C991($key)
+		$o.name:=Try(Localized string:C991($o.name))
 		
 	End for each 
+	
+	This:C1470._autosaveSync()
 	
 	// <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== <== 
 Function get useSubmenu() : Boolean
@@ -136,8 +144,8 @@ Function stackWindows()
 		$window.coordinates.right:=$left+$window.dimensions.width
 		$window.coordinates.bottom:=$top+$window.dimensions.height
 		
-		$window.coordinates.right:=$window.coordinates.right>=This:C1470.en.mainScreen.workArea.right\
-			 ? This:C1470.en.mainScreen.workArea.right-This:C1470.hOffset\
+		$window.coordinates.right:=$window.coordinates.right>=This:C1470.env.mainScreen.workArea.right\
+			 ? This:C1470.env.mainScreen.workArea.right-This:C1470.hOffset\
 			 : $window.coordinates.right
 		
 		$window.coordinates.bottom:=$window.coordinates.bottom>=This:C1470.env.mainScreen.workArea.bottom\
@@ -173,8 +181,8 @@ Function bringToFront($winRef : Integer)
 		$o.coordinates.right:=$o.coordinates.left+$o.dimensions.width
 		$o.coordinates.bottom:=$o.coordinates.top+$o.dimensions.height
 		
-		$o.coordinates.right:=$o.coordinates.right>=This:C1470.en.mainScreen.workArea.right\
-			 ? This:C1470.en.mainScreen.workArea.right-This:C1470.hOffset\
+		$o.coordinates.right:=$o.coordinates.right>=This:C1470.env.mainScreen.workArea.right\
+			 ? This:C1470.env.mainScreen.workArea.right-This:C1470.hOffset\
 			 : $o.coordinates.right
 		
 		$o.coordinates.bottom:=$o.coordinates.bottom>=This:C1470.env.mainScreen.workArea.bottom\
@@ -443,6 +451,12 @@ Function menu()
 	
 	$menu:=cs:C1710.menu.new()
 	
+	// MARK:Workspaces (first item)
+	var $ws : cs:C1710.workspace:=cs:C1710.workspace.new()
+	var $wsMenu : cs:C1710.menu:=$ws.menu()
+	$menu.append(Localized string:C991("WsWorkspaces"); $wsMenu).icon("#Images/workspace.svg")
+	$menu.line()
+	
 	// MARK:Application
 	If ($menuApplication#Null:C1517)
 		
@@ -559,12 +573,370 @@ Function menu()
 			This:C1470.stackWindows()
 			
 			//______________________________________________________
+		: ($menu.choice="ws:new")
+			var $defaultName : Text:=$ws.suggestedName(Localized string:C991("WsDefaultName"))
+			var $wsName : Text:=Request:C163(Localized string:C991("WsNamePrompt"); $defaultName)
+			var $restoreAutosave : Boolean:=False:C215
+			var $closed : Boolean:=False:C215
+			
+			If (OK=1)\
+					 && (Length:C16($wsName)>0)
+				
+				If ($ws.exists($wsName))
+					
+					CONFIRM:C162(Localized string:C991("WsReplaceConfirm")+"\n"+$wsName)
+					
+				End if 
+				
+				If (OK=1)
+					
+					$restoreAutosave:=$ws.autosave()
+					If ($restoreAutosave)
+						$ws.setAutosave(False:C215)
+						This:C1470._autosaveSync()
+					End if 
+					
+					If ($ws.create($wsName))
+						$closed:=This:C1470._ensureDesignWindowsClosed()
+					End if 
+					
+					If ($restoreAutosave) && $closed
+						$ws.setAutosave(True:C214)
+						This:C1470._autosaveSync()
+					End if 
+					
+				End if 
+			End if 
+			
+			//______________________________________________________
+		: ($menu.choice="ws:save")
+			var $defaultName : Text:=$ws.suggestedName(Localized string:C991("WsDefaultName"))
+			var $wsName : Text:=Request:C163(Localized string:C991("WsNamePrompt"); $defaultName)
+			
+			If (OK=1)\
+				 && (Length:C16($wsName)>0)
+				
+				
+				If ($ws.exists($wsName))
+					
+					CONFIRM:C162(Localized string:C991("WsReplaceConfirm")+"\n"+$wsName)
+					
+				End if 
+				
+				If (OK=1)
+					
+					$ws.save($wsName)
+					
+				End if 
+			End if 
+			
+			//______________________________________________________
+		: ($menu.choice="ws:updateCurrent")
+			
+			$ws.updateCurrent()
+			
+			//______________________________________________________
+		: ($menu.choice="ws:autosave")
+			
+			$ws.toggleAutosave()
+			This:C1470._autosaveSync()
+			
+			//______________________________________________________
+		: (Position:C15("ws:restore:"; $menu.choice)=1)
+			
+			$ws.restore(Substring:C12($menu.choice; 12))
+			
+			//______________________________________________________
+		: (Position:C15("ws:delete:"; $menu.choice)=1)
+			
+			$ws.delete(Substring:C12($menu.choice; 11))
+			
+			//______________________________________________________
 		Else 
 			
 			This:C1470.bringToFront(Num:C11($menu.choice))
 			
 			//______________________________________________________
 	End case 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns the process number of autosave worker (0 if not running)
+Function _autosaveWorkerProcess() : Integer
+	
+	var $i : Integer
+	
+	For ($i; 1; Count tasks:C335; 1)
+		
+		If (Process info:C1843($i).name="4DPopWindowsAutosaveWorker")
+			
+			return $i
+			
+		End if 
+	End for 
+	
+	return 0
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Starts/stops autosave worker according to current autosave option
+Function _autosaveSync()
+	
+	var $ws : cs:C1710.workspace:=cs:C1710.workspace.new()
+	
+	If ($ws.autosave())
+		
+		If (This:C1470._autosaveWorkerProcess()=0)
+			
+			CALL WORKER:C1389("4DPopWindowsAutosaveWorker"; Formula:C1597(WS_AUTOSAVE_MONITOR))
+			
+		End if 
+		
+	Else 
+		
+		If (This:C1470._autosaveWorkerProcess()>0)
+			
+			KILL WORKER:C1390("4DPopWindowsAutosaveWorker")
+			
+		End if 
+		
+	End if 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns a stable fingerprint of currently open design windows
+Function workspaceFingerprint() : Text
+	
+	var $items : Collection:=[]
+	var $window : Object
+	
+	For each ($window; This:C1470.captureWorkspace())
+		
+		var $key : Text:=String:C10($window.type)+"|"+String:C10($window.path)+"|"+String:C10($window.table)+"|"+String:C10($window.name)
+		$items.push({k: $key})
+		
+	End for each 
+	
+	$items:=$items.orderBy("k asc")
+	
+	var $signature : Text:=""
+	For each ($window; $items)
+		$signature+=$window.k+"\n"
+	End for each 
+	
+	return $signature
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns a Collection of {type; path|name|table} for each identifiable open design window
+Function captureWorkspace() : Collection
+	
+	var $windows:=[]
+	var $data : Object:=This:C1470.data
+	
+	var $window : Object
+	For each ($window; This:C1470.windowList())
+		
+		If ($window.explorer || ($window.origin>0))
+			
+			continue
+			
+		End if 
+		
+		var $t : Text:=$window.title
+		
+		Case of 
+				
+				//______________________________________________________
+			: (Position:C15($data.method.name; $t)=1)
+				
+				var $o:={\
+					type: "method"; \
+					path: Replace string:C233($t; $data.method.name; ""; 1)}
+				
+				//______________________________________________________
+			: (Position:C15($data.class.name; $t)=1)
+				
+				$o:={\
+					type: "class"; \
+					path: "[class]/"+Replace string:C233($t; $data.class.name; ""; 1)}
+				
+				//______________________________________________________
+			: (Position:C15($data.trigger.name; $t)=1)
+				
+				$o:={\
+					type: "trigger"; \
+					path: "[trigger]/"+Replace string:C233($t; $data.trigger.name; ""; 1)}
+				
+				//______________________________________________________
+			: (Position:C15($data.formMethod.name; $t)=1)
+				
+				$t:=Replace string:C233($t; $data.formMethod.name; ""; 1)
+				
+				If (Position:C15("["; $t)=1)  // Table form method
+					
+					$t:=Replace string:C233($t; "["; "")
+					var $indx : Integer:=Position:C15("]"; $t)
+					$o:={\
+						type: "formMethod"; \
+						path: "[tableForm]/"+Substring:C12($t; 1; $indx-1)+"/"+Substring:C12($t; $indx+1)+"/{formMethod}"}
+					
+				Else   // Project form method
+					
+					$o:={\
+						type: "formMethod"; \
+						path: "[projectForm]/"+$t+"/{formMethod}"}
+					
+				End if 
+				
+				//______________________________________________________
+			: (Position:C15($data.form.name; $t)=1)
+				
+				$t:=Replace string:C233($t; $data.form.name; ""; 1)
+				
+				If (Position:C15("["; $t)=1)  // Table form
+					
+					$t:=Replace string:C233($t; "["; "")
+					$indx:=Position:C15("]"; $t)
+					$o:={\
+						type: "tableForm"; \
+						table: Substring:C12($t; 1; $indx-1); \
+						name: Substring:C12($t; $indx+1)}
+					
+				Else   // Project form
+					
+					$o:={type: "projectForm"; name: $t}
+					
+				End if 
+				
+				//______________________________________________________
+			: ($data.databaseMethod.methods.indexOf($t)#-1)
+				
+				$o:={type: "databaseMethod"; path: $t}
+				
+				//______________________________________________________
+			Else 
+				
+				continue
+				
+				//______________________________________________________
+		End case 
+		
+		$windows.push($o)
+		
+	End for each 
+	
+	return $windows
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Returns number of open design windows (excluding Explorer)
+Function _designWindowsCount() : Integer
+
+	var $count : Integer:=0
+	var $window : Object
+
+	For each ($window; This:C1470.windowList())
+
+		If ($window.explorer | ($window.origin>0))
+			continue
+		End if 
+
+		$count+=1
+
+	End for each 
+
+	return $count
+
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Closes all open design windows except the Explorer
+Function closeDesignWindows()
+
+	var $pass : Integer
+	var $pending : Integer
+	var $window : Object
+
+	For ($pass; 1; 4; 1)
+
+		$pending:=0
+
+		For each ($window; This:C1470.windowList())
+
+			If ($window.explorer | ($window.origin>0))
+				continue
+			End if 
+
+			$pending+=1
+			POST KEY:C465(Character code:C91("w"); 0 ?+ Command key bit:K16:2; $window.process)
+
+		End for each 
+
+		If ($pending=0)
+			break
+		End if 
+
+		DELAY PROCESS:C323(Current process:C322; 5)
+
+	End for 
+	
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Closes current design windows then reopens a saved set
+Function restoreWorkspace($windows : Collection)
+
+	This:C1470._ensureDesignWindowsClosed()
+	
+	var $window : Object
+	For each ($window; $windows)
+		
+		Case of 
+				
+				// ______________________________________________________
+			: ($window.type="method")\
+				 | ($window.type="class")\
+				 | ($window.type="trigger")\
+				 | ($window.type="formMethod")\
+				 | ($window.type="databaseMethod")
+				
+				METHOD OPEN PATH:C1213($window.path; *)
+				
+				// ______________________________________________________
+			: ($window.type="projectForm")
+				
+				Formula from string:C1601("FORM EDIT:C1749($1)"; sk execute in host database:K88:5).call(Null:C1517; $window.name)
+				
+				// ______________________________________________________
+			: ($window.type="tableForm")
+				
+				Try(Formula from string:C1601("FORM EDIT(["+$window.table+"]; $1)"; sk execute in host database:K88:5).call(Null:C1517; $window.name))
+				
+				// ______________________________________________________
+		End case 
+	End for each 
+
+	// === === === === === === === === === === === === === === === === === === === === === === === ===
+	// Tries repeatedly until all design windows are closed
+Function _ensureDesignWindowsClosed() : Boolean
+
+	var $pass : Integer
+	var $closed : Boolean:=False:C215
+	var $ws : cs:C1710.workspace:=cs:C1710.workspace.new()
+
+	$ws.setClosing(True:C214)
+
+	For ($pass; 1; 20; 1)
+
+		This:C1470.closeDesignWindows()
+
+		If (This:C1470._designWindowsCount()=0)
+			$closed:=True:C214
+			break
+		End if 
+
+		DELAY PROCESS:C323(Current process:C322; 5)
+
+	End for 
+
+	If (Not:C34($closed))
+		$closed:=This:C1470._designWindowsCount()=0
+	End if 
+
+	$ws.setClosing(False:C215)
+	return $closed
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 Function doSettings()
