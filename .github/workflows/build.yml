@@ -31,6 +31,9 @@ jobs:
       with:
         repository: vdelachaux/SVG-with-Classes
         path: Components/SVG with Classes.4dbase
+    - name: Remove pre-built SVG to force recompilation with Color available
+      shell: bash
+      run: rm -rf "Components/SVG with Classes.4dbase/BUILD/Components/SVG with Classes.4dbase"
     - name: Get 4DPop
       uses: actions/checkout@v4
       with:
