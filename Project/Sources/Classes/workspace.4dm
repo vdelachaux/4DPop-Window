@@ -1,8 +1,10 @@
 property module : Text
+property _closing : Boolean
 
 shared singleton Class constructor
 	
 	This:C1470.module:="workspaces"
+	This:C1470._closing:=False:C215
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns a fresh preferences instance (shared-singleton safe)
@@ -19,19 +21,19 @@ Function _state() : Object
 	
 	If ($raw.entries#Null:C1517)
 		
-		return New object:C1471("entries"; $raw.entries || New object:C1471; "current"; String:C10($raw.current || ""); "autosave"; Bool:C1537($raw.autosave); "closing"; Bool:C1537($raw.closing))
+		return New object:C1471("entries"; $raw.entries || New object:C1471; "current"; String:C10($raw.current || ""); "autosave"; Bool:C1537($raw.autosave))
 		
 	End if 
 	
 	// Backward compatibility with previous format ({name:workspace; ...})
-	return New object:C1471("entries"; $raw; "current"; ""; "autosave"; False:C215; "closing"; False:C215)
+	return New object:C1471("entries"; $raw; "current"; ""; "autosave"; False:C215)
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Persists normalized state
 Function _saveState($state : Object)
 	
 	var $preferences : cs:C1710.pop.Preferences:=This:C1470._preferences()
-	$preferences.set(New object:C1471("entries"; $state.entries || New object:C1471; "current"; String:C10($state.current || ""); "autosave"; Bool:C1537($state.autosave); "closing"; Bool:C1537($state.closing)))
+	$preferences.set(New object:C1471("entries"; $state.entries || New object:C1471; "current"; String:C10($state.current || ""); "autosave"; Bool:C1537($state.autosave)))
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns autosave activation state for current workspace tracking
@@ -62,45 +64,40 @@ Function toggleAutosave() : Boolean
 	// Returns true while a mass window-closing operation is in progress
 Function closing() : Boolean
 	
-	return Bool:C1537(This:C1470._state().closing)
+	return This:C1470._closing
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Sets the mass-closing state flag
-Function setClosing($enabled : Boolean) : cs:C1710.workspace
+shared Function setClosing($enabled : Boolean) : cs:C1710.workspace
 	
-	var $state:=This:C1470._state()
-	$state.closing:=$enabled
-	This:C1470._saveState($state)
-	
-	return This:C1470
-	
+	This:C1470._closing:=$enabled
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns workspace names sorted by most recent update first
 Function _sortedNames($entries : Object) : Collection
-
+	
 	$entries:=$entries || {}
 	var $rows:=[]
-
+	
 	var $name : Text
 	For each ($name; OB Keys:C1719($entries))
-
+		
 		var $ws : Object:=$entries[$name]
 		$rows.push({name: $name; updatedDate: $ws.updatedDate; updatedTime: $ws.updatedTime; date: String:C10($ws.date || "")})
-
+		
 	End for each 
-
+	
 	$rows:=$rows.orderBy("updatedDate desc,updatedTime desc,date desc,name asc")
-
+	
 	var $names:=[]
 	var $row : Object
 	For each ($row; $rows)
-
+		
 		$names.push($row.name)
-
+		
 	End for each 
-
+	
 	return $names
-
+	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Returns the list of saved workspace names
 Function list() : Collection
