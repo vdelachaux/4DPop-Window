@@ -21,7 +21,11 @@ jobs:
       with:
         repository: vdelachaux/4DPop
         path: Build/Components/4DPop.4dbase
-        outputDirectory: Components/4DPop.4dbase
+    - name: Check out SVG-with-Classes
+      uses: actions/checkout@v4
+      with:
+        repository: vdelachaux/SVG-with-Classes
+        path: Build/Components/SVG-with-Classes
     - name: Build
       uses: 4d/build4d-action@main
       with:
