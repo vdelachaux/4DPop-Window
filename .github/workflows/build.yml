@@ -19,26 +19,34 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
-# Get dependencies
-    - name: Get Color with Classes
-      uses: actions/checkout@v4
-      with:
-        repository: vdelachaux/Color-with-Classes
-        path: Components/Color with Classes.4dbase
-    - name: Get SVG with Classes
-      uses: actions/checkout@v4
-      with:
-        repository: vdelachaux/SVG-with-Classes
-        path: Components/SVG with Classes.4dbase
-    - name: Remove pre-built SVG to force recompilation with Color available
+      uses: actions/checkout@v6
+    - name: Get dependencies from BUILD zip (macOS)
+      if: runner.os == 'macOS'
       shell: bash
-      run: rm -rf "Components/SVG with Classes.4dbase/BUILD/Components/SVG with Classes.4dbase"
-    - name: Get 4DPop
-      uses: actions/checkout@v4
-      with:
-        repository: vdelachaux/4DPop
-        path: Components/4DPop.4dbase
+      run: |
+        set -euo pipefail
+        mkdir -p Components
+        repos=("Color-with-Classes" "SVG-with-Classes" "4DPop")
+        for repo in "${repos[@]}"; do
+          zip_url="https://github.com/vdelachaux/${repo}/raw/main/BUILD/${repo}.zip"
+          echo "Downloading ${zip_url}"
+          curl -fL "${zip_url}" -o "${repo}.zip"
+          unzip -o "${repo}.zip" -d Components
+        done
+        rm -f *.zip
+    - name: Get dependencies from BUILD zip (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Path Components -Force | Out-Null
+        $repos = @("Color-with-Classes", "SVG-with-Classes", "4DPop")
+        foreach ($repo in $repos) {
+          $zipUrl = "https://github.com/vdelachaux/$repo/raw/main/BUILD/$repo.zip"
+          Write-Host "Downloading $zipUrl"
+          Invoke-WebRequest -Uri $zipUrl -OutFile "$repo.zip"
+          Expand-Archive -Path "$repo.zip" -DestinationPath "Components" -Force
+        }
+        Remove-Item -Path "*.zip" -Force -ErrorAction SilentlyContinue
     - name: Build
       uses: 4d/build4d-action@main
       with:
