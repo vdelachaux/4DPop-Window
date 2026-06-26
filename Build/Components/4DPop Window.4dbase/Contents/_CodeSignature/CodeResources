@@ -104,19 +104,43 @@
 		<data>
 		Hi+gpCVtMAer6YLoxItLmNwq3SE=
 		</data>
+		<key>Resources/Images/workspace.svg</key>
+		<data>
+		cucAbFj4JTexBjcTKYRbN+dzPbQ=
+		</data>
+		<key>Resources/Images/ws-autosave.svg</key>
+		<data>
+		dxGQ6eM9UNb830iQtecOYXBjMX8=
+		</data>
+		<key>Resources/Images/ws-delete.svg</key>
+		<data>
+		0GSRviDfAb+23bku24VxMPDdxeM=
+		</data>
+		<key>Resources/Images/ws-restore.svg</key>
+		<data>
+		rkCbOse1sBj58EoPDeGPKGY+OUM=
+		</data>
+		<key>Resources/Images/ws-save.svg</key>
+		<data>
+		CBD3U96HqHf+q3lSuJn8E9cUTII=
+		</data>
+		<key>Resources/Images/ws-update.svg</key>
+		<data>
+		7MZMM8KgiD+/zlQcwcZBloDjTqg=
+		</data>
 		<key>Resources/InfoPlist.strings</key>
 		<data>
-		QBRUY3M18xbP2smy538RRIlVY/Q=
+		dWTH3vXaBvOPaPYGldHuXl6ns5I=
 		</data>
 		<key>Resources/desc.json</key>
 		<data>
-		fT75/iL7PMiLocXB0YVhqs9Z8+Y=
+		Sekbw+YEMvweaXuHU6wYgdZ6xHc=
 		</data>
 		<key>Resources/en.lproj/Help/Help.html</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GEpfTO0FIc4vTJguUMjd5c+6M0o=
+			Enniz90IvJaZKzDdIU3LQVouZak=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -148,11 +172,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/en.lproj/Help/Images/workspace.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			02jRCvdaveQwBFKXhn71KprohE8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/en.lproj/Window_Tool.xlf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gOY3PusPualGN4qI5AEvb/YnZYw=
+			cP/QtSiGfAR0Xwbr6kMbG37g5XU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en.lproj/syntaxEN.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+3AZmcd9jyzXCD2FXg9Ely9Fz8I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -161,7 +203,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PYC6YQOQdmkjNFUQ1KiJHvahEP4=
+			cUTpw3kVh/1n/LIEJj0ZiBoFFfM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -197,7 +239,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			R+mn1VtqaQkmEVbHXDXAmOx6tSE=
+			UHXgQKiyMuGRAH8CIWng7S0jSY8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -206,7 +248,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gltI6o4Sf4TS0V10H1wv4NbbzxE=
+			OHyKH4sxm5pALihQ9SqSYLNEFso=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -251,7 +293,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			37Ln+MYgRYG0xY05DUauKjT3iI4=
+			BiWZxT+uP3JaKZ2EBPeszi1+3DY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -260,10 +302,6 @@
 		<data>
 		sDE3GL6BcqzG+3wG8QNkyKUnn2A=
 		</data>
-		<key>Resources/php.ini</key>
-		<data>
-		FS11h48jW1mGEHLAo/ZtSvwq1jk=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -271,7 +309,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Fyz4D67B55p8rN/T0LIOZVmImdc=
+			D1i5phmOk6Er9d1xol42ZLXUtQs=
 			</data>
 			<key>requirement</key>
 			<string>identifier "4DPop Window.4DZ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = DYRKW64QA9</string>
@@ -280,7 +318,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZGbLmNniHI+9dvr45T0CPBuy3wuC7drq9IX9ulhstVM=
+			lA3LDjDXsWGvrNZCbLoLa+wXHGNTlGFU3LZK88fnYjI=
 			</data>
 		</dict>
 		<key>Resources/4DPop.json</key>
@@ -458,25 +496,67 @@
 			KWYDzuMSFz3jA/d+FtaoWagapPm99o0+B8CEkDoZsH0=
 			</data>
 		</dict>
+		<key>Resources/Images/workspace.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ef8IYz378NW92gPKCg+khjGQF/9TYiO3sIxocSV8HGM=
+			</data>
+		</dict>
+		<key>Resources/Images/ws-autosave.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FZl7uMBzqF3nD+4pY5RzsgTFxsvOnuCN/osmfaLWX/4=
+			</data>
+		</dict>
+		<key>Resources/Images/ws-delete.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OUuYqtnN9nm6qQavQXsHyzGqSO9Id4PjyzVZilPLh7k=
+			</data>
+		</dict>
+		<key>Resources/Images/ws-restore.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VjvRPh9pahUi2+ImeWSJZtNQkdWl93cWpg/D5EyFI60=
+			</data>
+		</dict>
+		<key>Resources/Images/ws-save.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			smmdr0Wmg0kUHSBXY5rdEn73ZPiamKvWZEqEAqaiQKA=
+			</data>
+		</dict>
+		<key>Resources/Images/ws-update.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X8wxUuPROA6SkpYe7N9sA3AIDqn81ZpBTM6M88weIZ0=
+			</data>
+		</dict>
 		<key>Resources/InfoPlist.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			O+Zl0PqHExxbgX3N299HKYkHgn0T5Ylb1wVBcZRhIPc=
+			bDmu8WsBJDsDmDwFCw3P1ZoG6HyQtCiI4omWsoYzuM4=
 			</data>
 		</dict>
 		<key>Resources/desc.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x1Euzch+r3QK5ndF1phOFA2BNTvSni054ZDFco4khl4=
+			ElVVMIX5yPkZ2yYnWq/JfFDiyBS5eemxUK5V0t3cjJ4=
 			</data>
 		</dict>
 		<key>Resources/en.lproj/Help/Help.html</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ehbmRWOL/C9OZJ+PIpNBjL6Tnq+Ci5xSiPFvo8HZtzI=
+			iN/YjXSAlPqDBtVe30d8FiUile5xyC+YWDYrgsDEvBk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -508,11 +588,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/en.lproj/Help/Images/workspace.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hK1qwGa/z7jx36Ny3qCkNwRVtVHq+StPFXbPrpgBP1A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/en.lproj/Window_Tool.xlf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fIR2O36uHCyjoqcw9hb7UkOBUga9ZFq+NoRP8/E2YSs=
+			k08axQAmCJcH7o/VEvdI77g1sOSijQ9mA/pxn+KRVu4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en.lproj/syntaxEN.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TwBOPjIb8B1hKcFhY9bocVBsPoWjNLrTJ9cCTqwrHHs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -521,7 +619,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			I3XtNPwQ1loxnQV057oipHg/vm4NvqtRXwnSZTJa8m8=
+			Jxt6Bw9yG/Bz6Gds/SdbS2Bef/mJN6LFyGfA4h+RhYE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -557,7 +655,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ItO317s74UanVTAwZ40xSvQDknIRkknnOTJzWirVYw8=
+			k6WWnh/4mGq2Zx2RDzU8cOpfk59NPQ37xmHLC4Ahj1o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -566,7 +664,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gLoa6uIkLREwPHIm+8+dDs4hbOshqnh0RkmGL2x+118=
+			Teqaiw/Q08g+P0lWNtWubSeKzzXLAHcONvAdctNzgF8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -611,7 +709,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cfN+DSks5uKqakIXENZkHF2zVNzf9+I97cnwd4zS3o0=
+			RYwSRxm2Io8YWmFcsZzkVxJeuD5/Q7R3OCTwD6CChJw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -621,13 +719,6 @@
 			<key>hash2</key>
 			<data>
 			+3On8Lj4BAk2sn+FF2EwayuyNKckVz6VPhcXW2Z4k+w=
-			</data>
-		</dict>
-		<key>Resources/php.ini</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			X2tUHRYO+ygPMYHiXhsnzch/I80entgS6Wrtw56GTqI=
 			</data>
 		</dict>
 	</dict>

@@ -1,0 +1,26 @@
+{
+	"_method_": {
+		"macroOnClose": {
+			"Syntax": "**macroOnClose**( *methodPath* : Text )",
+			"Params": [
+				[
+					"methodPath",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"macroOnOpen": {
+			"Syntax": "**macroOnOpen**( *methodPath* : Text )",
+			"Params": [
+				[
+					"methodPath",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		}
+	}
+}

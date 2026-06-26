@@ -20,8 +20,8 @@ This file is distributed under the same license as the product package.-->
           <target>Trigger: </target>
         </trans-unit>
         <trans-unit id="QOaXUQYqO+6WaGu5q9fHOQ" resname="Form">
-          <source>Form</source>
-          <target>Form</target>
+          <source>Form: </source>
+          <target>Form: </target>
         </trans-unit>
         <trans-unit id="+SlIgYl+LNxpJgdrohNgyg" resname="Method">
           <source>Method: </source>
@@ -40,8 +40,8 @@ This file is distributed under the same license as the product package.-->
           <target>Find: </target>
         </trans-unit>
         <trans-unit id="NeDwXwbvw80zisTURDdfBw" resname="class">
-          <source>Class:</source>
-          <target>Class:</target>
+          <source>Class: </source>
+          <target>Class: </target>
         </trans-unit>
         
         <trans-unit id="1Ulqk744jwTS_Lq212sapg" resname="_explorer">
@@ -129,6 +129,52 @@ This file is distributed under the same license as the product package.-->
           <target>Default action</target>
         </trans-unit>
         
+      </group>
+      <group resname="Workspaces">
+        <trans-unit id="WsA1bCdEfGhIjKlMnOpQrSt" resname="WsWorkspaces">
+          <source>Workspaces</source>
+          <target>Workspaces</target>
+        </trans-unit>
+        <trans-unit id="WsA1NewEfGhIjKlMnOpQrSt" resname="WsNew">
+          <source>New empty workspace…</source>
+          <target>New empty workspace…</target>
+        </trans-unit>
+        <trans-unit id="WsB2cDeEfGhIjKlMnOpQrSt" resname="WsSave">
+          <source>Save current workspace…</source>
+          <target>Save current workspace…</target>
+        </trans-unit>
+        <trans-unit id="WsC3dEfFgHiJkLmNoPqRsTu" resname="WsRestore">
+          <source>Restore</source>
+          <target>Restore</target>
+        </trans-unit>
+        <trans-unit id="WsD4eEfGhIjKlMnOpQrStUv" resname="WsDelete">
+          <source>Delete</source>
+          <target>Delete</target>
+        </trans-unit>
+        <trans-unit id="WsE5fGhHiJkLmNoPqRsTuVw" resname="WsNamePrompt">
+          <source>Workspace name:</source>
+          <target>Workspace name:</target>
+        </trans-unit>
+        <trans-unit id="WsF6gHiIjKlMnOpQrStUvWx" resname="WsDefaultName">
+          <source>My workspace</source>
+          <target>My workspace</target>
+        </trans-unit>
+        <trans-unit id="WsG7hIjJkLmNoPqRsTuVwXy" resname="WsUpdateCurrent">
+          <source>Update current workspace</source>
+          <target>Update current workspace</target>
+        </trans-unit>
+        <trans-unit id="WsG7hIjJkLmNoPqRsTuVwXz" resname="WsUpdate">
+          <source>Update workspace</source>
+          <target>Update workspace</target>
+        </trans-unit>
+        <trans-unit id="WsH8iJkKlMnOpQrStUvWxYz" resname="WsReplaceConfirm">
+          <source>This workspace already exists. Replace it?</source>
+          <target>This workspace already exists. Replace it?</target>
+        </trans-unit>
+        <trans-unit id="WsI9jKlLmNoPqRsTuVwXyZa" resname="WsAutosave">
+          <source>Autosave current workspace</source>
+          <target>Autosave current workspace</target>
+        </trans-unit>
       </group>
       <group resname="4DPop">
         <trans-unit id="FWEfzWJtvEo4QaDx12EzEg" resname="ToolName">
