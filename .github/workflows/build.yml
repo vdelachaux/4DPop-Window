@@ -28,7 +28,7 @@ jobs:
         mkdir -p Components
         curl -fL "https://github.com/vdelachaux/Color-with-Classes/raw/master/BUILD/Color-with-Classes.zip" -o "Color-with-Classes.zip"
         curl -fL "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -o "SVG-with-Classes.zip"
-        curl -fL "https://github.com/vdelachaux/4DPop/raw/master/Build/4DPop.zip" -o "4DPop.zip"
+        curl -fL "https://github.com/vdelachaux/4DPop/raw/main/Build/4DPop.zip" -o "4DPop.zip"
 
         rm -rf "Components/Color-with-Classes.4dbase" "Components/SVG with Classes.4dbase" "Components/4DPop.4dbase"
         unzip -o "Color-with-Classes.zip" -d Components
@@ -44,7 +44,7 @@ jobs:
         New-Item -ItemType Directory -Path Components -Force | Out-Null
         Invoke-WebRequest -Uri "https://github.com/vdelachaux/Color-with-Classes/raw/master/BUILD/Color-with-Classes.zip" -OutFile "Color-with-Classes.zip"
         Invoke-WebRequest -Uri "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -OutFile "SVG-with-Classes.zip"
-        Invoke-WebRequest -Uri "https://github.com/vdelachaux/4DPop/raw/master/Build/4DPop.zip" -OutFile "4DPop.zip"
+        Invoke-WebRequest -Uri "https://github.com/vdelachaux/4DPop/raw/main/Build/4DPop.zip" -OutFile "4DPop.zip"
 
         Remove-Item -Recurse -Force "Components/Color-with-Classes.4dbase" -ErrorAction SilentlyContinue
         Remove-Item -Recurse -Force "Components/SVG with Classes.4dbase" -ErrorAction SilentlyContinue
