@@ -26,26 +26,34 @@ jobs:
       run: |
         set -euo pipefail
         mkdir -p Components
-        repos=("Color-with-Classes" "SVG-with-Classes" "4DPop")
-        for repo in "${repos[@]}"; do
-          zip_url="https://github.com/vdelachaux/${repo}/raw/main/BUILD/${repo}.zip"
-          echo "Downloading ${zip_url}"
-          curl -fL "${zip_url}" -o "${repo}.zip"
-          unzip -o "${repo}.zip" -d Components
-        done
+        curl -fL "https://github.com/vdelachaux/Color-with-Classes/raw/master/BUILD/Color-with-Classes.zip" -o "Color-with-Classes.zip"
+        curl -fL "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -o "SVG-with-Classes.zip"
+        curl -fL "https://github.com/vdelachaux/4DPop/raw/master/Build/4DPop.zip" -o "4DPop.zip"
+
+        rm -rf "Components/Color-with-Classes.4dbase" "Components/SVG with Classes.4dbase" "Components/4DPop.4dbase"
+        unzip -o "Color-with-Classes.zip" -d Components
+        unzip -o "SVG-with-Classes.zip" -d Components
+        mkdir -p "Components/4DPop.4dbase"
+        unzip -o "4DPop.zip" -d "Components/4DPop.4dbase"
+        rm -rf "Components/__MACOSX"
         rm -f *.zip
     - name: Get dependencies from BUILD zip (Windows)
       if: runner.os == 'Windows'
       shell: pwsh
       run: |
         New-Item -ItemType Directory -Path Components -Force | Out-Null
-        $repos = @("Color-with-Classes", "SVG-with-Classes", "4DPop")
-        foreach ($repo in $repos) {
-          $zipUrl = "https://github.com/vdelachaux/$repo/raw/main/BUILD/$repo.zip"
-          Write-Host "Downloading $zipUrl"
-          Invoke-WebRequest -Uri $zipUrl -OutFile "$repo.zip"
-          Expand-Archive -Path "$repo.zip" -DestinationPath "Components" -Force
-        }
+        Invoke-WebRequest -Uri "https://github.com/vdelachaux/Color-with-Classes/raw/master/BUILD/Color-with-Classes.zip" -OutFile "Color-with-Classes.zip"
+        Invoke-WebRequest -Uri "https://github.com/vdelachaux/SVG-with-Classes/raw/master/BUILD/SVG-with-Classes.zip" -OutFile "SVG-with-Classes.zip"
+        Invoke-WebRequest -Uri "https://github.com/vdelachaux/4DPop/raw/master/Build/4DPop.zip" -OutFile "4DPop.zip"
+
+        Remove-Item -Recurse -Force "Components/Color-with-Classes.4dbase" -ErrorAction SilentlyContinue
+        Remove-Item -Recurse -Force "Components/SVG with Classes.4dbase" -ErrorAction SilentlyContinue
+        Remove-Item -Recurse -Force "Components/4DPop.4dbase" -ErrorAction SilentlyContinue
+
+        Expand-Archive -Path "Color-with-Classes.zip" -DestinationPath "Components" -Force
+        Expand-Archive -Path "SVG-with-Classes.zip" -DestinationPath "Components" -Force
+        New-Item -ItemType Directory -Path "Components/4DPop.4dbase" -Force | Out-Null
+        Expand-Archive -Path "4DPop.zip" -DestinationPath "Components/4DPop.4dbase" -Force
         Remove-Item -Path "*.zip" -Force -ErrorAction SilentlyContinue
     - name: Build
       uses: 4d/build4d-action@main
