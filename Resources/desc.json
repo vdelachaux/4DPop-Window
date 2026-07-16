@@ -1,40 +1,40 @@
 {
 	"application": {
-		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_693.png"
+		"icon": "/RESOURCES/Images/menus/application.png"
 	},
 	"method": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"icon": "/RESOURCES/Images/menus/method.png",
 		"name": ".common_method"
 	},
 	"form": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_601.png",
+		"icon": "/RESOURCES/Images/menus/form.png",
 		"name": "Form"
 	},
 	"formMethod": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"icon": "/RESOURCES/Images/menus/method.png",
 		"name": ".common_formMethod"
 	},
 	"objectMethod": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_602.png",
+		"icon": "/RESOURCES/Images/menus/method.png",
 		"name": ".common_objectMethod"
 	},
 	"class": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_628.png",
+		"icon": "/RESOURCES/Images/menus/class.png",
 		"name":"class"
 	},
 	"trigger": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_600.png",
+		"icon": "/RESOURCES/Images/menus/trigger.png",
 		"name": ".common_Trigger"
 	},
 	"find": {
-		"icon": "/.PRODUCT_RESOURCES/Images/WatchIcons/Watch_873.png",
+		"icon": "/RESOURCES/Images/menus/find.png",
 		"name":"find"
 	},
 	"other": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_459.png"
+		"icon": "/RESOURCES/Images/menus/other.png"
 	},
 	"databaseMethod": {
-		"icon": "/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_622.png",
+		"icon": "/RESOURCES/Images/menus/database.png",
 		"methods" : [
 			".DatabaseMethodName_OnStartup",
 			".DatabaseMethodName_OnServerStartup",

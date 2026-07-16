@@ -94,7 +94,7 @@ Class constructor()
 		$o.name:=Try(Localized string:C991($o.name))
 		
 	End for each 
-
+	
 	// Cache localized database method names once, reused by methodPath()
 	This:C1470._databaseMethodNames:=[]
 	This:C1470._databaseMethodNames.push(Localized string:C991("onBackupShutdown"))
@@ -564,7 +564,7 @@ Function menu()
 	End if 
 	
 	$menu.line()\
-		.append(Localized string:C991("settings"); "settings").icon("/.PRODUCT_RESOURCES/Images/ObjectIcons/Icon_604.png")
+		.append(Localized string:C991("settings"); "settings").icon("/RESOURCES/Images/menus/settings.png")
 	
 	If (Not:C34($menu.popup().selected))
 		
@@ -744,14 +744,14 @@ Function workspaceFingerprint() : Text
 	End for each 
 	
 	return $signature
-
+	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Builds a method path from title and method type (replacement for legacy _o_methodGetPath)
 Function methodPath($name : Text; $type : Integer) : Text
-
+	
 	var $path : Text
 	var $indx : Integer
-
+	
 	// Encode name
 	$name:=Replace string:C233($name; "%"; "%25")
 	$name:=Replace string:C233($name; "\""; "%22")
@@ -763,9 +763,9 @@ Function methodPath($name : Text; $type : Integer) : Text
 	$name:=Replace string:C233($name; "?"; "%3F")
 	$name:=Replace string:C233($name; "|"; "%7C")
 	$name:=Replace string:C233($name; "\\"; "%5C")
-
+	
 	Case of 
-
+			
 			//______________________________________________________
 		: ($type=Path class:K72:19)
 			
@@ -939,25 +939,25 @@ Function _designWindowsCount() : Integer
 	End for each 
 	
 	return $count
-
+	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
 	// Closes design windows in a single pass and returns remaining candidates count
 Function _closeDesignWindowsPass() : Integer
-
+	
 	var $pending : Integer:=0
 	var $window : Object
-
+	
 	For each ($window; This:C1470.windowList())
-
+		
 		If ($window.explorer | ($window.origin>0))
 			continue
 		End if 
-
+		
 		$pending+=1
 		POST KEY:C465(Character code:C91("w"); 0 ?+ Command key bit:K16:2; $window.process)
-
+		
 	End for each 
-
+	
 	return $pending
 	
 	// === === === === === === === === === === === === === === === === === === === === === === === ===
@@ -1024,7 +1024,7 @@ Function _ensureDesignWindowsClosed() : Boolean
 	$ws.setClosing(True:C214)
 	
 	For ($pass; 1; 20; 1)
-
+		
 		If (This:C1470._closeDesignWindowsPass()=0)
 			$closed:=True:C214
 			break
